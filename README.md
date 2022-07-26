@@ -50,7 +50,7 @@
 
 | 이름 | 이승현 | 이정동 | 박준희 |
 | --- | --- | --- | --- |
-| GitHub | @hyuuuun | @ljdongz | @junhxx |
+| GitHub | [@hyuuuun](https://github.com/hyuuuun) | [@ljdongz](https://github.com/ljdongz) | [@junhxx](https://github.com/junhxx) |
 | 역할 | - | - | - |
 
 
