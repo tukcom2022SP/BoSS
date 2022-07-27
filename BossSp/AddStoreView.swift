@@ -57,8 +57,44 @@ struct AddStoreView: View {
                         .font(.title2)
                         .fontWeight(.bold)
                         .foregroundColor(Color.black)) {
-                           Text("Image")
-                    }
+                            ScrollView(.horizontal) {
+                                HStack(alignment: .center, spacing: 20) {
+                                    VStack {
+                                        Image("")
+                                            .resizable()
+                                            .frame(width: 150, height: 150)
+                                            .clipShape(RoundedRectangle(cornerRadius: 20.0))
+                                            .overlay(RoundedRectangle(cornerRadius: 20.0).stroke(Color.gray))
+                    
+                                        Button ("사진 선택") {
+                                            
+                                        }
+                                    }
+                                    VStack {
+                                        Image("")
+                                            .resizable()
+                                            .frame(width: 150, height: 150)
+                                            .clipShape(RoundedRectangle(cornerRadius: 20.0))
+                                            .overlay(RoundedRectangle(cornerRadius: 20.0).stroke(Color.gray))
+                    
+                                        Button ("사진 선택") {
+                                            
+                                        }
+                                    }
+                                    VStack {
+                                        Image("")
+                                            .resizable()
+                                            .frame(width: 150, height: 150)
+                                            .clipShape(RoundedRectangle(cornerRadius: 20.0))
+                                            .overlay(RoundedRectangle(cornerRadius: 20.0).stroke(Color.gray))
+                    
+                                        Button ("사진 선택") {
+                                            
+                                        }
+                                    }
+                                }.padding() // HStack
+                            } // ScrollView
+                    } // Section
                     
                     Section(header: Text("휴무일") // 휴무일 입력 섹션
                         .font(.title2)
