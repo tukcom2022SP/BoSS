@@ -11,38 +11,44 @@ import CoreLocationUI
 
 struct MapView: View {
     let places = [
-        Place(name: "British Museum", latitude: 51.519581, longitude: -0.127002),
-        Place(name: "Tower of London", latitude: 51.508052, longitude: -0.076035),
-        Place(name: "Big Ben", latitude: 51.500710, longitude: -0.124617)
+        Place(name: "British Museum", latitude: 37.541, longitude: 126.853),
+        Place(name: "Tower of London", latitude: 34.531, longitude: 143.435),
+        Place(name: "Big Ben", latitude: 36.431, longitude: 142.543)
     ]
+//    let places1 = [
+//        Place(name: "Apple park", coordinate: CLLocationCoordinate2D(latitude: 37.541, longitude: 126.986))
+//    ]
     @StateObject var locationManager = LocationManager()
-    @State var region = MKCoordinateRegion(
-        center: CLLocationCoordinate2D(
-            latitude: 51.514134,
-            longitude: -0.104236),
-        span: MKCoordinateSpan(
-            latitudeDelta: 0.001,
-            longitudeDelta: 0.001)
-    )
 
     var body: some View {
-        ZStack(alignment: .bottom) {
+        ZStack(alignment: .bottomTrailing) {
+//            Map(coordinateRegion: $locationManager.region,
+//                showsUserLocation: true,
+//                annotationItems: places1, annotationContent: { place in
+//                MapAnnotation(coordinate: place.coordinate) {
+//
+//                }
+//            })
             Map(coordinateRegion: $locationManager.region,
-                showsUserLocation: true,
-                annotationItems: places){ place in
-                MapMarker(coordinate: place.coordinate, tint: Color.blue)
-            }
+                            showsUserLocation: true,
+                            annotationItems: places){ place in
+                            MapMarker(coordinate: place.coordinate, tint: Color.blue)
+                        }
             .edgesIgnoringSafeArea(.all)
             .ignoresSafeArea(.all)
 
-            HStack {
+            HStack(alignment: .lastTextBaseline) {
                 LocationButton {
                     locationManager.requestLocation()
                 }
-                .frame(width: 180, height: 40)
+                .frame(width: 40, height: 40)
                 .cornerRadius(30)
                 .symbolVariant(.fill)
-                .foregroundColor(.white)
+                .foregroundColor(.black)
+                .padding(30)
+                .labelStyle(.iconOnly)
+                .tint(.white)
+                
             }
         }
         
@@ -65,6 +71,7 @@ struct Place : Identifiable {
     var coordinate: CLLocationCoordinate2D {
         CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
     }
+//    var coordinate: CLLocationCoordinate2D
 }
 
 

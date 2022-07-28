@@ -17,7 +17,6 @@ class AppDelegate: NSObject, UIApplicationDelegate {
   }
 }
 
-    .
 @main
 struct BossSpApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate // 파이어베이스

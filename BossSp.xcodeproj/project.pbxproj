@@ -87,10 +87,7 @@
 				A311E69E289118B3000753BE /* SearchBar.swift */,
 				57B8470C2891072600BAA3EE /* MapView.swift */,
 				5760A71F289118BC006CFF8E /* LocationManager.swift */,
-<<<<<<< HEAD
 				57E0C8262892B98E005D50A6 /* MypageView.swift */,
-=======
->>>>>>> 1bf096bf929832d4de8dcfeeeeb9a07a7a0dc40b
 			);
 			path = BossSp;
 			sourceTree = "<group>";
