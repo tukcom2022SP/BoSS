@@ -9,10 +9,8 @@
 /* Begin PBXBuildFile section */
 		491FE0A82891366A0076A268 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 491FE0A72891366A0076A268 /* GoogleService-Info.plist */; };
 		491FE0AB289163350076A268 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 491FE0AA289163350076A268 /* FirebaseFirestore */; };
-		491FE0AD289163350076A268 /* FirebaseFirestoreCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 491FE0AC289163350076A268 /* FirebaseFirestoreCombine-Community */; };
 		491FE0AF289163350076A268 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 491FE0AE289163350076A268 /* FirebaseFirestoreSwift */; };
 		491FE0B1289163350076A268 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 491FE0B0289163350076A268 /* FirebaseStorage */; };
-		491FE0B3289163350076A268 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 491FE0B2289163350076A268 /* FirebaseStorageCombine-Community */; };
 		495A26C82890FD4C003B1A8D /* AddStoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495A26C72890FD4C003B1A8D /* AddStoreView.swift */; };
 		5760A720289118BC006CFF8E /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5760A71F289118BC006CFF8E /* LocationManager.swift */; };
 		57B8470D2891072600BAA3EE /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B8470C2891072600BAA3EE /* MapView.swift */; };
@@ -48,8 +46,6 @@
 			files = (
 				491FE0AB289163350076A268 /* FirebaseFirestore in Frameworks */,
 				491FE0B1289163350076A268 /* FirebaseStorage in Frameworks */,
-				491FE0B3289163350076A268 /* FirebaseStorageCombine-Community in Frameworks */,
-				491FE0AD289163350076A268 /* FirebaseFirestoreCombine-Community in Frameworks */,
 				491FE0AF289163350076A268 /* FirebaseFirestoreSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -87,9 +83,7 @@
 				A311E69E289118B3000753BE /* SearchBar.swift */,
 				57B8470C2891072600BAA3EE /* MapView.swift */,
 				5760A71F289118BC006CFF8E /* LocationManager.swift */,
-
 				57E0C8262892B98E005D50A6 /* MypageView.swift */,
-
 			);
 			path = BossSp;
 			sourceTree = "<group>";
@@ -120,10 +114,8 @@
 			name = BossSp;
 			packageProductDependencies = (
 				491FE0AA289163350076A268 /* FirebaseFirestore */,
-				491FE0AC289163350076A268 /* FirebaseFirestoreCombine-Community */,
 				491FE0AE289163350076A268 /* FirebaseFirestoreSwift */,
 				491FE0B0289163350076A268 /* FirebaseStorage */,
-				491FE0B2289163350076A268 /* FirebaseStorageCombine-Community */,
 			);
 			productName = BossSp;
 			productReference = 57F16665288FBC15000CEDCE /* BossSp.app */;
@@ -413,11 +405,6 @@
 			package = 491FE0A9289163350076A268 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestore;
 		};
-		491FE0AC289163350076A268 /* FirebaseFirestoreCombine-Community */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 491FE0A9289163350076A268 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = "FirebaseFirestoreCombine-Community";
-		};
 		491FE0AE289163350076A268 /* FirebaseFirestoreSwift */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 491FE0A9289163350076A268 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
@@ -427,11 +414,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 491FE0A9289163350076A268 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
-		};
-		491FE0B2289163350076A268 /* FirebaseStorageCombine-Community */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 491FE0A9289163350076A268 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = "FirebaseStorageCombine-Community";
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
