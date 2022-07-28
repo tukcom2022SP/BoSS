@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>205509266690-d9eps7tf3be02nu7f1ktb4sfe5tk9plj.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.205509266690-d9eps7tf3be02nu7f1ktb4sfe5tk9plj</string>
+	<key>API_KEY</key>
+	<string>AIzaSyASkeEjCe8GzNStNYfRq7vqu9evmTgLAfs</string>
+	<key>GCM_SENDER_ID</key>
+	<string>205509266690</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>kr.ac.tukorea.ce.ios.BossSp</string>
+	<key>PROJECT_ID</key>
+	<string>bosssp-fd9a1</string>
+	<key>STORAGE_BUCKET</key>
+	<string>bosssp-fd9a1.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:205509266690:ios:9634372a0895480ca0861b</string>
+</dict>
+</plist>
