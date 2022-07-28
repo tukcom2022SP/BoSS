@@ -21,6 +21,7 @@ struct ContentView: View {
                     Text("내정보")
                 }
         }
+        .accentColor(Color.yellow)
         .onAppear(){
             UITabBar.appearance().backgroundColor = .white
         }
