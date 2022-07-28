@@ -2,6 +2,7 @@ import Foundation
 import CoreLocation
 import MapKit
 
+// 현위치로 이동하는 코드
 final class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     private let locationManager = CLLocationManager()
     
@@ -10,9 +11,7 @@ final class LocationManager: NSObject, ObservableObject, CLLocationManagerDelega
     @Published var location: CLLocationCoordinate2D?
     @Published var region = MKCoordinateRegion(
         center: CLLocationCoordinate2D(latitude: 42.0422448, longitude: -102.0079053),
-        //span: MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02)
-        latitudinalMeters: LocationManager.defaultDistance,
-        longitudinalMeters: LocationManager.defaultDistance
+        span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
     )
 
     override init() {
@@ -31,9 +30,7 @@ final class LocationManager: NSObject, ObservableObject, CLLocationManagerDelega
             //self.location = location.coordinate
             self.region = MKCoordinateRegion(
                 center: location.coordinate,
-                //span: MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02)
-                latitudinalMeters: Self.defaultDistance,
-                longitudinalMeters: Self.defaultDistance
+                span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
             )
         }
     }

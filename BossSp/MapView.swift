@@ -21,20 +21,20 @@ struct MapView: View {
             latitude: 51.514134,
             longitude: -0.104236),
         span: MKCoordinateSpan(
-            latitudeDelta: 0.075,
-            longitudeDelta: 0.075)
+            latitudeDelta: 0.001,
+            longitudeDelta: 0.001)
     )
 
     var body: some View {
         ZStack(alignment: .bottom) {
             Map(coordinateRegion: $locationManager.region,
                 showsUserLocation: true,
-                annotationItems: places){place in
-                MapMarker(coordinate: place.coordinate)
+                annotationItems: places){ place in
+                MapMarker(coordinate: place.coordinate, tint: Color.blue)
             }
             .edgesIgnoringSafeArea(.all)
             .ignoresSafeArea(.all)
-            
+
             HStack {
                 LocationButton {
                     locationManager.requestLocation()
