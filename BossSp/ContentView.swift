@@ -9,8 +9,22 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        TabView{
+            MapView()
+                .tabItem {
+                    Image(systemName: "map")
+                    Text("지도")
+                }
+            MypageView()
+                .tabItem {
+                    Image(systemName: "person")
+                    Text("내정보")
+                }
+        }
+        .onAppear(){
+            UITabBar.appearance().backgroundColor = .white
+        }
+        
     }
 }
 

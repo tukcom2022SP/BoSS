@@ -11,8 +11,8 @@ import SwiftUI
 struct BossSpApp: App {
     var body: some Scene {
         WindowGroup {
-//            ContentView()
-            MapView()
+            ContentView()
+
         }
     }
 }
