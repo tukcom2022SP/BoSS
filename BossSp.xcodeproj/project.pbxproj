@@ -16,7 +16,7 @@
 		495A26C82890FD4C003B1A8D /* AddStoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495A26C72890FD4C003B1A8D /* AddStoreView.swift */; };
 		5760A720289118BC006CFF8E /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5760A71F289118BC006CFF8E /* LocationManager.swift */; };
 		57B8470D2891072600BAA3EE /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B8470C2891072600BAA3EE /* MapView.swift */; };
-		57E0C825289293D3005D50A6 /* MenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E0C824289293D3005D50A6 /* MenuBar.swift */; };
+		57E0C8272892B98E005D50A6 /* MypageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E0C8262892B98E005D50A6 /* MypageView.swift */; };
 		57F16669288FBC16000CEDCE /* BossSpApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F16668288FBC16000CEDCE /* BossSpApp.swift */; };
 		57F1666B288FBC16000CEDCE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F1666A288FBC16000CEDCE /* ContentView.swift */; };
 		57F1666D288FBC16000CEDCE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57F1666C288FBC16000CEDCE /* Assets.xcassets */; };
@@ -31,7 +31,7 @@
 		5760A71F289118BC006CFF8E /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		57B8470C2891072600BAA3EE /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		57B8470E289109CB00BAA3EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		57E0C824289293D3005D50A6 /* MenuBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBar.swift; sourceTree = "<group>"; };
+		57E0C8262892B98E005D50A6 /* MypageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageView.swift; sourceTree = "<group>"; };
 		57F16665288FBC15000CEDCE /* BossSp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BossSp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		57F16668288FBC16000CEDCE /* BossSpApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BossSpApp.swift; sourceTree = "<group>"; };
 		57F1666A288FBC16000CEDCE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -77,7 +77,6 @@
 			isa = PBXGroup;
 			children = (
 				57B8470E289109CB00BAA3EE /* Info.plist */,
-				57E0C824289293D3005D50A6 /* MenuBar.swift */,
 				57F16668288FBC16000CEDCE /* BossSpApp.swift */,
 				57F1666A288FBC16000CEDCE /* ContentView.swift */,
 				495A26C72890FD4C003B1A8D /* AddStoreView.swift */,
@@ -88,6 +87,9 @@
 				A311E69E289118B3000753BE /* SearchBar.swift */,
 				57B8470C2891072600BAA3EE /* MapView.swift */,
 				5760A71F289118BC006CFF8E /* LocationManager.swift */,
+
+				57E0C8262892B98E005D50A6 /* MypageView.swift */,
+
 			);
 			path = BossSp;
 			sourceTree = "<group>";
@@ -182,10 +184,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				A3B361C328910E920046EA81 /* SearchView.swift in Sources */,
+				57E0C8272892B98E005D50A6 /* MypageView.swift in Sources */,
 				57F1666B288FBC16000CEDCE /* ContentView.swift in Sources */,
 				A311E69F289118B3000753BE /* SearchBar.swift in Sources */,
 				57B8470D2891072600BAA3EE /* MapView.swift in Sources */,
-				57E0C825289293D3005D50A6 /* MenuBar.swift in Sources */,
 				5760A720289118BC006CFF8E /* LocationManager.swift in Sources */,
 				57F16669288FBC16000CEDCE /* BossSpApp.swift in Sources */,
 				495A26C82890FD4C003B1A8D /* AddStoreView.swift in Sources */,
