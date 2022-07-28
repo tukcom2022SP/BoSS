@@ -6,14 +6,48 @@
 //
 
 import SwiftUI
+import FirebaseFirestore
+
+let storeTypeArray = ["한식", "양식", "중식", "일식", "기타"]
+let storeDayOffArray = ["모름", "일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일", "없음"]
+
+class store { // 가게 정보 클래스
+    var storeAddress = "" // 맛집 주소
+    var storeName = "" // 맛집 이름
+    var storeType = "" // 맛집 종류
+    var storeDayOff = "" // 맛집 휴무일
+    var storeDescription = "" // 맛집 설명
+    
+    // 멤버 변수 초기화
+    init(storeAddress: String,
+         storeName : String,
+         storeType : Int,
+         storeDayOff : Int,
+         storeDescription : String) {
+        
+        self.storeAddress = storeAddress
+        self.storeName = storeName
+        self.storeType = storeTypeArray[storeType]
+        self.storeDayOff = storeDayOffArray[storeDayOff]
+        self.storeDescription = storeDescription
+    }
+}
+
+func InsertData(store : store) { // 파이어베이스 데이터 삽입
+    let db = Firestore.firestore() // 파이어베이스 인스턴스 초기화
+    db.collection("stores").document("store1").setData([
+        "storeAddress" : "\(store.storeAddress)",
+        "storeName" : "\(store.storeName)",
+        "storeType" : "\(store.storeType)",
+        "storeDayOff" : "\(store.storeDayOff)",
+        "storeDescription" : "\(store.storeDescription)"])
+}
+
 
 struct AddStoreView: View {
     
-    let storeTypeArray = ["한식", "양식", "중식", "일식", "기타"]
-    let storeDayOffArray = ["일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일", "없음", "모름"]
-    
-    @State var storeAddress = "" // 맛집 주소
-    @State var storename = "" // 맛집 이름
+    @State var storeAddress = "경기 시흥시 중심상가4길 18 이송빌딩 103호" // 맛집 주소
+    @State var storeName = "" // 맛집 이름
     @State var storeType = 0 // 맛집 종류
     @State var storeImage = "" // 맛집 이미지
     @State var storeDayOff = 0 // 맛집 휴무일
@@ -27,7 +61,7 @@ struct AddStoreView: View {
                         .font(.title2)
                         .fontWeight(.bold)
                         .foregroundColor(Color.black)) {
-                            Text("경기 시흥시 중심상가4길 18 이송빌딩 103호")
+                            Text("\(storeAddress)")
                                 .frame(width: 310.0, height: 50.0)
                     }
                     
@@ -35,7 +69,7 @@ struct AddStoreView: View {
                         .font(.title2)
                         .fontWeight(.bold)
                         .foregroundColor(Color.black)) {
-                            TextField("맛집 이름을 입력해주세요", text: $storename)
+                            TextField("맛집 이름을 입력해주세요", text: $storeName)
                                 .keyboardType(.default)
                                 .frame(width: 310.0, height: 50.0)
                     }
@@ -46,7 +80,7 @@ struct AddStoreView: View {
                         .foregroundColor(Color.black)) {
                             Picker("음식 종류",selection: $storeType) {
                                 ForEach( 0  ..< storeTypeArray.count ) {
-                                    Text("\(self.storeTypeArray[$0])")
+                                    Text("\(storeTypeArray[$0])")
                                 }
                             }
                             .pickerStyle(SegmentedPickerStyle())
@@ -102,7 +136,7 @@ struct AddStoreView: View {
                         .foregroundColor(Color.black)) {
                             Picker("요일", selection: $storeDayOff) {
                                 ForEach( 0  ..< storeDayOffArray.count ) {
-                                    Text("\(self.storeDayOffArray[$0])")
+                                    Text("\(storeDayOffArray[$0])")
                                 }
                             }
                         }
@@ -114,20 +148,24 @@ struct AddStoreView: View {
                             TextField("맛집 설명을 입력해주세요", text: $storeDescription)
                                 .frame(width: /*@START_MENU_TOKEN@*/300.0/*@END_MENU_TOKEN@*/, height: 100.0)
                     }
-    
-                } // Form
-                
-                Button ("등록") {
                     
-                }
-    
+                    Button ("등록") {
+
+                        let store_ob : store = store(
+                            storeAddress : self.storeAddress,
+                            storeName : self.storeName,
+                            storeType : self.storeType,
+                            storeDayOff : self.storeDayOff,
+                            storeDescription : self.storeDescription
+                        )
+                        InsertData(store : store_ob)
+                    }
+                } // Form
             } // VStack
             .navigationBarTitle("맛집 등록")
         } // NavigationView
     } // body
 } // AddStoreView
-
-
 
 
 struct AddStoreView_Previews: PreviewProvider {
