@@ -15,27 +15,30 @@ struct MapView: View {
         Place(name: "Tower of London", latitude: 34.531, longitude: 143.435),
         Place(name: "Big Ben", latitude: 36.431, longitude: 142.543)
     ]
-//    let places1 = [
-//        Place(name: "Apple park", coordinate: CLLocationCoordinate2D(latitude: 37.541, longitude: 126.986))
-//    ]
-    @StateObject var locationManager = LocationManager()
 
+    @StateObject var locationManager = LocationManager()
+    @State private var userTrackingMode : MapUserTrackingMode = .follow
     var body: some View {
         ZStack(alignment: .bottomTrailing) {
-//            Map(coordinateRegion: $locationManager.region,
-//                showsUserLocation: true,
-//                annotationItems: places1, annotationContent: { place in
-//                MapAnnotation(coordinate: place.coordinate) {
-//
-//                }
-//            })
-            Map(coordinateRegion: $locationManager.region,
-                            showsUserLocation: true,
-                            annotationItems: places){ place in
-                            MapMarker(coordinate: place.coordinate, tint: Color.blue)
+            NavigationView {
+                Map(coordinateRegion: $locationManager.region,
+                    showsUserLocation: true,
+                    userTrackingMode: $userTrackingMode,
+                    annotationItems: places){ place in
+                    MapAnnotation(coordinate: place.coordinate) {
+                        NavigationLink {
+                            MypageView()
+                        } label: {
+                            Circle()
+                                .stroke(.red, lineWidth: 3)
+                                .frame(width: 44, height: 44)
                         }
-            .edgesIgnoringSafeArea(.all)
-            .ignoresSafeArea(.all)
+
+                    }
+                }
+                .edgesIgnoringSafeArea(.all)
+                .ignoresSafeArea(.all)
+            }
 
             HStack(alignment: .lastTextBaseline) {
                 LocationButton {
