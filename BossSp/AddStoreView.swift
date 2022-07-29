@@ -6,11 +6,10 @@
 //
 
 import SwiftUI
-import FirebaseFirestore
+import FirebaseFirestore // 파이어베이스 파이어스토어
 
-let storeTypeArray = ["한식", "양식", "중식", "일식", "기타"]
-let storeDayOffArray = ["모름", "일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일", "없음"]
-
+let storeTypeArray = ["한식", "양식", "중식", "일식", "기타"] // 음식 종류 배열
+let storeDayOffArray = ["모름", "일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일", "없음"] // 휴무일 배열
 
 class store { // 가게 정보 클래스
     var storeAddress = "" // 맛집 주소
@@ -34,10 +33,10 @@ class store { // 가게 정보 클래스
     }
 }
 
-func InsertData(store : store) { // 파이어베이스 데이터 삽입
+func InsertData(store : store) { // 파이어베이스 데이터 삽입 함수
     let db = Firestore.firestore() // 파이어베이스 인스턴스 초기화
     
-    db.collection("stores").document("store1").setData([
+    db.collection("stores").document("store1").setData([ // 데이터 저장
         "storeAddress" : "\(store.storeAddress)",
         "storeName" : "\(store.storeName)",
         "storeType" : "\(store.storeType)",
@@ -47,12 +46,12 @@ func InsertData(store : store) { // 파이어베이스 데이터 삽입
 
 struct AddStoreView: View {
     
-    @State private var storeAddress = "경기 시흥시 중심상가4길 18 이송빌딩 103호" // 맛집 주소
+    @State private var storeAddress = "" // 맛집 주소
     @State private var storeName = "" // 맛집 이름
     @State private var storeType = 0 // 맛집 종류
-    @State private var storeImage = "" // 맛집 이미지
     @State private var storeDayOff = 0 // 맛집 휴무일
     @State private var storeDescription = "" // 맛집 설명
+    @State var placeholder: String = "맛집 설명을 입력해주세요." // 설명 TextEditor placeholder
     
     @State private var showingAlert = false // 알림창 여부
     @State private var alert_msg = "" // 알림 메시지 내용
@@ -65,7 +64,8 @@ struct AddStoreView: View {
                         .font(.title2)
                         .fontWeight(.bold)
                         .foregroundColor(Color.black)) {
-                            Text("\(storeAddress)")
+                            TextField("맛집 주소를 입력해주세요", text: $storeAddress)
+                                .keyboardType(.default)
                                 .frame(width: 310.0, height: 50.0)
                     }
                     
@@ -149,20 +149,31 @@ struct AddStoreView: View {
                         .font(.title2)
                         .fontWeight(.bold)
                         .foregroundColor(Color.black)) {
-                            TextField("맛집 설명을 입력해주세요", text: $storeDescription)
-                                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 100, maxHeight: .infinity, alignment: .center)
+                            
+                            ZStack {
+                                if self.storeDescription.isEmpty { // 맛집 설명 입력 TextEditor가 비었을 때 표시
+                                    TextEditor(text: $placeholder)
+                                        .font(.body)
+                                        .foregroundColor(.gray)
+                                        .disabled(true)
+                                }
+                                
+                                TextEditor(text: $storeDescription) // 맛집 설명 입력 TextEditor
+                                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 100, maxHeight: .infinity, alignment: .center)
+                                    .multilineTextAlignment(.leading)
+                            }
                     }
                     Button {
-                        if (storeName == "") { // 맛집 이름을 입력하지 않은 경우
+                        if (storeAddress == "") { // 맛집 주소를 입력하지 않은 경우
+                            showingAlert = true
+                            alert_msg = "맛집 주소를 입력해주세요."
+                        } else if (storeName == "") { // 맛집 이름을 입력하지 않은 경우
                             showingAlert = true
                             alert_msg = "맛집 이름을 입력해주세요."
-                        
-                            
                         } else if (storeDescription == ""){ // 맛집 셜명을 입력하지 않은 경우
                             showingAlert = true
                             alert_msg = "맛집 설명을 입력해주세요."
                         }
-                        
                         else { // 맛집 정보를 모두 올바르게 입력한 경우
                             let store_ob : store = store( // 맛집 정보 객체 생성
                                 storeAddress : self.storeAddress,
@@ -177,8 +188,6 @@ struct AddStoreView: View {
                         .alert(isPresented: self.$showingAlert) { // 알림 메시지 설정
                         Alert(title: Text("알림"), message: Text("\(alert_msg)"), dismissButton: .default(Text("확인"))) }
                         .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .center)
-                        
-                    
                 } // Form
             } // VStack
             .navigationBarTitle("맛집 등록")
