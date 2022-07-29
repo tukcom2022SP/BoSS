@@ -43,15 +43,17 @@ func InsertData(store : store) { // 파이어베이스 데이터 삽입
         "storeDescription" : "\(store.storeDescription)"])
 }
 
-
 struct AddStoreView: View {
     
-    @State var storeAddress = "경기 시흥시 중심상가4길 18 이송빌딩 103호" // 맛집 주소
-    @State var storeName = "" // 맛집 이름
-    @State var storeType = 0 // 맛집 종류
-    @State var storeImage = "" // 맛집 이미지
-    @State var storeDayOff = 0 // 맛집 휴무일
-    @State var storeDescription = "" // 맛집 설명
+    @State private var storeAddress = "경기 시흥시 중심상가4길 18 이송빌딩 103호" // 맛집 주소
+    @State private var storeName = "" // 맛집 이름
+    @State private var storeType = 0 // 맛집 종류
+    @State private var storeImage = "" // 맛집 이미지
+    @State private var storeDayOff = 0 // 맛집 휴무일
+    @State private var storeDescription = "" // 맛집 설명
+    
+    @State private var showingAlert = false // 알림창 여부
+    @State private var alert_msg = "" // 알림 메시지 내용
     
     var body: some View {
         NavigationView {
@@ -150,15 +152,28 @@ struct AddStoreView: View {
                     }
                     
                     Button ("등록") {
-
-                        let store_ob : store = store(
-                            storeAddress : self.storeAddress,
-                            storeName : self.storeName,
-                            storeType : self.storeType,
-                            storeDayOff : self.storeDayOff,
-                            storeDescription : self.storeDescription
-                        )
-                        InsertData(store : store_ob)
+                        if (storeName == "") { // 맛집 이름을 입력하지 않은 경우
+                            showingAlert = true
+                            alert_msg = "맛집 이름을 입력해주세요."
+                        
+                            
+                        } else if (storeDescription == ""){ // 맛집 셜명을 입력하지 않은 경우
+                            showingAlert = true
+                            alert_msg = "맛집 설명을 입력해주세요."
+                        }
+                        
+                        else { // 맛집 정보를 모두 올바르게 입력한 경우
+                            let store_ob : store = store( // 맛집 정보 객체 생성
+                                storeAddress : self.storeAddress,
+                                storeName : self.storeName,
+                                storeType : self.storeType,
+                                storeDayOff : self.storeDayOff,
+                                storeDescription : self.storeDescription
+                            )
+                            InsertData(store : store_ob) // 파이어스토어 데이터 삽입 함수
+                        }
+                    }.alert(isPresented: self.$showingAlert) { // 알림 메시지 설정
+                        Alert(title: Text("알림"), message: Text("\(alert_msg)"), dismissButton: .default(Text("확인")))
                     }
                 } // Form
             } // VStack
