@@ -44,10 +44,6 @@ func FindData() { // 파이어베이스 데이터 조회
             
         }
     }
-   
-    
-    
-    
 }
 
 struct StoreInfoView: View {
@@ -58,81 +54,80 @@ struct StoreInfoView: View {
     @State private var storeDayOff = "" // 맛집 휴무일
     @State private var storeDescription = "" // 맛집 설명
     
-        
-        
-        
-        
-    
-    
     var body: some View {
         
-        
-        
         NavigationView {
-            VStack{
-                Form{
-                    Section(header: Text("주소") // 주소 입력 섹션
+            ScrollView {
+                VStack {
+                    Text("\(storeType)")
+                        .font(.headline)
+                        .fontWeight(.regular)
+                        .foregroundColor(Color.gray)
+                    
+                    Text("\(storeName)")
+                        .font(.largeTitle)
+                        .fontWeight(.heavy)
+                        .foregroundColor(Color.black)
+
+                    Text("\(storeAddress)")
                         .font(.title2)
-                        .fontWeight(.bold)
-                        .foregroundColor(Color.black)) {
-                            Text("\(storeAddress)")
-                                .frame(width: 310.0, height: 50.0)
-                    }
+                        .fontWeight(.regular)
+                        .foregroundColor(Color.gray)
                     
-                    Section(header: Text("맛집 이름") // 맛집 이름 입력 섹션
-                        .font(.title2)
-                        .fontWeight(.bold)
-                        .foregroundColor(Color.black)) {
-                            Text("\(storeName)")
-                                .frame(width: 310.0, height: 50.0)
-                    }
+                    ScrollView(.horizontal) {
+                        HStack(alignment: .center, spacing: 20) {
+                            VStack {
+                                Image("")
+                                    .resizable()
+                                    .frame(width: 300, height: 300)
+                                    .clipShape(RoundedRectangle(cornerRadius: 20.0))
+                                    .overlay(RoundedRectangle(cornerRadius: 20.0).stroke(Color.gray))
+                            }
+                            VStack {
+                                Image("")
+                                    .resizable()
+                                    .frame(width: 300, height: 300)
+                                    .clipShape(RoundedRectangle(cornerRadius: 20.0))
+                                    .overlay(RoundedRectangle(cornerRadius: 20.0).stroke(Color.gray))
+                            }
+                            VStack {
+                                Image("")
+                                    .resizable()
+                                    .frame(width: 300, height: 300)
+                                    .clipShape(RoundedRectangle(cornerRadius: 20.0))
+                                    .overlay(RoundedRectangle(cornerRadius: 20.0).stroke(Color.gray))
+                            }
+                        }.padding()
+                    } // ScrollView
                     
-                    Section(header: Text("음식 종류") // 음식 종류 입력 섹션
-                        .font(.title2)
-                        .fontWeight(.bold)
-                        .foregroundColor(Color.black)) {
-                            Text("\(storeType)")
-                                .frame(width: 310.0, height: 50.0)
-                    }
+                    Text("\(storeDescription)")
+                        .font(.title3)
+                        .fontWeight(.regular)
+                        .foregroundColor(Color.black)
+                        .frame(width: 300, height: 300)
                     
-                    Section(header: Text("휴무일") // 음식 종류 입력 섹션
-                        .font(.title2)
-                        .fontWeight(.bold)
-                        .foregroundColor(Color.black)) {
-                            Text("\(storeDayOff)")
-                                .frame(width: 310.0, height: 50.0)
-                    }
-                    
-                    
-                    Section(header: Text("설명") // 설명 입력 섹션
-                        .font(.title2)
-                        .fontWeight(.bold)
-                        .foregroundColor(Color.black)) {
-                            Text("\(storeDescription)")
-                                .frame(width: 310.0, height: 50.0)
-                    }
-                    
-                    
-                    
-                    Button {
-                        FindData()
+                    HStack {
+                        Text("휴무 ")
                         
+                        Text("\(storeDayOff)")
+                            .font(.headline)
+                            .fontWeight(.regular)
+                            .foregroundColor(Color.gray)
+                    }
+                    
+                    Button("조회") {
+                        FindData()
                         self.storeAddress = g_storeAddress // 맛집 주소
                         self.storeName = g_storeName // 맛집 이름
                         self.storeType = g_storeType // 맛집 종류
                         self.storeDayOff = g_storeDayOff // 맛집 휴무일
                         self.storeDescription = g_storeDescription // 맛집 설명
-                        
-                        
-                    } label: { Text("조회")}
-                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .center)
-
-                } // Form
-            } // VStack
-            .navigationBarTitle("맛집 정보")
+                    }.padding()
+                } //VStack
+            } // ScrollView
         } // NavigationView
     } // body
-} // AddStoreView
+} // StoreInfoView
 
 
 struct StoreInfoView_Previews: PreviewProvider {
@@ -141,3 +136,5 @@ struct StoreInfoView_Previews: PreviewProvider {
             .previewInterfaceOrientation(.portrait)
     }
 }
+
+        
