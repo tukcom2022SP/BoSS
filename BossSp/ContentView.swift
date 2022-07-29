@@ -6,21 +6,22 @@
 //
 
 import SwiftUI
-import MapKit
+import CoreLocation
 
 struct ContentView: View {
-    
-    
+    @StateObject var mapData = MapViewModel()
+    @State var locationManager = CLLocationManager()
     var body: some View {
-
-      
-
         TabView{
-            MapView()
+            Home()
                 .tabItem {
                     Image(systemName: "map")
                     Text("지도")
                 }
+                .environmentObject(mapData)
+                .ignoresSafeArea(.all, edges: .all)
+                .padding(.vertical,0.1)
+            
             MypageView()
                 .tabItem {
                     Image(systemName: "person")
@@ -32,7 +33,6 @@ struct ContentView: View {
             UITabBar.appearance().backgroundColor = .white
         }
         
-
     }
 }
 
