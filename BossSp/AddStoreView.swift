@@ -11,6 +11,7 @@ import FirebaseFirestore
 let storeTypeArray = ["한식", "양식", "중식", "일식", "기타"]
 let storeDayOffArray = ["모름", "일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일", "없음"]
 
+
 class store { // 가게 정보 클래스
     var storeAddress = "" // 맛집 주소
     var storeName = "" // 맛집 이름
@@ -35,6 +36,7 @@ class store { // 가게 정보 클래스
 
 func InsertData(store : store) { // 파이어베이스 데이터 삽입
     let db = Firestore.firestore() // 파이어베이스 인스턴스 초기화
+    
     db.collection("stores").document("store1").setData([
         "storeAddress" : "\(store.storeAddress)",
         "storeName" : "\(store.storeName)",
@@ -57,7 +59,7 @@ struct AddStoreView: View {
     
     var body: some View {
         NavigationView {
-            VStack(alignment: .center){
+            VStack{
                 Form{
                     Section(header: Text("주소") // 주소 입력 섹션
                         .font(.title2)
@@ -148,10 +150,9 @@ struct AddStoreView: View {
                         .fontWeight(.bold)
                         .foregroundColor(Color.black)) {
                             TextField("맛집 설명을 입력해주세요", text: $storeDescription)
-                                .frame(width: /*@START_MENU_TOKEN@*/300.0/*@END_MENU_TOKEN@*/, height: 100.0)
+                                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 100, maxHeight: .infinity, alignment: .center)
                     }
-                    
-                    Button ("등록") {
+                    Button {
                         if (storeName == "") { // 맛집 이름을 입력하지 않은 경우
                             showingAlert = true
                             alert_msg = "맛집 이름을 입력해주세요."
@@ -172,9 +173,12 @@ struct AddStoreView: View {
                             )
                             InsertData(store : store_ob) // 파이어스토어 데이터 삽입 함수
                         }
-                    }.alert(isPresented: self.$showingAlert) { // 알림 메시지 설정
-                        Alert(title: Text("알림"), message: Text("\(alert_msg)"), dismissButton: .default(Text("확인")))
-                    }
+                    } label: { Text("등록")}
+                        .alert(isPresented: self.$showingAlert) { // 알림 메시지 설정
+                        Alert(title: Text("알림"), message: Text("\(alert_msg)"), dismissButton: .default(Text("확인"))) }
+                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .center)
+                        
+                    
                 } // Form
             } // VStack
             .navigationBarTitle("맛집 등록")
