@@ -6,13 +6,19 @@
 //
 
 import SwiftUI
+import FirebaseCore
 
 @main
 struct BossSpApp: App {
-    var body: some Scene {
+    
+    init() {
+        FirebaseApp.configure()
+    }
+    
+  var body: some Scene {
         WindowGroup {
-           ContentView()
-//            MapView()
+            ContentView()
+
         }
     }
 }

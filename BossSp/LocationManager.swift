@@ -10,7 +10,7 @@ final class LocationManager: NSObject, ObservableObject, CLLocationManagerDelega
     
     @Published var location: CLLocationCoordinate2D?
     @Published var region = MKCoordinateRegion(
-        center: CLLocationCoordinate2D(latitude: 42.0422448, longitude: -102.0079053),
+        center: CLLocationCoordinate2D(latitude: 37.541, longitude: 126.986),
         span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
     )
 
