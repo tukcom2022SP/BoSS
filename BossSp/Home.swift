@@ -6,13 +6,10 @@
 //
 
 import SwiftUI
+import MapKit
 import CoreLocation
 
-
-
 struct Home: View {
-    
-
     
     @StateObject var mapData = MapViewModel()
     @State var locationManager = CLLocationManager()
@@ -26,7 +23,10 @@ struct Home: View {
                         mapData.updateMapType()
                     }
 
-                
+                Circle()
+                    .fill(.blue)
+                    .opacity(0.3)
+                    .frame(width: 20, height: 20)
                 
                 VStack{
                     
