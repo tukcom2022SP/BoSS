@@ -11,6 +11,7 @@
 		491FE0AB289163350076A268 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 491FE0AA289163350076A268 /* FirebaseFirestore */; };
 		491FE0AF289163350076A268 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 491FE0AE289163350076A268 /* FirebaseFirestoreSwift */; };
 		491FE0B1289163350076A268 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 491FE0B0289163350076A268 /* FirebaseStorage */; };
+		49524BC4289395C9002EF8A1 /* StoreInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49524BC3289395C9002EF8A1 /* StoreInfoView.swift */; };
 		495A26C82890FD4C003B1A8D /* AddStoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495A26C72890FD4C003B1A8D /* AddStoreView.swift */; };
 		575D98072893AC7800DD3B18 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575D98062893AC7700DD3B18 /* Place.swift */; };
 		57E0C8272892B98E005D50A6 /* MypageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E0C8262892B98E005D50A6 /* MypageView.swift */; };
@@ -25,6 +26,7 @@
 
 /* Begin PBXFileReference section */
 		491FE0A72891366A0076A268 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		49524BC3289395C9002EF8A1 /* StoreInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreInfoView.swift; sourceTree = "<group>"; };
 		495A26C72890FD4C003B1A8D /* AddStoreView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddStoreView.swift; sourceTree = "<group>"; };
 		575D98062893AC7700DD3B18 /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		57B8470E289109CB00BAA3EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 				57F16668288FBC16000CEDCE /* BossSpApp.swift */,
 				57F1666A288FBC16000CEDCE /* ContentView.swift */,
 				495A26C72890FD4C003B1A8D /* AddStoreView.swift */,
+
 				491FE0A72891366A0076A268 /* GoogleService-Info.plist */,
 				57F1666C288FBC16000CEDCE /* Assets.xcassets */,
 				57F1666E288FBC16000CEDCE /* Preview Content */,
@@ -178,6 +181,7 @@
 				57F97BE928938B7F0088A544 /* MapView.swift in Sources */,
 				57E0C8272892B98E005D50A6 /* MypageView.swift in Sources */,
 				57F1666B288FBC16000CEDCE /* ContentView.swift in Sources */,
+
 				57F97BED289394B20088A544 /* Home.swift in Sources */,
 				57F16669288FBC16000CEDCE /* BossSpApp.swift in Sources */,
 				495A26C82890FD4C003B1A8D /* AddStoreView.swift in Sources */,
