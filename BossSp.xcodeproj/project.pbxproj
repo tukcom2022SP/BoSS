@@ -12,22 +12,21 @@
 		491FE0AF289163350076A268 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 491FE0AE289163350076A268 /* FirebaseFirestoreSwift */; };
 		491FE0B1289163350076A268 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 491FE0B0289163350076A268 /* FirebaseStorage */; };
 		495A26C82890FD4C003B1A8D /* AddStoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495A26C72890FD4C003B1A8D /* AddStoreView.swift */; };
-		5760A720289118BC006CFF8E /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5760A71F289118BC006CFF8E /* LocationManager.swift */; };
-		57B8470D2891072600BAA3EE /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B8470C2891072600BAA3EE /* MapView.swift */; };
+		575D98072893AC7800DD3B18 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575D98062893AC7700DD3B18 /* Place.swift */; };
 		57E0C8272892B98E005D50A6 /* MypageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E0C8262892B98E005D50A6 /* MypageView.swift */; };
 		57F16669288FBC16000CEDCE /* BossSpApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F16668288FBC16000CEDCE /* BossSpApp.swift */; };
 		57F1666B288FBC16000CEDCE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F1666A288FBC16000CEDCE /* ContentView.swift */; };
 		57F1666D288FBC16000CEDCE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57F1666C288FBC16000CEDCE /* Assets.xcassets */; };
 		57F16670288FBC16000CEDCE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57F1666F288FBC16000CEDCE /* Preview Assets.xcassets */; };
-		A311E69F289118B3000753BE /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A311E69E289118B3000753BE /* SearchBar.swift */; };
-		A3B361C328910E920046EA81 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B361C228910E920046EA81 /* SearchView.swift */; };
+		57F97BE928938B7F0088A544 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F97BE828938B7F0088A544 /* MapView.swift */; };
+		57F97BEB28938C180088A544 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F97BEA28938C180088A544 /* MapViewModel.swift */; };
+		57F97BED289394B20088A544 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F97BEC289394B20088A544 /* Home.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		491FE0A72891366A0076A268 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		495A26C72890FD4C003B1A8D /* AddStoreView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddStoreView.swift; sourceTree = "<group>"; };
-		5760A71F289118BC006CFF8E /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
-		57B8470C2891072600BAA3EE /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		575D98062893AC7700DD3B18 /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		57B8470E289109CB00BAA3EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		57E0C8262892B98E005D50A6 /* MypageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageView.swift; sourceTree = "<group>"; };
 		57F16665288FBC15000CEDCE /* BossSp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BossSp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -35,8 +34,9 @@
 		57F1666A288FBC16000CEDCE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		57F1666C288FBC16000CEDCE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		57F1666F288FBC16000CEDCE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		A311E69E289118B3000753BE /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
-		A3B361C228910E920046EA81 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		57F97BE828938B7F0088A544 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		57F97BEA28938C180088A544 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
+		57F97BEC289394B20088A544 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,14 +76,14 @@
 				57F16668288FBC16000CEDCE /* BossSpApp.swift */,
 				57F1666A288FBC16000CEDCE /* ContentView.swift */,
 				495A26C72890FD4C003B1A8D /* AddStoreView.swift */,
-				A3B361C228910E920046EA81 /* SearchView.swift */,
 				491FE0A72891366A0076A268 /* GoogleService-Info.plist */,
 				57F1666C288FBC16000CEDCE /* Assets.xcassets */,
 				57F1666E288FBC16000CEDCE /* Preview Content */,
-				A311E69E289118B3000753BE /* SearchBar.swift */,
-				57B8470C2891072600BAA3EE /* MapView.swift */,
-				5760A71F289118BC006CFF8E /* LocationManager.swift */,
 				57E0C8262892B98E005D50A6 /* MypageView.swift */,
+				57F97BE828938B7F0088A544 /* MapView.swift */,
+				57F97BEA28938C180088A544 /* MapViewModel.swift */,
+				57F97BEC289394B20088A544 /* Home.swift */,
+				575D98062893AC7700DD3B18 /* Place.swift */,
 			);
 			path = BossSp;
 			sourceTree = "<group>";
@@ -175,14 +175,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A3B361C328910E920046EA81 /* SearchView.swift in Sources */,
+				57F97BE928938B7F0088A544 /* MapView.swift in Sources */,
 				57E0C8272892B98E005D50A6 /* MypageView.swift in Sources */,
 				57F1666B288FBC16000CEDCE /* ContentView.swift in Sources */,
-				A311E69F289118B3000753BE /* SearchBar.swift in Sources */,
-				57B8470D2891072600BAA3EE /* MapView.swift in Sources */,
-				5760A720289118BC006CFF8E /* LocationManager.swift in Sources */,
+				57F97BED289394B20088A544 /* Home.swift in Sources */,
 				57F16669288FBC16000CEDCE /* BossSpApp.swift in Sources */,
 				495A26C82890FD4C003B1A8D /* AddStoreView.swift in Sources */,
+				57F97BEB28938C180088A544 /* MapViewModel.swift in Sources */,
+				575D98072893AC7800DD3B18 /* Place.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
