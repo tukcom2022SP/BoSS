@@ -8,7 +8,12 @@
 import SwiftUI
 import CoreLocation
 
+
+
 struct Home: View {
+    
+
+    
     @StateObject var mapData = MapViewModel()
     @State var locationManager = CLLocationManager()
     var body: some View {
@@ -17,7 +22,12 @@ struct Home: View {
                 MapView()
                     .environmentObject(mapData)
                     .ignoresSafeArea(.all, edges: .all)
-                    
+                    .onTapGesture {
+                        mapData.updateMapType()
+                    }
+
+                
+                
                 VStack{
                     
                     VStack(spacing: 0) {
@@ -81,7 +91,8 @@ struct Home: View {
                         }
                         
                         Button {
-                            mapData.updateMapType()
+                            //mapData.updateMapType()
+                            mapData.addStoreAnnotation()
                         } label: {
                             Image(systemName: mapData.mapType == .standard ? "network" : "map")
                                 .font(.title2)
