@@ -133,4 +133,5 @@ class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate{
         
         print("1")
     }
+
 }

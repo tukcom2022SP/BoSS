@@ -10,7 +10,6 @@ import MapKit
 import CoreLocation
 
 struct Home: View {
-    
     @StateObject var mapData = MapViewModel()
     @State var locationManager = CLLocationManager()
     var body: some View {
@@ -19,10 +18,12 @@ struct Home: View {
                 MapView()
                     .environmentObject(mapData)
                     .ignoresSafeArea(.all, edges: .all)
-                    .onTapGesture {
-                        mapData.updateMapType()
-                    }
-
+//                    .onTapGesture {
+//                        mapData.updateMapType()
+//                    }
+                
+                
+                
                 Circle()
                     .fill(.blue)
                     .opacity(0.3)
