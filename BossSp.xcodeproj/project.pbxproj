@@ -19,9 +19,11 @@
 		57F1666B288FBC16000CEDCE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F1666A288FBC16000CEDCE /* ContentView.swift */; };
 		57F1666D288FBC16000CEDCE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57F1666C288FBC16000CEDCE /* Assets.xcassets */; };
 		57F16670288FBC16000CEDCE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57F1666F288FBC16000CEDCE /* Preview Assets.xcassets */; };
+
 		57F97BE928938B7F0088A544 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F97BE828938B7F0088A544 /* MapView.swift */; };
 		57F97BEB28938C180088A544 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F97BEA28938C180088A544 /* MapViewModel.swift */; };
 		57F97BED289394B20088A544 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F97BEC289394B20088A544 /* Home.swift */; };
+
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,9 +38,11 @@
 		57F1666A288FBC16000CEDCE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		57F1666C288FBC16000CEDCE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		57F1666F288FBC16000CEDCE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+
 		57F97BE828938B7F0088A544 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		57F97BEA28938C180088A544 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		57F97BEC289394B20088A544 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +86,7 @@
 				491FE0A72891366A0076A268 /* GoogleService-Info.plist */,
 				57F1666C288FBC16000CEDCE /* Assets.xcassets */,
 				57F1666E288FBC16000CEDCE /* Preview Content */,
+
 				57E0C8262892B98E005D50A6 /* MypageView.swift */,
 				57F97BE828938B7F0088A544 /* MapView.swift */,
 				57F97BEA28938C180088A544 /* MapViewModel.swift */,
