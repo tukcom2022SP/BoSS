@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MypageView: View {
+    @State private var presentAlert = false
     @State private var userName = ""// 닉네임
     @State private var selfIntro = ""//자기 소개
     var body: some View {
@@ -28,19 +29,26 @@ struct MypageView: View {
                     .buttonStyle(.borderedProminent)
                     .buttonBorderShape(.capsule)
                     .padding(EdgeInsets(top: 5, leading: 0, bottom: 20, trailing: 0))
-                Button (action:{
-                    
-                }){
-                    Text("프로필 편집")
-                        .frame(minWidth: 0, maxWidth: 120)
-                        .font(.title2)
-                        .foregroundColor(Color.white)
-                    
-                    
-                }.tint(.black)
-                    .buttonStyle(.borderedProminent)
-                    .buttonBorderShape(.roundedRectangle)
-                
+                Button("프로필 편집") {
+                            presentAlert = true
+                        }
+                .frame(minWidth: 0, maxWidth: 150)
+                .font(.title2)
+                .foregroundColor(Color.white)
+                .tint(.black)
+                .buttonStyle(.borderedProminent)
+                .buttonBorderShape(.roundedRectangle)
+                        .alert("프로필 편집", isPresented: $presentAlert, actions: {
+                            TextField("닉네임을 입력하세요", text: $userName)
+
+                            SecureField("소개란", text: $selfIntro)
+
+                            Button("등록", action: {})
+                                       Button("취소", role: .cancel, action: {})
+                                   }, message: {
+                                       Text("닉네임과 자기 소개를 채워주세요.")
+                                   })
+            
                 
             }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .center)
                 .padding(20)
@@ -78,8 +86,6 @@ struct MypageView: View {
     }
     
 }
-
-
 struct MypageView_Previews: PreviewProvider {
     static var previews: some View {
         MypageView()
