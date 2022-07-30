@@ -42,13 +42,20 @@ struct MapView: UIViewRepresentable {
             print("8")
             if annotation.isKind(of: MKUserLocation.self){ return nil }
             else{
-                let pinAnnotation = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "PIN_VIEW")
-                pinAnnotation.tintColor = .red
-                pinAnnotation.animatesDrop = true
+                let pinAnnotation = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: "PIN_VIEW")
+                //pinAnnotation.tintColor = .red
+                //pinAnnotation.animatesDrop = true
                 pinAnnotation.canShowCallout = true
+                pinAnnotation.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
                 
                 return pinAnnotation
             }
+        }
+        func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+            print(view.annotation!.coordinate)
+        }
+        func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+            print("0")
         }
     }
 }
