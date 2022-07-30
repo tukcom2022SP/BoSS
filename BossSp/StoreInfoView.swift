@@ -57,75 +57,71 @@ struct StoreInfoView: View {
     var body: some View {
         
         NavigationView {
-            ScrollView {
-                VStack {
-                    Text("\(storeType)")
-                        .font(.headline)
-                        .fontWeight(.regular)
-                        .foregroundColor(Color.gray)
-                    
-                    Text("\(storeName)")
-                        .font(.largeTitle)
-                        .fontWeight(.heavy)
-                        .foregroundColor(Color.black)
-
-                    Text("\(storeAddress)")
-                        .font(.title2)
-                        .fontWeight(.regular)
-                        .foregroundColor(Color.gray)
-                    
-                    ScrollView(.horizontal) {
-                        HStack(alignment: .center, spacing: 20) {
-                            VStack {
-                                Image("")
-                                    .resizable()
-                                    .frame(width: 300, height: 300)
-                                    .clipShape(RoundedRectangle(cornerRadius: 20.0))
-                                    .overlay(RoundedRectangle(cornerRadius: 20.0).stroke(Color.gray))
-                            }
-                            VStack {
-                                Image("")
-                                    .resizable()
-                                    .frame(width: 300, height: 300)
-                                    .clipShape(RoundedRectangle(cornerRadius: 20.0))
-                                    .overlay(RoundedRectangle(cornerRadius: 20.0).stroke(Color.gray))
-                            }
-                            VStack {
-                                Image("")
-                                    .resizable()
-                                    .frame(width: 300, height: 300)
-                                    .clipShape(RoundedRectangle(cornerRadius: 20.0))
-                                    .overlay(RoundedRectangle(cornerRadius: 20.0).stroke(Color.gray))
-                            }
-                        }.padding()
-                    } // ScrollView
-                    
-                    Text("\(storeDescription)")
-                        .font(.title3)
-                        .fontWeight(.regular)
-                        .foregroundColor(Color.black)
-                        .frame(width: 300, height: 300)
-                    
-                    HStack {
-                        Text("휴무 ")
-                        
-                        Text("\(storeDayOff)")
+            GeometryReader{ proxy in
+                ScrollView{
+                    VStack {
+                        Text("\(storeType)")
                             .font(.headline)
                             .fontWeight(.regular)
                             .foregroundColor(Color.gray)
+                        
+                        Text("\(storeName)")
+                            .font(.largeTitle)
+                            .fontWeight(.heavy)
+                            .foregroundColor(Color.black)
+
+                        Text("\(storeAddress)")
+                            .font(.title2)
+                            .fontWeight(.regular)
+                            .foregroundColor(Color.gray)
+                        
+                        TabView{
+                            ForEach(0..<3){ num in
+                                Image(systemName: "person")
+                                    .resizable()
+                                    .scaledToFill()
+                                    .overlay(Color.black.opacity(0.5))
+                                    .tag(num)
+                            }
+                        }
+                        .tabViewStyle(PageTabViewStyle())
+                        .clipShape(RoundedRectangle(cornerRadius: 5))
+                        .padding()
+                        .frame(width: proxy.size.width, height: proxy.size.height / 3)
+                        
+                        Text("\(storeDescription)")
+                            .font(.title3)
+                            .fontWeight(.regular)
+                            .foregroundColor(Color.black)
+                            .frame(width: 300, height: 300)
+                        
+                        HStack {
+                            Text("휴무 ")
+                            
+                            Text("\(storeDayOff)")
+                                .font(.headline)
+                                .fontWeight(.regular)
+                                .foregroundColor(Color.gray)
+                        }
+                        
+                        Button("조회") {
+                            self.storeAddress = g_storeAddress // 맛집 주소
+                            self.storeName = g_storeName // 맛집 이름
+                            self.storeType = g_storeType // 맛집 종류
+                            self.storeDayOff = g_storeDayOff // 맛집 휴무일
+                            self.storeDescription = g_storeDescription // 맛집 설명
+                        }.padding()
                     }
-                    
-                    Button("조회") {
-                        FindData()
-                        self.storeAddress = g_storeAddress // 맛집 주소
-                        self.storeName = g_storeName // 맛집 이름
-                        self.storeType = g_storeType // 맛집 종류
-                        self.storeDayOff = g_storeDayOff // 맛집 휴무일
-                        self.storeDescription = g_storeDescription // 맛집 설명
-                    }.padding()
                 } //VStack
             } // ScrollView
+            .navigationBarHidden(true)
+            .onAppear{
+                
+            }
         } // NavigationView
+        .onAppear{
+            FindData()
+        }
     } // body
 } // StoreInfoView
 
