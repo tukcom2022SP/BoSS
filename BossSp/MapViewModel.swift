@@ -10,11 +10,11 @@ import MapKit
 import CoreLocation
 
 class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate{
+
     @Published var mapView = MKMapView()
     
     // Region
     @Published var region: MKCoordinateRegion!
-    
     // Alert
     @Published var permissionDenied = false
     
@@ -27,6 +27,7 @@ class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate{
     // Searched Places
     @Published var places : [Place] = []
     
+    
     func updateMapType(){
         if mapType == .standard{
             mapType = .hybrid
@@ -35,12 +36,16 @@ class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate{
             mapType = .standard
             mapView.mapType = mapType
         }
+        
+        print("5")
     }
     
     func focusLocation(){
         guard let _ = region else{return}
         mapView.setRegion(region, animated: true)
         mapView.setVisibleMapRect(mapView.visibleMapRect, animated: true)
+        
+        print("4")
     }
     
     // Search Places.. 
@@ -57,6 +62,25 @@ class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate{
                 return Place(place: item.placemark)
             })
         }
+    }
+    
+    // AddStoreAnnotation Beta
+    func addStoreAnnotation(){
+        // 특정 위치에 핀 추가
+        let annotaion = MKPointAnnotation()
+        let center = mapView.centerCoordinate
+//        annotaion.coordinate = CLLocationCoordinate2D(latitude: 37, longitude: 128)
+        annotaion.coordinate = center
+        annotaion.title = "test"
+        
+        mapView.addAnnotation(annotaion)
+        
+        
+        // 핀 위치로 이동
+        let coordinateRegion = MKCoordinateRegion(center: annotaion.coordinate, latitudinalMeters: 100, longitudinalMeters: 100)
+        mapView.setRegion(coordinateRegion, animated: true)
+        mapView.setVisibleMapRect(mapView.visibleMapRect, animated: true)
+        
     }
     
     // Pick Search Result
@@ -90,16 +114,23 @@ class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate{
         default:
             ()
         }
+        
+        print("3")
     }
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error){
         print(error.localizedDescription)
+        
+        print("2")
+        
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations:[CLLocation]) {
         guard let location = locations.last else { return }
         self.region = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: 100, longitudinalMeters: 100)
-        
+        //self.region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 37.5666, longitude: 126.9784), latitudinalMeters: 100, longitudinalMeters: 100)
         self.mapView.setRegion(self.region, animated: true)
         self.mapView.setVisibleMapRect(self.mapView.visibleMapRect, animated: true)
+        
+        print("1")
     }
 }
