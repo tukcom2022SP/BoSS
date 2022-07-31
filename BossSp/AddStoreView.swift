@@ -77,154 +77,154 @@ struct AddStoreView: View {
     @State private var alert_msg = "" // 알림 메시지 내용
     
     var body: some View {
-        NavigationView {
-            VStack{
-                Form{
-                    Section(header: Text("주소") // 주소 입력 섹션
-                        .font(.title2)
-                        .fontWeight(.bold)
-                        .foregroundColor(Color.black)) {
-                            TextField("맛집 주소를 입력해주세요", text: $storeAddress)
-                                .keyboardType(.default)
-                                .frame(width: 310.0, height: 50.0)
-                    }
-                    
-                    Section(header: Text("맛집 이름") // 맛집 이름 입력 섹션
-                        .font(.title2)
-                        .fontWeight(.bold)
-                        .foregroundColor(Color.black)) {
-                            TextField("맛집 이름을 입력해주세요", text: $storeName)
-                                .keyboardType(.default)
-                                .frame(width: 310.0, height: 50.0)
-                    }
-                    
-                    Section(header: Text("음식 종류") // 음식 종류 입력 섹션
-                        .font(.title2)
-                        .fontWeight(.bold)
-                        .foregroundColor(Color.black)) {
-                            Picker("음식 종류",selection: $storeType) {
-                                ForEach( 0  ..< storeTypeArray.count ) {
-                                    Text("\(storeTypeArray[$0])")
-                                }
-                            }
-                            .pickerStyle(SegmentedPickerStyle())
+        
+        VStack{
+            Form{
+                Section(header: Text("주소") // 주소 입력 섹션
+                    .font(.title2)
+                    .fontWeight(.bold)
+                    .foregroundColor(Color.black)) {
+                        TextField("맛집 주소를 입력해주세요", text: $storeAddress)
+                            .keyboardType(.default)
                             .frame(width: 310.0, height: 50.0)
-                    }
-                    
-                    Section(header: Text("사진") // 사진 등록 섹션
-                        .font(.title2)
-                        .fontWeight(.bold)
-                        .foregroundColor(Color.black)) {
-                            ScrollView(.horizontal) {
-                                HStack(alignment: .center, spacing: 20) {
-                                    VStack {
-                                        image1
-                                            .resizable()
-                                            .frame(width: 150, height: 150)
-                                            .clipShape(RoundedRectangle(cornerRadius: 20.0))
-                                            .overlay(RoundedRectangle(cornerRadius: 20.0).stroke(Color.gray))
-                                        
-                                        Text("사진 선택")
-                                            .foregroundColor(Color.blue)
-                                            .onTapGesture {
-                                                self.num = 1
-                                                showingImagePicker = true
-                                            }
-                                    }
-                                    VStack {
-                                        image2
-                                            .resizable()
-                                            .frame(width: 150, height: 150)
-                                            .clipShape(RoundedRectangle(cornerRadius: 20.0))
-                                            .overlay(RoundedRectangle(cornerRadius: 20.0).stroke(Color.gray))
-                                        Text("사진 선택")
-                                            .foregroundColor(Color.blue)
-                                            .onTapGesture {
-                                                self.num = 2
-                                                showingImagePicker = true
-                                            }
-                                    }
-                                    VStack {
-                                        image3
-                                            .resizable()
-                                            .frame(width: 150, height: 150)
-                                            .clipShape(RoundedRectangle(cornerRadius: 20.0))
-                                            .overlay(RoundedRectangle(cornerRadius: 20.0).stroke(Color.gray))
-                                        Text("사진 선택")
-                                            .foregroundColor(Color.blue)
-                                            .onTapGesture {
-                                                self.num = 3
-                                                showingImagePicker = true
-                                            }
-                                    }
-                                }.padding() // HStack
-                                    .onChange(of: inputImage) { _ in loadImage(num: self.num) }
-                                    .sheet(isPresented: $showingImagePicker) {
-                                        ImagePicker(image: $inputImage)}
-                                    
-                                    
-                            } // ScrollView
-                    } // Section
-                    
-                    Section(header: Text("휴무일") // 휴무일 입력 섹션
-                        .font(.title2)
-                        .fontWeight(.bold)
-                        .foregroundColor(Color.black)) {
-                            Picker("요일", selection: $storeDayOff) {
-                                ForEach( 0  ..< storeDayOffArray.count ) {
-                                    Text("\(storeDayOffArray[$0])")
-                                }
+                }
+                
+                Section(header: Text("맛집 이름") // 맛집 이름 입력 섹션
+                    .font(.title2)
+                    .fontWeight(.bold)
+                    .foregroundColor(Color.black)) {
+                        TextField("맛집 이름을 입력해주세요", text: $storeName)
+                            .keyboardType(.default)
+                            .frame(width: 310.0, height: 50.0)
+                }
+                
+                Section(header: Text("음식 종류") // 음식 종류 입력 섹션
+                    .font(.title2)
+                    .fontWeight(.bold)
+                    .foregroundColor(Color.black)) {
+                        Picker("음식 종류",selection: $storeType) {
+                            ForEach( 0  ..< storeTypeArray.count ) {
+                                Text("\(storeTypeArray[$0])")
                             }
                         }
-                    
-                    Section(header: Text("설명") // 설명 입력 섹션
-                        .font(.title2)
-                        .fontWeight(.bold)
-                        .foregroundColor(Color.black)) {
-                            
-                            ZStack {
-                                if self.storeDescription.isEmpty { // 맛집 설명 입력 TextEditor가 비었을 때 표시
-                                    TextEditor(text: $placeholder)
-                                        .font(.body)
-                                        .foregroundColor(.gray)
-                                        .disabled(true)
+                        .pickerStyle(SegmentedPickerStyle())
+                        .frame(width: 310.0, height: 50.0)
+                }
+                
+                Section(header: Text("사진") // 사진 등록 섹션
+                    .font(.title2)
+                    .fontWeight(.bold)
+                    .foregroundColor(Color.black)) {
+                        ScrollView(.horizontal) {
+                            HStack(alignment: .center, spacing: 20) {
+                                VStack {
+                                    image1
+                                        .resizable()
+                                        .frame(width: 150, height: 150)
+                                        .clipShape(RoundedRectangle(cornerRadius: 20.0))
+                                        .overlay(RoundedRectangle(cornerRadius: 20.0).stroke(Color.gray))
+                                    
+                                    Text("사진 선택")
+                                        .foregroundColor(Color.blue)
+                                        .onTapGesture {
+                                            self.num = 1
+                                            showingImagePicker = true
+                                        }
                                 }
+                                VStack {
+                                    image2
+                                        .resizable()
+                                        .frame(width: 150, height: 150)
+                                        .clipShape(RoundedRectangle(cornerRadius: 20.0))
+                                        .overlay(RoundedRectangle(cornerRadius: 20.0).stroke(Color.gray))
+                                    Text("사진 선택")
+                                        .foregroundColor(Color.blue)
+                                        .onTapGesture {
+                                            self.num = 2
+                                            showingImagePicker = true
+                                        }
+                                }
+                                VStack {
+                                    image3
+                                        .resizable()
+                                        .frame(width: 150, height: 150)
+                                        .clipShape(RoundedRectangle(cornerRadius: 20.0))
+                                        .overlay(RoundedRectangle(cornerRadius: 20.0).stroke(Color.gray))
+                                    Text("사진 선택")
+                                        .foregroundColor(Color.blue)
+                                        .onTapGesture {
+                                            self.num = 3
+                                            showingImagePicker = true
+                                        }
+                                }
+                            }.padding() // HStack
+                                .onChange(of: inputImage) { _ in loadImage(num: self.num) }
+                                .sheet(isPresented: $showingImagePicker) {
+                                    ImagePicker(image: $inputImage)}
                                 
-                                TextEditor(text: $storeDescription) // 맛집 설명 입력 TextEditor
-                                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 100, maxHeight: .infinity, alignment: .center)
-                                    .multilineTextAlignment(.leading)
+                                
+                        } // ScrollView
+                } // Section
+                
+                Section(header: Text("휴무일") // 휴무일 입력 섹션
+                    .font(.title2)
+                    .fontWeight(.bold)
+                    .foregroundColor(Color.black)) {
+                        Picker("요일", selection: $storeDayOff) {
+                            ForEach( 0  ..< storeDayOffArray.count ) {
+                                Text("\(storeDayOffArray[$0])")
                             }
+                        }
                     }
-                    Button {
-                        if (storeAddress == "") { // 맛집 주소를 입력하지 않은 경우
-                            showingAlert = true
-                            alert_msg = "맛집 주소를 입력해주세요."
-                        } else if (storeName == "") { // 맛집 이름을 입력하지 않은 경우
-                            showingAlert = true
-                            alert_msg = "맛집 이름을 입력해주세요."
-                        } else if (storeDescription == ""){ // 맛집 셜명을 입력하지 않은 경우
-                            showingAlert = true
-                            alert_msg = "맛집 설명을 입력해주세요."
+                
+                Section(header: Text("설명") // 설명 입력 섹션
+                    .font(.title2)
+                    .fontWeight(.bold)
+                    .foregroundColor(Color.black)) {
+                        
+                        ZStack {
+                            if self.storeDescription.isEmpty { // 맛집 설명 입력 TextEditor가 비었을 때 표시
+                                TextEditor(text: $placeholder)
+                                    .font(.body)
+                                    .foregroundColor(.gray)
+                                    .disabled(true)
+                            }
+                            
+                            TextEditor(text: $storeDescription) // 맛집 설명 입력 TextEditor
+                                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 100, maxHeight: .infinity, alignment: .center)
+                                .multilineTextAlignment(.leading)
                         }
-                        else { // 맛집 정보를 모두 올바르게 입력한 경우
-                            let store_ob : store = store( // 맛집 정보 객체 생성
-                                storeAddress : self.storeAddress,
-                                storeName : self.storeName,
-                                storeType : self.storeType,
-                                storeDayOff : self.storeDayOff,
-                                storeDescription : self.storeDescription
-                            )
-                            InsertData(store : store_ob) // 파이어스토어 데이터 삽입 함수
-                        }
-                        print(coordinate)
-                    } label: { Text("등록")}
-                        .alert(isPresented: self.$showingAlert) { // 알림 메시지 설정
-                        Alert(title: Text("알림"), message: Text("\(alert_msg)"), dismissButton: .default(Text("확인"))) }
-                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .center)
-                } // Form
-            } // VStack
+                }
+                Button {
+                    if (storeAddress == "") { // 맛집 주소를 입력하지 않은 경우
+                        showingAlert = true
+                        alert_msg = "맛집 주소를 입력해주세요."
+                    } else if (storeName == "") { // 맛집 이름을 입력하지 않은 경우
+                        showingAlert = true
+                        alert_msg = "맛집 이름을 입력해주세요."
+                    } else if (storeDescription == ""){ // 맛집 셜명을 입력하지 않은 경우
+                        showingAlert = true
+                        alert_msg = "맛집 설명을 입력해주세요."
+                    }
+                    else { // 맛집 정보를 모두 올바르게 입력한 경우
+                        let store_ob : store = store( // 맛집 정보 객체 생성
+                            storeAddress : self.storeAddress,
+                            storeName : self.storeName,
+                            storeType : self.storeType,
+                            storeDayOff : self.storeDayOff,
+                            storeDescription : self.storeDescription
+                        )
+                        InsertData(store : store_ob) // 파이어스토어 데이터 삽입 함수
+                    }
+                    print(coordinate)
+                } label: { Text("등록")}
+                    .alert(isPresented: self.$showingAlert) { // 알림 메시지 설정
+                    Alert(title: Text("알림"), message: Text("\(alert_msg)"), dismissButton: .default(Text("확인"))) }
+                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .center)
+            } // Form
             .navigationBarTitle("맛집 등록")
-        } // NavigationView
+        } // VStack
+        
     } // body
 } // AddStoreView
 

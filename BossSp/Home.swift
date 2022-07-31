@@ -23,6 +23,9 @@ struct Home: View {
                         //mapData.updateMapType()
                         AddStoreClick = false
                     }
+                    .onAppear{
+                        AddStoreClick = false
+                    }
                 
                 if AddStoreClick{
                     Circle()
@@ -34,38 +37,40 @@ struct Home: View {
                 
                 VStack{
                     
-                    VStack(spacing: 0) {
-                        HStack{
-                            Image(systemName: "magnifyingglass")
-                                .foregroundColor(.gray)
-                            TextField("Search",text: $mapData.searchTxt)
-                                .colorScheme(.light)
-                        }
-                        .padding(.vertical, 10)
-                        .padding(.horizontal)
-                        .background(.white)
-                        .cornerRadius(30)
-                        
-                        if !mapData.places.isEmpty && mapData.searchTxt != ""{
-                            ScrollView{
-                                VStack(spacing: 15){
-                                    ForEach(mapData.places){ place in
-                                        Text(place.place.name ?? "")
-                                            .foregroundColor(.black)
-                                            .frame(maxWidth: .infinity, alignment: .leading)
-                                            .padding(.leading)
-                                            .onTapGesture {
-                                                mapData.selectPlace(place: place)
-                                            }
-                                        
-                                        Divider()
-                                    }
-                                }
-                                .padding(.top)
+                    if !AddStoreClick {
+                        VStack(spacing: 0) {
+                            HStack{
+                                Image(systemName: "magnifyingglass")
+                                    .foregroundColor(.gray)
+                                TextField("Search",text: $mapData.searchTxt)
+                                    .colorScheme(.light)
                             }
+                            .padding(.vertical, 10)
+                            .padding(.horizontal)
                             .background(.white)
-                        }
-                    }.padding()
+                            .cornerRadius(30)
+                            
+                            if !mapData.places.isEmpty && mapData.searchTxt != ""{
+                                ScrollView{
+                                    VStack(spacing: 15){
+                                        ForEach(mapData.places){ place in
+                                            Text(place.place.name ?? "")
+                                                .foregroundColor(.black)
+                                                .frame(maxWidth: .infinity, alignment: .leading)
+                                                .padding(.leading)
+                                                .onTapGesture {
+                                                    mapData.selectPlace(place: place)
+                                                }
+                                            
+                                            Divider()
+                                        }
+                                    }
+                                    .padding(.top)
+                                }
+                                .background(.white)
+                            }
+                        }.padding()
+                    }
                     
                     Spacer()
                     
@@ -109,8 +114,8 @@ struct Home: View {
                         }
                         
                         Button {
-                            //mapData.updateMapType()
-                            mapData.addStoreAnnotation()
+                            mapData.updateMapType()
+                            //mapData.addStoreAnnotation()
                         } label: {
                             Image(systemName: mapData.mapType == .standard ? "network" : "map")
                                 .font(.title2)
