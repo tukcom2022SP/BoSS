@@ -7,6 +7,7 @@
 
 import SwiftUI
 import FirebaseFirestore // 파이어베이스 파이어스토어
+import CoreLocation
 
 let storeTypeArray = ["한식", "양식", "중식", "일식", "기타"] // 음식 종류 배열
 let storeDayOffArray = ["모름", "일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일", "없음"] // 휴무일 배열
@@ -45,6 +46,7 @@ func InsertData(store : store) { // 파이어베이스 데이터 삽입 함수
 }
 
 struct AddStoreView: View {
+    var coordinate: CLLocationCoordinate2D
     @State private var image1 = Image("") // 이미지 1
     @State private var image2 = Image("") // 이미지 2
     @State private var image3 = Image("") // 이미지 3
@@ -214,6 +216,7 @@ struct AddStoreView: View {
                             )
                             InsertData(store : store_ob) // 파이어스토어 데이터 삽입 함수
                         }
+                        print(coordinate)
                     } label: { Text("등록")}
                         .alert(isPresented: self.$showingAlert) { // 알림 메시지 설정
                         Alert(title: Text("알림"), message: Text("\(alert_msg)"), dismissButton: .default(Text("확인"))) }
@@ -228,7 +231,7 @@ struct AddStoreView: View {
 
 struct AddStoreView_Previews: PreviewProvider {
     static var previews: some View {
-        AddStoreView()
+        AddStoreView(coordinate: CLLocationCoordinate2D(latitude: 38, longitude: 127))
             .previewInterfaceOrientation(.portrait)
     }
 }

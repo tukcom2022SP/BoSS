@@ -12,22 +12,25 @@ import CoreLocation
 struct Home: View {
     @StateObject var mapData = MapViewModel()
     @State var locationManager = CLLocationManager()
+    @State var AddStoreClick = false
     var body: some View {
         NavigationView{
             ZStack{
                 MapView()
                     .environmentObject(mapData)
                     .ignoresSafeArea(.all, edges: .all)
-//                    .onTapGesture {
-//                        mapData.updateMapType()
-//                    }
+                    .onTapGesture {
+                        //mapData.updateMapType()
+                        AddStoreClick = false
+                    }
                 
+                if AddStoreClick{
+                    Circle()
+                        .fill(.blue)
+                        .opacity(0.3)
+                        .frame(width: 20, height: 20)
+                }
                 
-                
-                Circle()
-                    .fill(.blue)
-                    .opacity(0.3)
-                    .frame(width: 20, height: 20)
                 
                 VStack{
                     
@@ -67,18 +70,32 @@ struct Home: View {
                     Spacer()
                     
                     VStack{
-                        
-                        NavigationLink{
-                            AddStoreView()
-                        }label: {
-                            Image(systemName: "plus")
-                                .resizable()
-                                .frame(width: 25, height: 25)
-                                .padding(10)
-                                .background(Color.yellow)
-                                .foregroundColor(.black)
-                                .clipShape(Circle())
+                        if AddStoreClick{
+                            NavigationLink{
+                                AddStoreView(coordinate: mapData.getCenterCoordinate())
+                            }label: {
+                                Image(systemName: "checkmark")
+                                    .resizable()
+                                    .frame(width: 25, height: 25)
+                                    .padding(10)
+                                    .background(Color.yellow)
+                                    .foregroundColor(.black)
+                                    .clipShape(Circle())
+                            }
+                        }else{
+                            Button{
+                                AddStoreClick = true
+                            }label: {
+                                Image(systemName: "plus")
+                                    .resizable()
+                                    .frame(width: 25, height: 25)
+                                    .padding(10)
+                                    .background(Color.yellow)
+                                    .foregroundColor(.black)
+                                    .clipShape(Circle())
+                            }
                         }
+                        
                         
                         Button {
                             mapData.focusLocation()
