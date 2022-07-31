@@ -12,7 +12,8 @@ import CoreLocation
 struct Home: View {
     @StateObject var mapData = MapViewModel()
     @State var locationManager = CLLocationManager()
-    @State var AddStoreClick = false
+    @State private var AddStoreClick = false
+    @State private var homePresenting: Bool = false
     var body: some View {
         NavigationView{
             ZStack{
@@ -76,17 +77,21 @@ struct Home: View {
                     
                     VStack{
                         if AddStoreClick{
-                            NavigationLink{
-                                AddStoreView(coordinate: mapData.getCenterCoordinate())
-                            }label: {
-                                Image(systemName: "checkmark")
-                                    .resizable()
-                                    .frame(width: 25, height: 25)
-                                    .padding(10)
-                                    .background(Color.yellow)
-                                    .foregroundColor(.black)
-                                    .clipShape(Circle())
-                            }
+                            NavigationLink(
+//                                AddStoreView(coordinate: mapData.getCenterCoordinate())
+                                destination: AddStoreView(
+                                    homePresenting: $homePresenting,
+                                    coordinate: mapData.getCenterCoordinate()),
+                                isActive: $homePresenting) {
+                                    Image(systemName: "checkmark")
+                                        .resizable()
+                                        .frame(width: 25, height: 25)
+                                        .padding(10)
+                                        .background(Color.yellow)
+                                        .foregroundColor(.black)
+                                        .clipShape(Circle())
+                                }
+                            
                         }else{
                             Button{
                                 AddStoreClick = true

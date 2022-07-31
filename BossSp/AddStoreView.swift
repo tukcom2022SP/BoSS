@@ -46,7 +46,9 @@ func InsertData(store : store) { // 파이어베이스 데이터 삽입 함수
 }
 
 struct AddStoreView: View {
+    @Binding var homePresenting: Bool
     var coordinate: CLLocationCoordinate2D
+    
     @State private var image1 = Image("") // 이미지 1
     @State private var image2 = Image("") // 이미지 2
     @State private var image3 = Image("") // 이미지 3
@@ -215,8 +217,10 @@ struct AddStoreView: View {
                             storeDescription : self.storeDescription
                         )
                         InsertData(store : store_ob) // 파이어스토어 데이터 삽입 함수
+                        homePresenting = false // Home 화면으로 Back
                     }
                     print(coordinate)
+                    //homePresenting = false
                 } label: { Text("등록")}
                     .alert(isPresented: self.$showingAlert) { // 알림 메시지 설정
                     Alert(title: Text("알림"), message: Text("\(alert_msg)"), dismissButton: .default(Text("확인"))) }
@@ -229,9 +233,9 @@ struct AddStoreView: View {
 } // AddStoreView
 
 
-struct AddStoreView_Previews: PreviewProvider {
-    static var previews: some View {
-        AddStoreView(coordinate: CLLocationCoordinate2D(latitude: 38, longitude: 127))
-            .previewInterfaceOrientation(.portrait)
-    }
-}
+//struct AddStoreView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        AddStoreView(coordinate: CLLocationCoordinate2D(latitude: 38, longitude: 127))
+//            .previewInterfaceOrientation(.portrait)
+//    }
+//}
