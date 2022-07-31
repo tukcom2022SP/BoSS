@@ -11,6 +11,7 @@
 		491FE0AB289163350076A268 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 491FE0AA289163350076A268 /* FirebaseFirestore */; };
 		491FE0AF289163350076A268 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 491FE0AE289163350076A268 /* FirebaseFirestoreSwift */; };
 		491FE0B1289163350076A268 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 491FE0B0289163350076A268 /* FirebaseStorage */; };
+		492086C32895BFF500F24336 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492086C22895BFF500F24336 /* ImagePicker.swift */; };
 		495A26C82890FD4C003B1A8D /* AddStoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495A26C72890FD4C003B1A8D /* AddStoreView.swift */; };
 		49676BAF2893CF9C00C03B50 /* StoreInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49676BAE2893CF9C00C03B50 /* StoreInfoView.swift */; };
 		575D98072893AC7800DD3B18 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575D98062893AC7700DD3B18 /* Place.swift */; };
@@ -19,15 +20,14 @@
 		57F1666B288FBC16000CEDCE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F1666A288FBC16000CEDCE /* ContentView.swift */; };
 		57F1666D288FBC16000CEDCE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57F1666C288FBC16000CEDCE /* Assets.xcassets */; };
 		57F16670288FBC16000CEDCE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57F1666F288FBC16000CEDCE /* Preview Assets.xcassets */; };
-
 		57F97BE928938B7F0088A544 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F97BE828938B7F0088A544 /* MapView.swift */; };
 		57F97BEB28938C180088A544 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F97BEA28938C180088A544 /* MapViewModel.swift */; };
 		57F97BED289394B20088A544 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F97BEC289394B20088A544 /* Home.swift */; };
-
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		491FE0A72891366A0076A268 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		492086C22895BFF500F24336 /* ImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		495A26C72890FD4C003B1A8D /* AddStoreView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddStoreView.swift; sourceTree = "<group>"; };
 		49676BAE2893CF9C00C03B50 /* StoreInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreInfoView.swift; sourceTree = "<group>"; };
 		575D98062893AC7700DD3B18 /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
@@ -38,11 +38,9 @@
 		57F1666A288FBC16000CEDCE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		57F1666C288FBC16000CEDCE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		57F1666F288FBC16000CEDCE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-
 		57F97BE828938B7F0088A544 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		57F97BEA28938C180088A544 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		57F97BEC289394B20088A544 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
-
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,13 +78,13 @@
 			children = (
 				57B8470E289109CB00BAA3EE /* Info.plist */,
 				57F16668288FBC16000CEDCE /* BossSpApp.swift */,
+				492086C22895BFF500F24336 /* ImagePicker.swift */,
 				57F1666A288FBC16000CEDCE /* ContentView.swift */,
 				49676BAE2893CF9C00C03B50 /* StoreInfoView.swift */,
 				495A26C72890FD4C003B1A8D /* AddStoreView.swift */,
 				491FE0A72891366A0076A268 /* GoogleService-Info.plist */,
 				57F1666C288FBC16000CEDCE /* Assets.xcassets */,
 				57F1666E288FBC16000CEDCE /* Preview Content */,
-
 				57E0C8262892B98E005D50A6 /* MypageView.swift */,
 				57F97BE828938B7F0088A544 /* MapView.swift */,
 				57F97BEA28938C180088A544 /* MapViewModel.swift */,
@@ -190,6 +188,7 @@
 				57F97BED289394B20088A544 /* Home.swift in Sources */,
 				57F16669288FBC16000CEDCE /* BossSpApp.swift in Sources */,
 				495A26C82890FD4C003B1A8D /* AddStoreView.swift in Sources */,
+				492086C32895BFF500F24336 /* ImagePicker.swift in Sources */,
 				57F97BEB28938C180088A544 /* MapViewModel.swift in Sources */,
 				575D98072893AC7800DD3B18 /* Place.swift in Sources */,
 			);

@@ -45,6 +45,24 @@ func InsertData(store : store) { // 파이어베이스 데이터 삽입 함수
 }
 
 struct AddStoreView: View {
+    @State private var image1 = Image("") // 이미지 1
+    @State private var image2 = Image("") // 이미지 2
+    @State private var image3 = Image("") // 이미지 3
+    @State var num = 0 // 현재 이미지
+    
+    @State private var showingImagePicker = false // 이미지 피커 표시 여부
+    @State private var inputImage: UIImage? // 갤러리에서 선택된 이미지
+    
+    func loadImage(num : Int) { // 갤러리에서 선택된 이미지를 현재 이미지에 적용하는 함수
+        guard let inputImage = inputImage else { return }
+        if (num == 1){
+            image1 = Image(uiImage: inputImage)
+        } else if (num == 2){
+            image2 = Image(uiImage: inputImage)
+        } else if (num == 3){
+            image3 = Image(uiImage: inputImage)
+        }
+    }
     
     @State private var storeAddress = "" // 맛집 주소
     @State private var storeName = "" // 맛집 이름
@@ -98,39 +116,51 @@ struct AddStoreView: View {
                             ScrollView(.horizontal) {
                                 HStack(alignment: .center, spacing: 20) {
                                     VStack {
-                                        Image("")
+                                        image1
                                             .resizable()
                                             .frame(width: 150, height: 150)
                                             .clipShape(RoundedRectangle(cornerRadius: 20.0))
                                             .overlay(RoundedRectangle(cornerRadius: 20.0).stroke(Color.gray))
-                    
-                                        Button ("사진 선택") {
-                                            
-                                        }
+                                        
+                                        Text("사진 선택")
+                                            .foregroundColor(Color.blue)
+                                            .onTapGesture {
+                                                self.num = 1
+                                                showingImagePicker = true
+                                            }
                                     }
                                     VStack {
-                                        Image("")
+                                        image2
                                             .resizable()
                                             .frame(width: 150, height: 150)
                                             .clipShape(RoundedRectangle(cornerRadius: 20.0))
                                             .overlay(RoundedRectangle(cornerRadius: 20.0).stroke(Color.gray))
-                    
-                                        Button ("사진 선택") {
-                                            
-                                        }
+                                        Text("사진 선택")
+                                            .foregroundColor(Color.blue)
+                                            .onTapGesture {
+                                                self.num = 2
+                                                showingImagePicker = true
+                                            }
                                     }
                                     VStack {
-                                        Image("")
+                                        image3
                                             .resizable()
                                             .frame(width: 150, height: 150)
                                             .clipShape(RoundedRectangle(cornerRadius: 20.0))
                                             .overlay(RoundedRectangle(cornerRadius: 20.0).stroke(Color.gray))
-                    
-                                        Button ("사진 선택") {
-                                            
-                                        }
+                                        Text("사진 선택")
+                                            .foregroundColor(Color.blue)
+                                            .onTapGesture {
+                                                self.num = 3
+                                                showingImagePicker = true
+                                            }
                                     }
                                 }.padding() // HStack
+                                    .onChange(of: inputImage) { _ in loadImage(num: self.num) }
+                                    .sheet(isPresented: $showingImagePicker) {
+                                        ImagePicker(image: $inputImage)}
+                                    
+                                    
                             } // ScrollView
                     } // Section
                     
