@@ -17,8 +17,7 @@ struct BossSpApp: App {
     
   var body: some Scene {
         WindowGroup {
-            //ContentView()
-            StoreInfoView()
+            ContentView()
         }
     }
 }

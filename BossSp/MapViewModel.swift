@@ -63,6 +63,9 @@ class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate{
             })
         }
     }
+    func getCenterCoordinate() -> CLLocationCoordinate2D {
+        return mapView.centerCoordinate
+    }
     
     // AddStoreAnnotation Beta
     func addStoreAnnotation(){
