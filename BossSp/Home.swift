@@ -12,12 +12,18 @@ import CoreLocation
 struct Home: View {
     @StateObject var mapData = MapViewModel()
     @State var locationManager = CLLocationManager()
+    @State private var centerCoordinate = CLLocationCoordinate2D()
+    @State private var locations = [MKPointAnnotation]()
+    @State private var selectedPlace : MKPointAnnotation?
+    @State private var showingPlaceDetails = false
+    
     @State private var AddStoreClick = false
     @State private var homePresenting: Bool = false
     var body: some View {
         NavigationView{
             ZStack{
-                MapView()
+                MapView(centerCoordinate: $centerCoordinate, selectedPlace: $selectedPlace,
+                        showingPlaceDetails: $showingPlaceDetails, annotations: locations)
                     .environmentObject(mapData)
                     .ignoresSafeArea(.all, edges: .all)
                     .onTapGesture {
@@ -35,7 +41,11 @@ struct Home: View {
                         .frame(width: 20, height: 20)
                 }
                 
-                
+                NavigationLink(isActive: $showingPlaceDetails) {
+                    StoreInfoView()
+                } label: {
+                    EmptyView()
+                }
                 VStack{
                     
                     if !AddStoreClick {
@@ -81,7 +91,7 @@ struct Home: View {
 //                                AddStoreView(coordinate: mapData.getCenterCoordinate())
                                 destination: AddStoreView(
                                     homePresenting: $homePresenting,
-                                    coordinate: mapData.getCenterCoordinate()),
+                                    coordinate: self.centerCoordinate),
                                 isActive: $homePresenting) {
                                     Image(systemName: "checkmark")
                                         .resizable()
@@ -119,8 +129,26 @@ struct Home: View {
                         }
                         
                         Button {
-                            mapData.updateMapType()
+                            //mapData.updateMapType()
                             //mapData.addStoreAnnotation()
+                            let newLocation = MKPointAnnotation()
+                            newLocation.coordinate = self.centerCoordinate
+                            newLocation.title = "Test"
+                            self.locations.append(newLocation)
+                        } label: {
+                            Image(systemName: mapData.mapType == .standard ? "network" : "map")
+                                .font(.title2)
+                                .padding(10)
+                                .background(Color.yellow)
+                                .foregroundColor(.black)
+                                .clipShape(Circle())
+                        }
+                        
+                        Button {
+                            //mapData.updateMapType()
+                            //mapData.addStoreAnnotation()
+                            let count = locations.count
+                            self.locations.remove(at: count-1)
                         } label: {
                             Image(systemName: mapData.mapType == .standard ? "network" : "map")
                                 .font(.title2)
@@ -158,7 +186,15 @@ struct Home: View {
             })
             //.navigationBarTitle("")
             .navigationBarHidden(true)
-        }
+//            .alert(isPresented: $showingPlaceDetails) {
+//                Alert(title: Text(selectedPlace?.subtitle ?? "Missing"),
+//                      primaryButton: .default(Text("Ok")),
+//                      secondaryButton: .default(Text("edit")){
+//
+//                })
+//            }
+
+        }// NavigationView
         
     }
 }
