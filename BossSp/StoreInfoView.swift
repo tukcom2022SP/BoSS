@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import FirebaseStorage
 import FirebaseFirestore
 
 var g_storeAddress = ""
@@ -46,6 +47,7 @@ func FindData() { // 파이어베이스 데이터 조회
     }
 }
 
+
 struct StoreInfoView: View {
     
     @State private var storeAddress = "" // 맛집 주소
@@ -53,6 +55,42 @@ struct StoreInfoView: View {
     @State private var storeType = "" // 맛집 종류
     @State private var storeDayOff = "" // 맛집 휴무일
     @State private var storeDescription = "" // 맛집 설명
+    
+    @State private var image1 = Image("") // 이미지 1
+    @State private var image2 = Image("") // 이미지 2
+    @State private var image3 = Image("") // 이미지 3
+    
+    func FindImage(){ // 파이어스토리지 사진 다운로드 함수
+        let storage = Storage.storage() // 파이어스토리지 인스턴스 초기화
+        let storageRef = storage.reference()
+        let img1 = storageRef.child("store1/img1.jpg")
+        let img2 = storageRef.child("store1/img2.jpg")
+        let img3 = storageRef.child("store1/img3.jpg")
+        
+        img1.downloadURL { (url, error) in
+            if let url = url{
+                let data = NSData(contentsOf: url)
+                let image = UIImage(data: data! as Data)
+                image1 = Image(uiImage: image!)
+            }
+        }
+        
+        img2.downloadURL { (url, error) in
+            if let url = url{
+                let data = NSData(contentsOf: url)
+                let image = UIImage(data: data! as Data)
+                image2 = Image(uiImage: image!)
+            }
+        }
+        
+        img3.downloadURL { (url, error) in
+            if let url = url{
+                let data = NSData(contentsOf: url)
+                let image = UIImage(data: data! as Data)
+                image3 = Image(uiImage: image!)
+            }
+        }
+    }
     
     var body: some View {
         
@@ -76,14 +114,22 @@ struct StoreInfoView: View {
                             .foregroundColor(Color.gray)
                         
                         TabView{
-                            ForEach(0..<3){ num in
-                                Image(systemName: "person")
-                                    .resizable()
-                                    .scaledToFill()
-                                    .overlay(Color.black.opacity(0.5))
-                                    .tag(num)
+                            image1
+                                .resizable()
+                                .scaledToFill()
+                                .tag(1)
+                            
+                            image2
+                                .resizable()
+                                .scaledToFill()
+                                .tag(2)
+                            
+                            image3
+                                .resizable()
+                                .scaledToFill()
+                                .tag(3)
                             }
-                        }
+                        
                         .tabViewStyle(PageTabViewStyle())
                         .clipShape(RoundedRectangle(cornerRadius: 5))
                         .padding()
@@ -121,6 +167,7 @@ struct StoreInfoView: View {
         } // NavigationView
         .onAppear{
             FindData()
+            FindImage()
         }
     } // body
 } // StoreInfoView
