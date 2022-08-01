@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import Firebase
+import FirebaseStorage
 import FirebaseFirestore // 파이어베이스 파이어스토어
 import CoreLocation
 
@@ -45,14 +47,31 @@ func InsertData(store : store) { // 파이어베이스 데이터 삽입 함수
         "storeDescription" : "\(store.storeDescription)"])
 }
 
+
+
+func InsertImage(image: UIImage, name: String) { // 파이어스토리지 사진 업로드 함수
+    let storage = Storage.storage() // 파이어스토리지 인스턴스 초기화
+    let storageRef = storage.reference()
+    let imageRef = storageRef.child("store1/\(name).jpg")
+    
+    let data = image.jpegData(compressionQuality: 0.2)
+    
+    if let data = data {
+        imageRef.putData(data)
+    }
+}
+
 struct AddStoreView: View {
     @Binding var homePresenting: Bool
     @Binding var annotationTitle:String
     var coordinate: CLLocationCoordinate2D
     
     @State private var image1 = Image("") // 이미지 1
+    @State private var UIImage1 : UIImage?
     @State private var image2 = Image("") // 이미지 2
+    @State private var UIImage2: UIImage?
     @State private var image3 = Image("") // 이미지 3
+    @State private var UIImage3 : UIImage?
     @State var num = 0 // 현재 이미지
     
     @State private var showingImagePicker = false // 이미지 피커 표시 여부
@@ -62,10 +81,13 @@ struct AddStoreView: View {
         guard let inputImage = inputImage else { return }
         if (num == 1){
             image1 = Image(uiImage: inputImage)
+            UIImage1 = inputImage
         } else if (num == 2){
             image2 = Image(uiImage: inputImage)
+            UIImage2 = inputImage
         } else if (num == 3){
             image3 = Image(uiImage: inputImage)
+            UIImage3 = inputImage
         }
     }
     
@@ -218,6 +240,21 @@ struct AddStoreView: View {
                             storeDescription : self.storeDescription
                         )
                         InsertData(store : store_ob) // 파이어스토어 데이터 삽입 함수
+                        if let UIImage1 = UIImage1 {
+                            InsertImage(image: UIImage1, name: "img1")
+                        }
+                        
+                        if let UIImage2 = UIImage2 {
+                            InsertImage(image: UIImage2, name: "img2")
+                        }
+                        
+                        if let UIImage3 = UIImage3 {
+                            InsertImage(image: UIImage3, name: "img3")
+                        }
+                            
+                        
+                        
+                        
                         homePresenting = false // Home 화면으로 Back
                         annotationTitle = storeName
                     }

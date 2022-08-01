@@ -1,6 +1,3 @@
-import PhotosUI
-import SwiftUI
-
 // 갤러리에서 이미지 선택할 수 있도록 하는 ImagePicker
 import PhotosUI
 import SwiftUI
