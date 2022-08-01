@@ -13,8 +13,7 @@ struct MapView: UIViewRepresentable {
     @Binding var selectedPlace: MKPointAnnotation?
     @Binding var showingPlaceDetails: Bool
     @EnvironmentObject var mapData: MapViewModel
-    var annotations: [MKPointAnnotation]
-    
+    @Binding var annotations: [MKPointAnnotation]
     class Coordinator: NSObject, MKMapViewDelegate{
         var parent: MapView
         init(_ parent: MapView){
@@ -59,11 +58,11 @@ struct MapView: UIViewRepresentable {
         view.showsUserLocation = true
         view.delegate = context.coordinator
         
-        // 앱 실행하자마자 핀 찍힘 
-        let annotaion = MKPointAnnotation()
-        annotaion.coordinate = CLLocationCoordinate2D(latitude: 37, longitude: 128)
-        annotaion.title = "test"
-        //view.addAnnotation(annotaion)
+//        // 앱 실행하자마자 핀 찍힘
+//        let annotaion = MKPointAnnotation()
+//        annotaion.coordinate = CLLocationCoordinate2D(latitude: 37, longitude: 128)
+//        annotaion.title = "test"
+//        view.addAnnotation(annotaion)
         
         print("7")
         
