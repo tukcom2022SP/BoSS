@@ -19,11 +19,14 @@ struct Home: View {
     
     @State private var AddStoreClick = false
     @State private var homePresenting: Bool = false
+    @State private var annotationTitle: String = ""
+    @State private var firstAppear: Bool = true
     var body: some View {
         NavigationView{
             ZStack{
+                
                 MapView(centerCoordinate: $centerCoordinate, selectedPlace: $selectedPlace,
-                        showingPlaceDetails: $showingPlaceDetails, annotations: locations)
+                        showingPlaceDetails: $showingPlaceDetails, annotations: $locations)
                     .environmentObject(mapData)
                     .ignoresSafeArea(.all, edges: .all)
                     .onTapGesture {
@@ -31,7 +34,18 @@ struct Home: View {
                         AddStoreClick = false
                     }
                     .onAppear{
+                        if firstAppear{
+                            firstAppear = false
+                        }else{
+                            if !homePresenting{
+                                let newLocation = MKPointAnnotation()
+                                newLocation.coordinate = self.centerCoordinate
+                                newLocation.title = annotationTitle
+                                self.locations.append(newLocation)
+                            }
+                        }
                         AddStoreClick = false
+                        print(homePresenting)
                     }
                 
                 if AddStoreClick{
@@ -42,7 +56,7 @@ struct Home: View {
                 }
                 
                 NavigationLink(isActive: $showingPlaceDetails) {
-                    StoreInfoView()
+                    StoreInfoView() // title 또는 coordinate를 전달 후 StoreInfoView에서 데이터 처리?
                 } label: {
                     EmptyView()
                 }
@@ -78,7 +92,8 @@ struct Home: View {
                                     }
                                     .padding(.top)
                                 }
-                                .background(.white)
+                              .background(.white)
+                                
                             }
                         }.padding()
                     }
@@ -91,6 +106,7 @@ struct Home: View {
 //                                AddStoreView(coordinate: mapData.getCenterCoordinate())
                                 destination: AddStoreView(
                                     homePresenting: $homePresenting,
+                                    annotationTitle: $annotationTitle,
                                     coordinate: self.centerCoordinate),
                                 isActive: $homePresenting) {
                                     Image(systemName: "checkmark")
@@ -134,6 +150,7 @@ struct Home: View {
                             let newLocation = MKPointAnnotation()
                             newLocation.coordinate = self.centerCoordinate
                             newLocation.title = "Test"
+                            newLocation.subtitle = "꾹 눌러 정보 보기"
                             self.locations.append(newLocation)
                         } label: {
                             Image(systemName: mapData.mapType == .standard ? "network" : "map")

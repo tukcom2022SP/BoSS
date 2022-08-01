@@ -47,6 +47,7 @@ func InsertData(store : store) { // 파이어베이스 데이터 삽입 함수
 
 struct AddStoreView: View {
     @Binding var homePresenting: Bool
+    @Binding var annotationTitle:String
     var coordinate: CLLocationCoordinate2D
     
     @State private var image1 = Image("") // 이미지 1
@@ -218,6 +219,7 @@ struct AddStoreView: View {
                         )
                         InsertData(store : store_ob) // 파이어스토어 데이터 삽입 함수
                         homePresenting = false // Home 화면으로 Back
+                        annotationTitle = storeName
                     }
                     print(coordinate)
                     //homePresenting = false
