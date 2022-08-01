@@ -23,6 +23,7 @@
 		57F97BE928938B7F0088A544 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F97BE828938B7F0088A544 /* MapView.swift */; };
 		57F97BEB28938C180088A544 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F97BEA28938C180088A544 /* MapViewModel.swift */; };
 		57F97BED289394B20088A544 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F97BEC289394B20088A544 /* Home.swift */; };
+		A390B08A2897A4C3006769E0 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A390B0892897A4C2006769E0 /* LoadingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,7 @@
 		57F97BE828938B7F0088A544 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		57F97BEA28938C180088A544 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		57F97BEC289394B20088A544 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		A390B0892897A4C2006769E0 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,7 @@
 				57F97BEA28938C180088A544 /* MapViewModel.swift */,
 				57F97BEC289394B20088A544 /* Home.swift */,
 				575D98062893AC7700DD3B18 /* Place.swift */,
+				A390B0892897A4C2006769E0 /* LoadingView.swift */,
 			);
 			path = BossSp;
 			sourceTree = "<group>";
@@ -184,6 +187,7 @@
 				49676BAF2893CF9C00C03B50 /* StoreInfoView.swift in Sources */,
 				57F97BE928938B7F0088A544 /* MapView.swift in Sources */,
 				57E0C8272892B98E005D50A6 /* MypageView.swift in Sources */,
+				A390B08A2897A4C3006769E0 /* LoadingView.swift in Sources */,
 				57F1666B288FBC16000CEDCE /* ContentView.swift in Sources */,
 				57F97BED289394B20088A544 /* Home.swift in Sources */,
 				57F16669288FBC16000CEDCE /* BossSpApp.swift in Sources */,
