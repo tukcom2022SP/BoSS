@@ -99,8 +99,8 @@ class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate{
 //
 //        mapView.addAnnotation(pointAnnotation)
         
-        let coordinateRegion = MKCoordinateRegion(center: coordinate, latitudinalMeters: 100,
-        longitudinalMeters: 100)
+        let coordinateRegion = MKCoordinateRegion(center: coordinate, latitudinalMeters: 1000,
+        longitudinalMeters: 1000)
         
         mapView.setRegion(coordinateRegion, animated: true)
         mapView.setVisibleMapRect(mapView.visibleMapRect, animated: true)
