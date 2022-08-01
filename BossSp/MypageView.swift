@@ -8,30 +8,51 @@
 import SwiftUI
 
 struct MypageView: View {
+   
     @State private var presentAlert = false
-    @State private var userName = ""// 닉네임
-    @State private var selfIntro = ""//자기 소개
+    @State  var userName = ""// 닉네임
+    @State  var selfIntro = ""//자기 소개
+    @State private var imagePro = Image("")//프로필 이미지
+    @State var num = 0
+    @State private var showingImagePicker = false // 이미지 피커 표시 여부
+    @State private var inputImage: UIImage? // 갤러리에서 선택된 이미지
+    
+    func loadImage(num : Int) { // 갤러리에서 선택된 이미지를 현재 이미지에 적용하는 함수
+        guard let inputImage = inputImage else { return }
+        if (num == 1){
+            imagePro = Image(uiImage: inputImage)        }
+    }
     var body: some View {
         ScrollView {
             VStack{
-                Image("")
+                VStack{
+                    imagePro
                     .resizable()
                     .frame(width: 150, height: 150)
                     .clipShape(Circle())
                     .overlay(Circle().stroke(Color.white))
                 Button (action:{
+                    self.num = 1
+                    showingImagePicker = true
                 }){
                     Text("사진 추가")
                         .frame(minWidth: 0, maxWidth: 75)
                         .foregroundColor(Color.white)
+                                    }.tint(.blue)
+                                        .buttonStyle(.borderedProminent)
+                                        .buttonBorderShape(.capsule)
+                                        .padding(EdgeInsets(top: 5, leading: 0, bottom: 20, trailing: 0))
+                }
+                .onChange(of: inputImage) { _ in loadImage(num: self.num) }
+                .sheet(isPresented: $showingImagePicker) {
+                    ImagePicker(image: $inputImage)}
+
                     
-                }.tint(.blue)
-                    .buttonStyle(.borderedProminent)
-                    .buttonBorderShape(.capsule)
-                    .padding(EdgeInsets(top: 5, leading: 0, bottom: 20, trailing: 0))
                 Button("프로필 편집"){
-                    alertTf(title: "프로필 편집", message: "닉네임과 소개를 입력해주세요", hintText: "닉네임을 입력하세요",hintText2: "소개를 입력하세요" ,primaryTitle: "취소", secondaryTitle: "등록"){text in
-                        print(text)
+                    alertTf(title: "프로필 편집", message: "닉네임과 소개를 입력해주세요", hintText: "닉네임을 입력하세요",hintText2: "소개를 입력하세요" ,primaryTitle: "취소", secondaryTitle: "등록"){text2 in
+                        //userName = text
+                        print(text2)
+                        
                     } secondaryAction:{
                         print("Cancle")
                     }
@@ -100,9 +121,11 @@ extension View{
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addTextField{field in
             field.placeholder = hintText
+            
         }
         alert.addTextField{field in
             field.placeholder = hintText2
+            
         }
         alert.addAction(.init(title: primaryTitle, style: .cancel, handler: { _ in
             secondaryAction()
@@ -115,7 +138,14 @@ extension View{
             else{
                 primaryAction("")
             }
+            if let text2 = alert.textFields?[1].text{
+                primaryAction(text2)
+            }
+            else{
+                primaryAction("")
+            }
         }))
+        
         rootController().present(alert,animated: true,completion: nil)
     }
     func rootController()->UIViewController{
