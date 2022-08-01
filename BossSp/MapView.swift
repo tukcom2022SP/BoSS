@@ -14,6 +14,7 @@ struct MapView: UIViewRepresentable {
     @Binding var showingPlaceDetails: Bool
     @EnvironmentObject var mapData: MapViewModel
     @Binding var annotations: [MKPointAnnotation]
+    
     class Coordinator: NSObject, MKMapViewDelegate{
         var parent: MapView
         init(_ parent: MapView){
@@ -38,8 +39,9 @@ struct MapView: UIViewRepresentable {
         }
         func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
             print("0")
+            // StoreInfoView로 이동하기 위한 절차
             guard let placemark = view.annotation as? MKPointAnnotation else {return}
-            parent.selectedPlace = placemark
+            parent.selectedPlace = placemark    // MKAnnotation ( title, subtitle, coordinate )
             parent.showingPlaceDetails = true
         }
         func mapViewDidChangeVisibleRegion(_ mapView: MKMapView) {

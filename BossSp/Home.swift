@@ -19,7 +19,7 @@ struct Home: View {
     
     @State private var AddStoreClick = false
     @State private var homePresenting: Bool = false
-    
+    @State private var annotationTitle: String = ""
     @State private var firstAppear: Bool = true
     var body: some View {
         NavigationView{
@@ -40,7 +40,7 @@ struct Home: View {
                             if !homePresenting{
                                 let newLocation = MKPointAnnotation()
                                 newLocation.coordinate = self.centerCoordinate
-                                newLocation.title = "111"
+                                newLocation.title = annotationTitle
                                 self.locations.append(newLocation)
                             }
                         }
@@ -56,7 +56,7 @@ struct Home: View {
                 }
                 
                 NavigationLink(isActive: $showingPlaceDetails) {
-                    StoreInfoView()
+                    StoreInfoView() // title 또는 coordinate를 전달 후 StoreInfoView에서 데이터 처리?
                 } label: {
                     EmptyView()
                 }
@@ -106,6 +106,7 @@ struct Home: View {
 //                                AddStoreView(coordinate: mapData.getCenterCoordinate())
                                 destination: AddStoreView(
                                     homePresenting: $homePresenting,
+                                    annotationTitle: $annotationTitle,
                                     coordinate: self.centerCoordinate),
                                 isActive: $homePresenting) {
                                     Image(systemName: "checkmark")
