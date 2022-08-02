@@ -118,7 +118,7 @@ class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate{
             ()
         }
         
-        print("3")
+        print("---locationManagerDidChangeAuthorization (내위치허용)---")
     }
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error){
         print(error.localizedDescription)
@@ -134,7 +134,7 @@ class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate{
         self.mapView.setRegion(self.region, animated: true)
         self.mapView.setVisibleMapRect(self.mapView.visibleMapRect, animated: true)
         
-        print("1")
+        print("---locationManager didUpdateLocations---")
     }
 
 }
