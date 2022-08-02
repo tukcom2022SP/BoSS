@@ -18,7 +18,7 @@ struct StoreInfoView: View {
     @State private var storeDayOff = "" // 맛집 휴무일
     @State private var storeDescription = "" // 맛집 설명
     
-    let coordinate : CLLocationCoordinate2D
+    var coordinate : CLLocationCoordinate2D
     
     @State private var images : [Image] = [Image(""), Image(""), Image("")] // 이미지
     
@@ -122,6 +122,7 @@ struct StoreInfoView: View {
         .onAppear{
             FindData()
             FindImage()
+            print(coordinate)
         }
     } // body
 } // StoreInfoView
