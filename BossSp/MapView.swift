@@ -21,7 +21,7 @@ struct MapView: UIViewRepresentable {
             self.parent = parent
         }
         func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-            print("8")
+            print("---mapView viewFor (내위치 annotation)---")
             if annotation.isKind(of: MKUserLocation.self){ return nil } // annotation이 User이면 annotation 표시 X
             else{
                 let pinAnnotation = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: "PIN_VIEW")
@@ -50,7 +50,7 @@ struct MapView: UIViewRepresentable {
     }
     
     func makeCoordinator() -> Coordinator {
-        print("6")
+        print("---makeCoordinator---")
 
         return MapView.Coordinator(self)
     }
@@ -66,13 +66,16 @@ struct MapView: UIViewRepresentable {
 //        annotaion.title = "test"
 //        view.addAnnotation(annotaion)
         
-        print("7")
+        // db에 저장된 Store들을 불러옴
+        // 각 Store의 title, coordinate를 annotation배열에 추가
+        
+        print("---makeUIView---")
         
         return view
         
     }
     func updateUIView(_ view: MKMapView, context: Context) {
-        print("Updating")
+        print("---updateUIView---")
         print("location \(annotations.count)")
         print("view.annotation 전 \(view.annotations.count)")
         // annotations.count : 변경된 값     view.annotations.count : 변경 이전 값
@@ -84,6 +87,7 @@ struct MapView: UIViewRepresentable {
             view.addAnnotations(annotations)
         }
         print("view.annotation 후 \(view.annotations.count)")
+        
     }
     
     

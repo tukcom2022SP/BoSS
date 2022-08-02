@@ -44,8 +44,9 @@ struct Home: View {
                                 self.locations.append(newLocation)
                             }
 //                        }
+                        
                         AddStoreClick = false
-                        print(homePresenting)
+                        print("---Home MapView onAppear \(homePresenting)---")
                     }
                 
                 if AddStoreClick{
