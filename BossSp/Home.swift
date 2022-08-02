@@ -21,6 +21,8 @@ struct Home: View {
     @State private var homePresenting: Bool = false
     @State private var annotationTitle: String = ""
     @State private var firstAppear: Bool = true
+    
+    @ObservedObject private var storeData : StoreData = StoreData()
     var body: some View {
         NavigationView{
             ZStack{
@@ -36,6 +38,7 @@ struct Home: View {
                     .onAppear{
 //                        if firstAppear{
 //                            firstAppear = false
+//
 //                        }else{
                             if !homePresenting{
                                 let newLocation = MKPointAnnotation()
@@ -57,7 +60,7 @@ struct Home: View {
                 }
                 
                 NavigationLink(isActive: $showingPlaceDetails) {
-                    StoreInfoView() // title 또는 coordinate를 전달 후 StoreInfoView에서 데이터 처리?
+                    StoreInfoView(coordinate: self.selectedPlace!.coordinate) // title 또는 coordinate를 전달 후 StoreInfoView에서 데이터 처리?
                 } label: {
                     EmptyView()
                 }
@@ -215,7 +218,21 @@ struct Home: View {
 //            }
 
         }// NavigationView
-        
+//        .onAppear{
+//            print("---onAppear First---")
+//            if storeData.anno.isEmpty{
+//                print("추가")
+//                let mk = MKPointAnnotation()
+//                mk.coordinate = CLLocationCoordinate2D(latitude: 36, longitude: 128)
+//                storeData.anno.append(MKPointAnnotation())
+//                mk.coordinate = CLLocationCoordinate2D(latitude: 37, longitude: 128)
+//                storeData.anno.append(MKPointAnnotation())
+//                for i in 0..<storeData.anno.count{
+//                    self.locations.append(storeData.anno[i])
+//                }
+//            }
+//            print("추가 후")
+//        }
     }
 }
 
@@ -223,4 +240,9 @@ struct Home_Previews: PreviewProvider {
     static var previews: some View {
         Home()
     }
+}
+
+
+class StoreData : ObservableObject{
+    @Published var anno: [MKPointAnnotation] = []
 }
