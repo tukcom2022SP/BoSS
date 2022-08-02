@@ -60,7 +60,7 @@ struct Home: View {
                 }
                 
                 NavigationLink(isActive: $showingPlaceDetails) {
-                    StoreInfoView(coordinate: self.selectedPlace!.coordinate) // title 또는 coordinate를 전달 후 StoreInfoView에서 데이터 처리?
+                    StoreInfoView(coordinate: self.selectedPlace?.coordinate ?? CLLocationCoordinate2D(latitude: 0, longitude: 0)) // title 또는 coordinate를 전달 후 StoreInfoView에서 데이터 처리?
                 } label: {
                     EmptyView()
                 }
