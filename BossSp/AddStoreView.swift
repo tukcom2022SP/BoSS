@@ -258,7 +258,9 @@ struct AddStoreView: View {
                         homePresenting = false // Home 화면으로 Back
                         annotationTitle = storeName
                     }
-                    print(coordinate)
+                    let str = String(coordinate.latitude)
+                    print(type(of: Double(str)!))
+                    
                     //homePresenting = false
                 } label: { Text("등록")}
                     .alert(isPresented: self.$showingAlert) { // 알림 메시지 설정

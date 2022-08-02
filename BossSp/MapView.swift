@@ -73,16 +73,17 @@ struct MapView: UIViewRepresentable {
     }
     func updateUIView(_ view: MKMapView, context: Context) {
         print("Updating")
-        print("1 \(annotations.count)")
-        print("2 \(view.annotations.count)")
+        print("location \(annotations.count)")
+        print("view.annotation 전 \(view.annotations.count)")
         // annotations.count : 변경된 값     view.annotations.count : 변경 이전 값
-        if annotations.count == view.annotations.count{
+        if annotations.count >= view.annotations.count{
             view.removeAnnotations(view.annotations)
             view.addAnnotations(annotations)
         }else if annotations.count < view.annotations.count{
             view.removeAnnotations(view.annotations)
             view.addAnnotations(annotations)
         }
+        print("view.annotation 후 \(view.annotations.count)")
     }
     
     

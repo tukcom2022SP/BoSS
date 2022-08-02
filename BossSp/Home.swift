@@ -34,16 +34,16 @@ struct Home: View {
                         AddStoreClick = false
                     }
                     .onAppear{
-                        if firstAppear{
-                            firstAppear = false
-                        }else{
+//                        if firstAppear{
+//                            firstAppear = false
+//                        }else{
                             if !homePresenting{
                                 let newLocation = MKPointAnnotation()
                                 newLocation.coordinate = self.centerCoordinate
                                 newLocation.title = annotationTitle
                                 self.locations.append(newLocation)
                             }
-                        }
+//                        }
                         AddStoreClick = false
                         print(homePresenting)
                     }
@@ -144,14 +144,16 @@ struct Home: View {
                                 .clipShape(Circle())
                         }
                         
-                        Button {
+                        Button { // 추가
                             //mapData.updateMapType()
                             //mapData.addStoreAnnotation()
                             let newLocation = MKPointAnnotation()
                             newLocation.coordinate = self.centerCoordinate
                             newLocation.title = "Test"
                             newLocation.subtitle = "꾹 눌러 정보 보기"
+                            print("추가 전 \(self.locations.count)")
                             self.locations.append(newLocation)
+                            print("추가 후 \(self.locations.count)")
                         } label: {
                             Image(systemName: mapData.mapType == .standard ? "network" : "map")
                                 .font(.title2)
@@ -161,7 +163,7 @@ struct Home: View {
                                 .clipShape(Circle())
                         }
                         
-                        Button {
+                        Button { // 삭제
                             //mapData.updateMapType()
                             //mapData.addStoreAnnotation()
                             let count = locations.count
