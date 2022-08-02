@@ -223,6 +223,7 @@ struct AddStoreView: View {
                     }
 
                     print(coordinate)
+
                     //homePresenting = false
                 } label: { Text("등록")}
                     .alert(isPresented: self.$showingAlert) { // 알림 메시지 설정
