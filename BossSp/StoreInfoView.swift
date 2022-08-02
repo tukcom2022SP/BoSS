@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import MapKit
 import FirebaseFirestore
 import FirebaseStorage
 
@@ -16,6 +17,8 @@ struct StoreInfoView: View {
     @State private var storeType = "" // 맛집 종류
     @State private var storeDayOff = "" // 맛집 휴무일
     @State private var storeDescription = "" // 맛집 설명
+    
+    let coordinate : CLLocationCoordinate2D
     
     @State private var images : [Image] = [Image(""), Image(""), Image("")] // 이미지
     
@@ -125,7 +128,7 @@ struct StoreInfoView: View {
 
 struct StoreInfoView_Previews: PreviewProvider {
     static var previews: some View {
-        StoreInfoView()
+        StoreInfoView(coordinate: CLLocationCoordinate2D(latitude: 30, longitude: 30))
             .previewInterfaceOrientation(.portrait)
     }
 }
