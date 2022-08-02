@@ -14,82 +14,10 @@ import CoreLocation
 let storeTypeArray = ["한식", "양식", "중식", "일식", "기타"] // 음식 종류 배열
 let storeDayOffArray = ["모름", "일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일", "없음"] // 휴무일 배열
 
-class store { // 가게 정보 클래스
-    var storeAddress = "" // 맛집 주소
-    var storeName = "" // 맛집 이름
-    var storeType = "" // 맛집 종류
-    var storeDayOff = "" // 맛집 휴무일
-    var storeDescription = "" // 맛집 설명
-    
-    // 멤버 변수 초기화
-    init(storeAddress: String,
-         storeName : String,
-         storeType : Int,
-         storeDayOff : Int,
-         storeDescription : String) {
-        
-        self.storeAddress = storeAddress
-        self.storeName = storeName
-        self.storeType = storeTypeArray[storeType]
-        self.storeDayOff = storeDayOffArray[storeDayOff]
-        self.storeDescription = storeDescription
-    }
-}
-
-func InsertData(store : store) { // 파이어베이스 데이터 삽입 함수
-    let db = Firestore.firestore() // 파이어베이스 인스턴스 초기화
-    
-    db.collection("stores").document("store1").setData([ // 데이터 저장
-        "storeAddress" : "\(store.storeAddress)",
-        "storeName" : "\(store.storeName)",
-        "storeType" : "\(store.storeType)",
-        "storeDayOff" : "\(store.storeDayOff)",
-        "storeDescription" : "\(store.storeDescription)"])
-}
-
-
-
-func InsertImage(image: UIImage, name: String) { // 파이어스토리지 사진 업로드 함수
-    let storage = Storage.storage() // 파이어스토리지 인스턴스 초기화
-    let storageRef = storage.reference()
-    let imageRef = storageRef.child("store1/\(name).jpg")
-    
-    let data = image.jpegData(compressionQuality: 0.2)
-    
-    if let data = data {
-        imageRef.putData(data)
-    }
-}
-
 struct AddStoreView: View {
     @Binding var homePresenting: Bool
     @Binding var annotationTitle:String
     var coordinate: CLLocationCoordinate2D
-    
-    @State private var image1 = Image("") // 이미지 1
-    @State private var UIImage1 : UIImage?
-    @State private var image2 = Image("") // 이미지 2
-    @State private var UIImage2: UIImage?
-    @State private var image3 = Image("") // 이미지 3
-    @State private var UIImage3 : UIImage?
-    @State var num = 0 // 현재 이미지
-    
-    @State private var showingImagePicker = false // 이미지 피커 표시 여부
-    @State private var inputImage: UIImage? // 갤러리에서 선택된 이미지
-    
-    func loadImage(num : Int) { // 갤러리에서 선택된 이미지를 현재 이미지에 적용하는 함수
-        guard let inputImage = inputImage else { return }
-        if (num == 1){
-            image1 = Image(uiImage: inputImage)
-            UIImage1 = inputImage
-        } else if (num == 2){
-            image2 = Image(uiImage: inputImage)
-            UIImage2 = inputImage
-        } else if (num == 3){
-            image3 = Image(uiImage: inputImage)
-            UIImage3 = inputImage
-        }
-    }
     
     @State private var storeAddress = "" // 맛집 주소
     @State private var storeName = "" // 맛집 이름
@@ -98,8 +26,59 @@ struct AddStoreView: View {
     @State private var storeDescription = "" // 맛집 설명
     @State var placeholder: String = "맛집 설명을 입력해주세요." // 설명 TextEditor placeholder
     
+    @State private var images : [Image] = [Image(""), Image(""), Image("")]
+    @State private var uiImages : [UIImage] = [UIImage(systemName: "xmark")!, UIImage(systemName: "xmark")!, UIImage(systemName: "xmark")!]
+    @State private var nowImgNum = 0 // 현재 선택된 이미지 번호
+
+    @State private var showingImagePicker = false // 이미지 피커 표시 여부
+    @State private var inputImage: UIImage? // 갤러리에서 선택된 이미지
+    
     @State private var showingAlert = false // 알림창 여부
     @State private var alert_msg = "" // 알림 메시지 내용
+    
+    
+    
+    
+    
+    func InsertData() { // 파이어베이스 데이터 업로드 함수
+        let db = Firestore.firestore() //
+        
+        db.collection("stores").document("store2").setData([ // 데이터 저장
+            "storeLatitude" : String(coordinate.latitude),
+            "storeLongitude" : String(coordinate.longitude),
+            "storeAddress" : storeAddress,
+            "storeName" : storeName,
+            "storeType" : storeType,
+            "storeDayOff" : "\(storeDayOffArray[storeDayOff])",
+            "storeDescription" : "\(storeTypeArray[storeType])"])
+    }
+    
+    func InsertImage() { // 파이어스토리지 사진 업로드 함수
+        let storage = Storage.storage() // 파이어스토리지 인스턴스 초기화
+        let storageRef = storage.reference()
+        
+        for num in 0...2 {
+            let imageRef = storageRef.child("store1/img\(num+1).jpg")
+            let data = uiImages[num].jpegData(compressionQuality: 0.2)
+            if let data = data {
+                imageRef.putData(data)
+            }
+        }
+    }
+    
+    func loadImage(num : Int) { // 갤러리에서 선택된 이미지를 현재 이미지에 적용하는 함수
+        guard let inputImage = inputImage else { return }
+        if (num == 1){
+            images[0] = Image(uiImage: inputImage)
+            uiImages[0] = inputImage
+        } else if (num == 2){
+            images[1] = Image(uiImage: inputImage)
+            uiImages[1] = inputImage
+        } else if (num == 3){
+            images[2] = Image(uiImage: inputImage)
+            uiImages[2] = inputImage
+        }
+    }
     
     var body: some View {
         
@@ -143,7 +122,7 @@ struct AddStoreView: View {
                         ScrollView(.horizontal) {
                             HStack(alignment: .center, spacing: 20) {
                                 VStack {
-                                    image1
+                                    images[0]
                                         .resizable()
                                         .frame(width: 150, height: 150)
                                         .clipShape(RoundedRectangle(cornerRadius: 20.0))
@@ -152,38 +131,43 @@ struct AddStoreView: View {
                                     Text("사진 선택")
                                         .foregroundColor(Color.blue)
                                         .onTapGesture {
-                                            self.num = 1
                                             showingImagePicker = true
+                                            self.nowImgNum = 1
                                         }
                                 }
+                                
                                 VStack {
-                                    image2
+                                    images[1]
                                         .resizable()
                                         .frame(width: 150, height: 150)
                                         .clipShape(RoundedRectangle(cornerRadius: 20.0))
                                         .overlay(RoundedRectangle(cornerRadius: 20.0).stroke(Color.gray))
+                                    
                                     Text("사진 선택")
                                         .foregroundColor(Color.blue)
                                         .onTapGesture {
-                                            self.num = 2
                                             showingImagePicker = true
+                                            self.nowImgNum = 2
                                         }
                                 }
+                                
                                 VStack {
-                                    image3
+                                    images[2]
                                         .resizable()
                                         .frame(width: 150, height: 150)
                                         .clipShape(RoundedRectangle(cornerRadius: 20.0))
                                         .overlay(RoundedRectangle(cornerRadius: 20.0).stroke(Color.gray))
+                                    
                                     Text("사진 선택")
                                         .foregroundColor(Color.blue)
                                         .onTapGesture {
-                                            self.num = 3
                                             showingImagePicker = true
+                                            self.nowImgNum =  3
                                         }
                                 }
+                                
                             }.padding() // HStack
-                                .onChange(of: inputImage) { _ in loadImage(num: self.num) }
+                                .onChange(of: inputImage) { _ in loadImage(num: self.nowImgNum) }
                                 .sheet(isPresented: $showingImagePicker) {
                                     ImagePicker(image: $inputImage)}
                                 
@@ -232,35 +216,14 @@ struct AddStoreView: View {
                         alert_msg = "맛집 설명을 입력해주세요."
                     }
                     else { // 맛집 정보를 모두 올바르게 입력한 경우
-                        let store_ob : store = store( // 맛집 정보 객체 생성
-                            storeAddress : self.storeAddress,
-                            storeName : self.storeName,
-                            storeType : self.storeType,
-                            storeDayOff : self.storeDayOff,
-                            storeDescription : self.storeDescription
-                        )
-                        InsertData(store : store_ob) // 파이어스토어 데이터 삽입 함수
-                        if let UIImage1 = UIImage1 {
-                            InsertImage(image: UIImage1, name: "img1")
-                        }
-                        
-                        if let UIImage2 = UIImage2 {
-                            InsertImage(image: UIImage2, name: "img2")
-                        }
-                        
-                        if let UIImage3 = UIImage3 {
-                            InsertImage(image: UIImage3, name: "img3")
-                        }
-                            
-                        
-                        
-                        
+                        InsertData() // 파이어스토어 데이터 업로드
+                        InsertImage() // 파이어스토리지 이미지 업로드
                         homePresenting = false // Home 화면으로 Back
                         annotationTitle = storeName
                     }
-                    let str = String(coordinate.latitude)
-                    print(type(of: Double(str)!))
-                    
+
+                    print(coordinate)
+
                     //homePresenting = false
                 } label: { Text("등록")}
                     .alert(isPresented: self.$showingAlert) { // 알림 메시지 설정
@@ -269,7 +232,6 @@ struct AddStoreView: View {
             } // Form
             .navigationBarTitle("맛집 등록")
         } // VStack
-        
     } // body
 } // AddStoreView
 

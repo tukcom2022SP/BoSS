@@ -82,7 +82,8 @@ struct StoreInfoView: View {
                         
                         TabView{
                             ForEach(0..<3){ num in
-                                images[num]
+                                
+                                    images[num]
                                     .resizable()
                                     .scaledToFill()
                                      .tag(num)
