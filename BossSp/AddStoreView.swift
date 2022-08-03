@@ -38,19 +38,32 @@ struct AddStoreView: View {
     
     
     
-    
-    
+   
     func InsertData() { // 파이어베이스 데이터 업로드 함수
+        var storeCount = 0
         let db = Firestore.firestore() //
+        let ref = db.collection("store").document("count")
+        ref.getDocument { (document, error) in
+            if let document = document, document.exists {
+                if let cnt = document.get("storeCount") as? Int{
+                    storeCount = cnt
+                    storeCount += 1
+                    ref.setData(["storeCount" : storeCount])
+                    
+                    db.collection("stores").document("store\(storeCount)").setData([ // 데이터 저장
+                        "storeLatitude" : String(coordinate.latitude),
+                        "storeLongitude" : String(coordinate.longitude),
+                        "storeAddress" : storeAddress,
+                        "storeName" : storeName,
+                        "storeType" : "\(storeTypeArray[storeType])",
+                        "storeDayOff" : "\(storeDayOffArray[storeDayOff])",
+                        "storeDescription" : storeDescription])
+                }
+            }
+        }
         
-        db.collection("stores").document("store2").setData([ // 데이터 저장
-            "storeLatitude" : String(coordinate.latitude),
-            "storeLongitude" : String(coordinate.longitude),
-            "storeAddress" : storeAddress,
-            "storeName" : storeName,
-            "storeType" : storeType,
-            "storeDayOff" : "\(storeDayOffArray[storeDayOff])",
-            "storeDescription" : "\(storeTypeArray[storeType])"])
+        
+        
     }
     
     func InsertImage() { // 파이어스토리지 사진 업로드 함수

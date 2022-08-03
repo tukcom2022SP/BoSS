@@ -26,6 +26,7 @@ struct StoreInfoView: View {
     func FindData() { // 파이어베이스 데이터 조회 함수
         let db = Firestore.firestore() // 파이어베이스 인스턴스 초기화
         let ref = db.collection("stores")
+
         ref.whereField("storeLatitude", isEqualTo: String(coordinate.latitude))
             .whereField("storeLongitude", isEqualTo: String(coordinate.longitude))
             .getDocuments() { (querySnapshot, err) in
