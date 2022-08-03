@@ -21,8 +21,6 @@ struct Home: View {
     @State private var homePresenting: Bool = false
     @State private var annotationTitle: String = ""
     @State private var firstAppear: Bool = true
-    
-    @ObservedObject private var storeData : StoreData = StoreData()
     var body: some View {
         NavigationView{
             ZStack{
@@ -40,7 +38,7 @@ struct Home: View {
 //                            firstAppear = false
 //
 //                        }else{
-                            if !homePresenting{
+                        if !homePresenting && annotationTitle != ""{
                                 let newLocation = MKPointAnnotation()
                                 newLocation.coordinate = self.centerCoordinate
                                 newLocation.title = annotationTitle
@@ -48,6 +46,7 @@ struct Home: View {
                             }
 //                        }
                         
+                        annotationTitle = ""
                         AddStoreClick = false
                         print("---Home MapView onAppear \(homePresenting)---")
                     }
@@ -60,7 +59,7 @@ struct Home: View {
                 }
                 
                 NavigationLink(isActive: $showingPlaceDetails) {
-                    StoreInfoView(coordinate: self.selectedPlace?.coordinate ?? CLLocationCoordinate2D(latitude: 0, longitude: 0)) // title 또는 coordinate를 전달 후 StoreInfoView에서 데이터 처리?
+                    StoreInfoView(coordinate: self.selectedPlace?.coordinate ?? CLLocationCoordinate2D(latitude: 0, longitude: 0)) // title 또는 coordinate를 전달 후 StoreInfoView에서 데이터 처리
                 } label: {
                     EmptyView()
                 }
@@ -218,21 +217,6 @@ struct Home: View {
 //            }
 
         }// NavigationView
-//        .onAppear{
-//            print("---onAppear First---")
-//            if storeData.anno.isEmpty{
-//                print("추가")
-//                let mk = MKPointAnnotation()
-//                mk.coordinate = CLLocationCoordinate2D(latitude: 36, longitude: 128)
-//                storeData.anno.append(MKPointAnnotation())
-//                mk.coordinate = CLLocationCoordinate2D(latitude: 37, longitude: 128)
-//                storeData.anno.append(MKPointAnnotation())
-//                for i in 0..<storeData.anno.count{
-//                    self.locations.append(storeData.anno[i])
-//                }
-//            }
-//            print("추가 후")
-//        }
     }
 }
 
@@ -242,7 +226,3 @@ struct Home_Previews: PreviewProvider {
     }
 }
 
-
-class StoreData : ObservableObject{
-    @Published var anno: [MKPointAnnotation] = []
-}
