@@ -83,6 +83,7 @@ struct MapView: UIViewRepresentable {
                     let mk = MKPointAnnotation()
                     mk.coordinate = CLLocationCoordinate2D(latitude: Double(lat!)!, longitude: Double(long!)!)
                     mk.title = (document.get("storeName") as! String)
+                    mk.subtitle = "꾹 눌러 정보 보기"
                     view.addAnnotation(mk)
                     annotations.append(mk)
                 }
