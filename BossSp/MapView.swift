@@ -70,23 +70,23 @@ struct MapView: UIViewRepresentable {
         // db에 저장된 Store들을 불러옴
         // 각 Store의 title, coordinate를 annotation배열에 추가
         
-//        let db = Firestore.firestore()
-//        db.collection("stores").getDocuments(){ (querySnapshot, err) in
-//            if let err = err {
-//                    print("Error getting documents: \(err)")
-//            } else {
-//                for document in querySnapshot!.documents {
-//                    //print("\(document.documentID) => \(document.data())")
-//                    let lat = document.get("storeLatitude") as? String
-//                    let long = document.get("storeLongitude") as? String
-//                    let mk = MKPointAnnotation()
-//                    mk.coordinate = CLLocationCoordinate2D(latitude: Double(lat!)!, longitude: Double(long!)!)
-//                    mk.title = (document.get("storeName") as! String)
-//                    view.addAnnotation(mk)
-//
-//                }
-//            }
-//        }
+        let db = Firestore.firestore()
+        db.collection("stores").getDocuments(){ (querySnapshot, err) in
+            if let err = err {
+                    print("Error getting documents: \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                    //print("\(document.documentID) => \(document.data())")
+                    let lat = document.get("storeLatitude") as? String
+                    let long = document.get("storeLongitude") as? String
+                    let mk = MKPointAnnotation()
+                    mk.coordinate = CLLocationCoordinate2D(latitude: Double(lat!)!, longitude: Double(long!)!)
+                    mk.title = (document.get("storeName") as! String)
+                    view.addAnnotation(mk)
+                    annotations.append(mk)
+                }
+            }
+        }
         
         
         print("---makeUIView---")
