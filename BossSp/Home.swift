@@ -40,7 +40,7 @@ struct Home: View {
 //                            firstAppear = false
 //
 //                        }else{
-                            if !homePresenting{
+                        if !homePresenting && annotationTitle != ""{
                                 let newLocation = MKPointAnnotation()
                                 newLocation.coordinate = self.centerCoordinate
                                 newLocation.title = annotationTitle
