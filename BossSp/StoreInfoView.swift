@@ -9,6 +9,7 @@ import SwiftUI
 import MapKit
 import FirebaseFirestore
 import FirebaseStorage
+import FirebaseFirestoreSwift
 
 struct StoreInfoView: View {
     
@@ -34,6 +35,8 @@ struct StoreInfoView: View {
                     print("Error getting documents: \(err)")
                 } else {
                     for document in querySnapshot!.documents {
+                        var docName = document.documentID
+                        FindImage(docID: docName)
                         if let address = document.get("storeAddress") as? String {
                             storeAddress = address
                         }
@@ -55,12 +58,12 @@ struct StoreInfoView: View {
     }
         
     
-    func FindImage(){ // 파이어스토리지 사진 다운로드 함수
+    func FindImage(docID : String){ // 파이어스토리지 사진 다운로드 함수
         let storage = Storage.storage() // 파이어스토리지 인스턴스 초기화
         let storageRef = storage.reference()
     
         for num in 1...3 {
-            let img = storageRef.child("store1/img\(num).jpg")
+            let img = storageRef.child("\(docID)/img\(num).jpg")
             img.downloadURL { (url, error) in
                 if let url = url{
                     let data = NSData(contentsOf: url)
@@ -129,7 +132,7 @@ struct StoreInfoView: View {
         } // NavigationView
         .onAppear{
             FindData()
-            FindImage()
+           
             print(coordinate)
         }
     } // body

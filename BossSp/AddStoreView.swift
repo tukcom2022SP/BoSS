@@ -58,26 +58,25 @@ struct AddStoreView: View {
                         "storeType" : "\(storeTypeArray[storeType])",
                         "storeDayOff" : "\(storeDayOffArray[storeDayOff])",
                         "storeDescription" : storeDescription])
+                    
+                    
+                    // 파이어스토리지 사진 업로드
+                    let storage = Storage.storage() // 파이어스토리지 인스턴스 초기화
+                    let storageRef = storage.reference()
+                    
+                    for num in 0...2 {
+                        let imageRef = storageRef.child("store\(storeCount)/img\(num+1).jpg")
+                        let data = uiImages[num].jpegData(compressionQuality: 0.2)
+                        if let data = data {
+                            imageRef.putData(data)
+                        }
+                    }
                 }
             }
         }
-        
-        
-        
     }
     
-    func InsertImage() { // 파이어스토리지 사진 업로드 함수
-        let storage = Storage.storage() // 파이어스토리지 인스턴스 초기화
-        let storageRef = storage.reference()
-        
-        for num in 0...2 {
-            let imageRef = storageRef.child("store1/img\(num+1).jpg")
-            let data = uiImages[num].jpegData(compressionQuality: 0.2)
-            if let data = data {
-                imageRef.putData(data)
-            }
-        }
-    }
+
     
     func loadImage(num : Int) { // 갤러리에서 선택된 이미지를 현재 이미지에 적용하는 함수
         guard let inputImage = inputImage else { return }
@@ -230,7 +229,7 @@ struct AddStoreView: View {
                     }
                     else { // 맛집 정보를 모두 올바르게 입력한 경우
                         InsertData() // 파이어스토어 데이터 업로드
-                        InsertImage() // 파이어스토리지 이미지 업로드
+                       
                         homePresenting = false // Home 화면으로 Back
                         annotationTitle = storeName
                     }
