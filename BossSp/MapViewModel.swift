@@ -67,24 +67,24 @@ class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate{
         return mapView.centerCoordinate
     }
     
-    // AddStoreAnnotation Beta
-    func addStoreAnnotation(){
-        // 특정 위치에 핀 추가
-        let annotaion = MKPointAnnotation()
-        let center = mapView.centerCoordinate
-//        annotaion.coordinate = CLLocationCoordinate2D(latitude: 37, longitude: 128)
-        annotaion.coordinate = center
-        annotaion.title = "test"
-        
-        mapView.addAnnotation(annotaion)
-        
-        
-        // 핀 위치로 이동
-        let coordinateRegion = MKCoordinateRegion(center: annotaion.coordinate, latitudinalMeters: 100, longitudinalMeters: 100)
-        mapView.setRegion(coordinateRegion, animated: true)
-        mapView.setVisibleMapRect(mapView.visibleMapRect, animated: true)
-        
-    }
+//    // AddStoreAnnotation Beta
+//    func addStoreAnnotation(){
+//        // 특정 위치에 핀 추가
+//        let annotaion = MKPointAnnotation()
+//        let center = mapView.centerCoordinate
+////        annotaion.coordinate = CLLocationCoordinate2D(latitude: 37, longitude: 128)
+//        annotaion.coordinate = center
+//        annotaion.title = "test"
+//
+//        mapView.addAnnotation(annotaion)
+//
+//
+//        // 핀 위치로 이동
+//        let coordinateRegion = MKCoordinateRegion(center: annotaion.coordinate, latitudinalMeters: 100, longitudinalMeters: 100)
+//        mapView.setRegion(coordinateRegion, animated: true)
+//        mapView.setVisibleMapRect(mapView.visibleMapRect, animated: true)
+//
+//    }
     
     // Pick Search Result
     func selectPlace(place: Place){

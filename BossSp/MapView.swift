@@ -52,8 +52,9 @@ struct MapView: UIViewRepresentable {
     
     func makeCoordinator() -> Coordinator {
         print("---makeCoordinator---")
-
+        
         return MapView.Coordinator(self)
+        
     }
     func makeUIView(context: Context) -> MKMapView {
         let view = mapData.mapView
@@ -87,8 +88,6 @@ struct MapView: UIViewRepresentable {
                 }
             }
         }
-        
-        
         print("---makeUIView---")
         
         return view
