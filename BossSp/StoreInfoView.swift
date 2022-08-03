@@ -25,27 +25,34 @@ struct StoreInfoView: View {
     
     func FindData() { // 파이어베이스 데이터 조회 함수
         let db = Firestore.firestore() // 파이어베이스 인스턴스 초기화
-        let ref = db.collection("stores").document("store1")
-        ref.addSnapshotListener { (snapshot, error) in
-            if error == nil {
-                if let address = snapshot?.get("storeAddress") as? String {
-                    storeAddress = address
+        let ref = db.collection("stores")
+        ref.whereField("storeLatitude", isEqualTo: String(coordinate.latitude))
+            .whereField("storeLongitude", isEqualTo: String(coordinate.longitude))
+            .getDocuments() { (querySnapshot, err) in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                } else {
+                    for document in querySnapshot!.documents {
+                        if let address = document.get("storeAddress") as? String {
+                            storeAddress = address
+                        }
+                        if let name = document.get("storeName") as? String {
+                            storeName = name
+                        }
+                        if let type = document.get("storeType") as? String {
+                            storeType = type
+                        }
+                        if let dayOff = document.get("storeDayOff") as? String {
+                            storeDayOff = dayOff
+                        }
+                        if let desc = document.get("storeDescription") as? String {
+                            storeDescription = desc
+                        }
+                    }
                 }
-                if let name = snapshot?.get("storeName") as? String {
-                    storeName = name
-                }
-                if let type = snapshot?.get("storeType") as? String {
-                    storeType = type
-                }
-                if let dayOff = snapshot?.get("storeDayOff") as? String {
-                    storeDayOff = dayOff
-                }
-                if let desc = snapshot?.get("storeDescription") as? String {
-                    storeDescription = desc
-                }
-            }
         }
     }
+        
     
     func FindImage(){ // 파이어스토리지 사진 다운로드 함수
         let storage = Storage.storage() // 파이어스토리지 인스턴스 초기화
