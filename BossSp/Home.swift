@@ -39,11 +39,12 @@ struct Home: View {
 //
 //                        }else{
                         if !homePresenting && annotationTitle != ""{
-                                let newLocation = MKPointAnnotation()
-                                newLocation.coordinate = self.centerCoordinate
-                                newLocation.title = annotationTitle
-                                self.locations.append(newLocation)
-                            }
+                            let newLocation = MKPointAnnotation()
+                            newLocation.coordinate = self.centerCoordinate
+                            newLocation.title = annotationTitle
+                            newLocation.subtitle = "꾹 눌러 정보 보기"
+                            self.locations.append(newLocation)
+                        }
 //                        }
                         
                         annotationTitle = ""
