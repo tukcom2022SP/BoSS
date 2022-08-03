@@ -15,13 +15,10 @@ struct LoadingView: View {
         if isActive{
             ContentView()
         }else{
-            
             ZStack {
                 Color.yellow
                     .ignoresSafeArea()
                 VStack{
-                   
-
                     Image(systemName: "pawprint.fill")
                         .font(.system(size : 100))
                     Text("Test loading")
@@ -43,9 +40,7 @@ struct LoadingView: View {
                     withAnimation{
                         self.isActive = true
                     }
-                    
-        }
-       
+                }
             }
         }
     }
