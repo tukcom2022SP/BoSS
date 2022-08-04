@@ -26,6 +26,7 @@ struct MapView: UIViewRepresentable {
             if annotation.isKind(of: MKUserLocation.self){ return nil } // annotation이 User이면 annotation 표시 X
             else{
                 let pinAnnotation = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: "PIN_VIEW")
+
                 //pinAnnotation.tintColor = .red
                 //pinAnnotation.animatesDrop = true
                 pinAnnotation.canShowCallout = true
@@ -36,15 +37,27 @@ struct MapView: UIViewRepresentable {
 
         }
         func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-            print(view.annotation!.coordinate)
-        }
-        func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-            print("0")
-            // StoreInfoView로 이동하기 위한 절차
+            print("didSelect")
+            
+            // 핀 클릭 시 ShowCallout 보임
+            //print(view.annotation!.coordinate)
+            
+            // 핀 클릭 시 바로 StoreInfoView로 이동
             guard let placemark = view.annotation as? MKPointAnnotation else {return}
             parent.selectedPlace = placemark    // MKAnnotation ( title, subtitle, coordinate )
             parent.showingPlaceDetails = true
         }
+        
+//          // Callout tap시 StoreInfoView로 이동
+//        func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+//            print("0")
+//            // StoreInfoView로 이동하기 위한 절차
+//            guard let placemark = view.annotation as? MKPointAnnotation else {return}
+//            parent.selectedPlace = placemark    // MKAnnotation ( title, subtitle, coordinate )
+//            parent.showingPlaceDetails = true
+//
+//        }
+        
         func mapViewDidChangeVisibleRegion(_ mapView: MKMapView) {
             parent.centerCoordinate = mapView.centerCoordinate
         }
@@ -54,7 +67,6 @@ struct MapView: UIViewRepresentable {
         print("---makeCoordinator---")
         
         return MapView.Coordinator(self)
-        
     }
     func makeUIView(context: Context) -> MKMapView {
         let view = mapData.mapView
@@ -83,7 +95,7 @@ struct MapView: UIViewRepresentable {
                     let mk = MKPointAnnotation()
                     mk.coordinate = CLLocationCoordinate2D(latitude: Double(lat!)!, longitude: Double(long!)!)
                     mk.title = (document.get("storeName") as! String)
-                    mk.subtitle = "꾹 눌러 정보 보기"
+                    //mk.subtitle = "꾹 눌러 정보 보기"
                     view.addAnnotation(mk)
                     annotations.append(mk)
                 }
