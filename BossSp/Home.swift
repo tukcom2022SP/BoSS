@@ -42,7 +42,7 @@ struct Home: View {
                             let newLocation = MKPointAnnotation()
                             newLocation.coordinate = self.centerCoordinate
                             newLocation.title = annotationTitle
-                            newLocation.subtitle = "꾹 눌러 정보 보기"
+                            //newLocation.subtitle = "꾹 눌러 정보 보기"
                             self.locations.append(newLocation)
                         }
 //                        }
