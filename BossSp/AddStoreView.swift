@@ -27,7 +27,7 @@ struct AddStoreView: View {
     @State var placeholder: String = "맛집 설명을 입력해주세요." // 설명 TextEditor placeholder
     
     @State private var images : [Image] = [Image(""), Image(""), Image("")]
-    @State private var uiImages : [UIImage] = [UIImage(systemName: "xmark")!, UIImage(systemName: "xmark")!, UIImage(systemName: "xmark")!]
+    @State private var uiImages : [UIImage] = [UIImage(named: "NoImage")!, UIImage(named: "NoImage")!, UIImage(named: "NoImage")!]
     @State private var nowImgNum = 0 // 현재 선택된 이미지 번호
 
     @State private var showingImagePicker = false // 이미지 피커 표시 여부

@@ -90,24 +90,17 @@ struct StoreInfoView: View {
                             ForEach(0..<3){ num in
                                     images[num]
                                     .resizable()
-                                    .scaledToFill()
-                                    .tag(num)
                             }
                         }
                         .tabViewStyle(PageTabViewStyle())
-                        .clipShape(RoundedRectangle(cornerRadius: 5))
-                        .padding()
-                        .frame(width: proxy.size.width, height: proxy.size.height / 3)
-                        
+                        .frame(minWidth: 0, maxWidth: .infinity, minHeight:300, maxHeight: 300)
                         Text("\(storeDescription)")
                             .font(.title3)
                             .fontWeight(.regular)
                             .foregroundColor(Color.black)
                             .frame(width: 300, height: 300)
-                        
                         HStack {
-                            Text("휴무 ")
-                            
+                            Text("휴무 : ")
                             Text("\(storeDayOff)")
                                 .font(.headline)
                                 .fontWeight(.regular)
