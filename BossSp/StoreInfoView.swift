@@ -98,6 +98,7 @@ struct StoreInfoView: View {
                         .clipShape(RoundedRectangle(cornerRadius: 5))
                         .padding()
                         .frame(width: proxy.size.width, height: proxy.size.height / 3)
+                        
                         Text("\(storeDescription)")
                             .font(.title3)
                             .fontWeight(.regular)
@@ -125,11 +126,13 @@ struct StoreInfoView: View {
     } // body
 } // StoreInfoView
 
-struct StoreInfoView_Previews: PreviewProvider {
-    static var previews: some View {
-        StoreInfoView(coordinate: CLLocationCoordinate2D(latitude: 30, longitude: 30))
-            .previewInterfaceOrientation(.portrait)
-    }
-}
+//struct StoreInfoView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        StoreInfoView(coordinate: CLLocationCoordinate2D(latitude: 30, longitude: 30))
+//            .previewInterfaceOrientation(.portrait)
+//    }
+//}
+
+
 
         

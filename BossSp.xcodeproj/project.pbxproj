@@ -14,6 +14,9 @@
 		492086C32895BFF500F24336 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492086C22895BFF500F24336 /* ImagePicker.swift */; };
 		495A26C82890FD4C003B1A8D /* AddStoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495A26C72890FD4C003B1A8D /* AddStoreView.swift */; };
 		49676BAF2893CF9C00C03B50 /* StoreInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49676BAE2893CF9C00C03B50 /* StoreInfoView.swift */; };
+		49C9CFF8289CE2ED0042BC80 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 49C9CFF7289CE2ED0042BC80 /* FirebaseAuth */; };
+		49C9CFFB289CE40F0042BC80 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 49C9CFFA289CE40F0042BC80 /* GoogleSignIn */; };
+		49C9CFFD289CE40F0042BC80 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 49C9CFFC289CE40F0042BC80 /* GoogleSignInSwift */; };
 		575D98072893AC7800DD3B18 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575D98062893AC7700DD3B18 /* Place.swift */; };
 		57E0C8272892B98E005D50A6 /* MypageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E0C8262892B98E005D50A6 /* MypageView.swift */; };
 		57F16669288FBC16000CEDCE /* BossSpApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F16668288FBC16000CEDCE /* BossSpApp.swift */; };
@@ -50,9 +53,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49C9CFFB289CE40F0042BC80 /* GoogleSignIn in Frameworks */,
 				491FE0AB289163350076A268 /* FirebaseFirestore in Frameworks */,
 				491FE0B1289163350076A268 /* FirebaseStorage in Frameworks */,
+				49C9CFFD289CE40F0042BC80 /* GoogleSignInSwift in Frameworks */,
 				491FE0AF289163350076A268 /* FirebaseFirestoreSwift in Frameworks */,
+				49C9CFF8289CE2ED0042BC80 /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -133,6 +139,9 @@
 				491FE0AA289163350076A268 /* FirebaseFirestore */,
 				491FE0AE289163350076A268 /* FirebaseFirestoreSwift */,
 				491FE0B0289163350076A268 /* FirebaseStorage */,
+				49C9CFF7289CE2ED0042BC80 /* FirebaseAuth */,
+				49C9CFFA289CE40F0042BC80 /* GoogleSignIn */,
+				49C9CFFC289CE40F0042BC80 /* GoogleSignInSwift */,
 			);
 			productName = BossSp;
 			productReference = 57F16665288FBC15000CEDCE /* BossSp.app */;
@@ -164,6 +173,7 @@
 			mainGroup = 57F1665C288FBC15000CEDCE;
 			packageReferences = (
 				491FE0A9289163350076A268 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				49C9CFF9289CE40F0042BC80 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 			);
 			productRefGroup = 57F16666288FBC15000CEDCE /* Products */;
 			projectDirPath = "";
@@ -417,6 +427,14 @@
 				minimumVersion = 9.0.0;
 			};
 		};
+		49C9CFF9289CE40F0042BC80 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -434,6 +452,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 491FE0A9289163350076A268 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
+		};
+		49C9CFF7289CE2ED0042BC80 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 491FE0A9289163350076A268 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		49C9CFFA289CE40F0042BC80 /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 49C9CFF9289CE40F0042BC80 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
+		};
+		49C9CFFC289CE40F0042BC80 /* GoogleSignInSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 49C9CFF9289CE40F0042BC80 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignInSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
