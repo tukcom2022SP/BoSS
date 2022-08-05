@@ -149,15 +149,7 @@ struct Home: View {
                         }
                         
                         Button { // 추가
-                            //mapData.updateMapType()
-                            //mapData.addStoreAnnotation()
-                            let newLocation = MKPointAnnotation()
-                            newLocation.coordinate = self.centerCoordinate
-                            newLocation.title = "Test"
-                            newLocation.subtitle = "꾹 눌러 정보 보기"
-                            print("추가 전 \(self.locations.count)")
-                            self.locations.append(newLocation)
-                            print("추가 후 \(self.locations.count)")
+                            mapData.updateMapType()
                         } label: {
                             Image(systemName: mapData.mapType == .standard ? "network" : "map")
                                 .font(.title2)
@@ -167,19 +159,38 @@ struct Home: View {
                                 .clipShape(Circle())
                         }
                         
-                        Button { // 삭제
-                            //mapData.updateMapType()
-                            //mapData.addStoreAnnotation()
-                            let count = locations.count
-                            self.locations.remove(at: count-1)
-                        } label: {
-                            Image(systemName: mapData.mapType == .standard ? "network" : "map")
-                                .font(.title2)
-                                .padding(10)
-                                .background(Color.yellow)
-                                .foregroundColor(.black)
-                                .clipShape(Circle())
-                        }
+//                        Button { // 추가
+//                            //mapData.updateMapType()
+//                            //mapData.addStoreAnnotation()
+//                            let newLocation = MKPointAnnotation()
+//                            newLocation.coordinate = self.centerCoordinate
+//                            newLocation.title = "Test"
+//                            newLocation.subtitle = "꾹 눌러 정보 보기"
+//                            print("추가 전 \(self.locations.count)")
+//                            self.locations.append(newLocation)
+//                            print("추가 후 \(self.locations.count)")
+//                        } label: {
+//                            Image(systemName: mapData.mapType == .standard ? "network" : "map")
+//                                .font(.title2)
+//                                .padding(10)
+//                                .background(Color.yellow)
+//                                .foregroundColor(.black)
+//                                .clipShape(Circle())
+//                        }
+                        
+//                        Button { // 삭제
+//                            //mapData.updateMapType()
+//                            //mapData.addStoreAnnotation()
+//                            let count = locations.count
+//                            self.locations.remove(at: count-1)
+//                        } label: {
+//                            Image(systemName: mapData.mapType == .standard ? "network" : "map")
+//                                .font(.title2)
+//                                .padding(10)
+//                                .background(Color.yellow)
+//                                .foregroundColor(.black)
+//                                .clipShape(Circle())
+//                        }
                     }
                     .frame(maxWidth: .infinity, alignment: .trailing)
                     .padding(5)
