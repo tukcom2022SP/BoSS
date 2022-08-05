@@ -90,13 +90,10 @@ struct StoreInfoView: View {
                             ForEach(0..<3){ num in
                                     images[num]
                                     .resizable()
-                                    .scaledToFill()
-                                    .tag(num)
                             }
                         }
                         .tabViewStyle(PageTabViewStyle())
-                        .clipShape(RoundedRectangle(cornerRadius: 5))
-                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 250, maxHeight: 250)
+                        .frame(minWidth: 0, maxWidth: .infinity, minHeight:300, maxHeight: 300)
                         Text("\(storeDescription)")
                             .font(.title3)
                             .fontWeight(.regular)
