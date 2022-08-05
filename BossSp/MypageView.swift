@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MypageView: View {
-   
+    @EnvironmentObject var viewModel: AuthenticationViewModel
     @State private var presentAlert = false
     @State var userName = ""// 닉네임
     @State var selfIntro = ""//자기 소개
@@ -17,6 +17,7 @@ struct MypageView: View {
     @State private var showingImagePicker = false // 이미지 피커 표시 여부
     @State private var inputImage: UIImage? // 갤러리에서 선택된 이미지
     @State private var editState: Bool = false
+    @State private var showingAlert = false
     
     func loadImage(num : Int) { // 갤러리에서 선택된 이미지를 현재 이미지에 적용하는 함수
         guard let inputImage = inputImage else { return }
@@ -117,19 +118,32 @@ struct MypageView: View {
                             .overlay(RoundedRectangle(cornerRadius: 20.0).stroke(Color.gray))
                     }
                     
+                    Button {
+                        self.showingAlert.toggle()
+                    } label: {
+                        Text("Sign out")
+                          .foregroundColor(.white)
+                          .padding()
+                          .frame(maxWidth: .infinity)
+                          .background(Color(.systemIndigo))
+                          .cornerRadius(12)
+                          .padding()
+                    }.alert(isPresented: $showingAlert) {
+                        Alert(title: Text("Log out"), message: Text("로그아웃 하시겠습니까?"), primaryButton: .destructive(Text("로그아웃"), action: {
+                            viewModel.signOut()
+                            //some Action
+                        }), secondaryButton: .cancel(Text("취소")))
+                    }
+
                     
                 }
+                .padding()
                 
             }
         }
         
     }
     
-}
-struct MypageView_Previews: PreviewProvider {
-    static var previews: some View {
-        MypageView()
-    }
 }
 
 
