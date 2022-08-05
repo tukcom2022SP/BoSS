@@ -16,6 +16,9 @@ class AuthenticationViewModel: ObservableObject{
     }
     
     @Published var state: SignInState = .signedOut
+    func getUserEmail() -> String{
+        return GIDSignIn.sharedInstance.currentUser?.profile!.email ?? ""
+    }
     
     func signIn() {
       // 1

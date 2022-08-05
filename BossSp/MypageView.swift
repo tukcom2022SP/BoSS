@@ -82,7 +82,6 @@ struct MypageView: View {
                 
                 VStack(alignment: .leading){
         
-                        
                     Text("닉네임") // 맛집 이름 입력 섹션
                         .font(.title2)
                         .fontWeight(.bold)
@@ -90,12 +89,12 @@ struct MypageView: View {
                         .padding(EdgeInsets(top: 20, leading: 0, bottom: 0, trailing: 0))
                     if editState{
                         TextField(self.userName, text: $userName)
-                            .frame(width: 310.0, height: 20.0)
+                            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 20, maxHeight: 20)
                             .padding(10)
                             .overlay(RoundedRectangle(cornerRadius: 10.0).stroke(.gray))
                     }else{
                         Text("\(userName)")
-                            .frame(width: 310.0, height: 20.0, alignment: .leading)
+                            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 20, maxHeight: 20)
                             .padding(10)
                             .overlay(RoundedRectangle(cornerRadius: 10.0).stroke(Color.gray))
                     }
@@ -108,42 +107,46 @@ struct MypageView: View {
                         .foregroundColor(Color.black)
                     if editState{
                         TextField(self.selfIntro, text: $selfIntro)
-                            .frame(width: 310.0, height: 250.0)
+                            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 200, maxHeight: 200)
                             .padding(10)
                             .overlay(RoundedRectangle(cornerRadius: 20.0).stroke(.gray))
                     }else{
                         Text("\(selfIntro)")
-                            .frame(width: 310.0, height: 250.0, alignment: .leading)
+                            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 200, maxHeight: 200)
                             .padding(10)
                             .overlay(RoundedRectangle(cornerRadius: 20.0).stroke(Color.gray))
                     }
                     
-                    Button {
-                        self.showingAlert.toggle()
-                    } label: {
-                        Text("Sign out")
-                          .foregroundColor(.white)
-                          .padding()
-                          .frame(maxWidth: .infinity)
-                          .background(Color(.systemIndigo))
-                          .cornerRadius(12)
-                          .padding()
-                    }.alert(isPresented: $showingAlert) {
-                        Alert(title: Text("Log out"), message: Text("로그아웃 하시겠습니까?"), primaryButton: .destructive(Text("로그아웃"), action: {
-                            viewModel.signOut()
-                            //some Action
-                        }), secondaryButton: .cancel(Text("취소")))
-                    }
+                    VStack {
+                        Button {
+                            self.showingAlert.toggle()
+                        } label: {
+                            Text("Sign out")
+                              .foregroundColor(.white)
+                              .padding()
+                              .frame(maxWidth: .infinity)
+                              .background(Color(.systemRed))
+                              .cornerRadius(12)
+                              .padding()
+                        }.alert(isPresented: $showingAlert) {
+                            Alert(title: Text("Log out"), message: Text("로그아웃 하시겠습니까?"), primaryButton: .destructive(Text("로그아웃"), action: {
+                                viewModel.signOut()
+                                //some Action
+                            }), secondaryButton: .cancel(Text("취소")))
+                        }
+                    }.padding(.horizontal, 60)
 
                     
                 }
                 .padding()
                 
             }
+            .onAppear{
+                print(viewModel.getUserEmail())
+            }
         }
         
     }
     
 }
-
 
