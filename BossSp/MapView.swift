@@ -31,7 +31,7 @@ struct MapView: UIViewRepresentable {
                 //pinAnnotation.animatesDrop = true
                 pinAnnotation.canShowCallout = true
                 pinAnnotation.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
-
+                
                 return pinAnnotation
             }
 
@@ -79,9 +79,6 @@ struct MapView: UIViewRepresentable {
 //        annotaion.coordinate = CLLocationCoordinate2D(latitude: 37, longitude: 128)
 //        annotaion.title = "test"
 //        view.addAnnotation(annotaion)
-        
-        // db에 저장된 Store들을 불러옴
-        // 각 Store의 title, coordinate를 annotation배열에 추가
         
         let db = Firestore.firestore()
         db.collection("stores").getDocuments(){ (querySnapshot, err) in
