@@ -96,18 +96,14 @@ struct StoreInfoView: View {
                         }
                         .tabViewStyle(PageTabViewStyle())
                         .clipShape(RoundedRectangle(cornerRadius: 5))
-                        .padding()
-                        .frame(width: proxy.size.width, height: proxy.size.height / 3)
-                        
+                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 250, maxHeight: 250)
                         Text("\(storeDescription)")
                             .font(.title3)
                             .fontWeight(.regular)
                             .foregroundColor(Color.black)
                             .frame(width: 300, height: 300)
-                        
                         HStack {
-                            Text("휴무 ")
-                            
+                            Text("휴무 : ")
                             Text("\(storeDayOff)")
                                 .font(.headline)
                                 .fontWeight(.regular)
