@@ -21,6 +21,7 @@ struct Home: View {
     @State private var homePresenting: Bool = false
     @State private var annotationTitle: String = ""
     @State private var firstAppear: Bool = true
+    
     var body: some View {
         NavigationView{
             ZStack{
@@ -34,10 +35,6 @@ struct Home: View {
                         AddStoreClick = false
                     }
                     .onAppear{
-//                        if firstAppear{
-//                            firstAppear = false
-//
-//                        }else{
                         if !homePresenting && annotationTitle != ""{
                             let newLocation = MKPointAnnotation()
                             newLocation.coordinate = self.centerCoordinate
@@ -45,7 +42,7 @@ struct Home: View {
                             //newLocation.subtitle = "꾹 눌러 정보 보기"
                             self.locations.append(newLocation)
                         }
-//                        }
+
                         
                         annotationTitle = ""
                         AddStoreClick = false
@@ -227,8 +224,11 @@ struct Home: View {
 //
 //                })
 //            }
-
         }// NavigationView
+        .onAppear{
+            @ObservedObject var storeModel = StoreModel.shared
+            print(storeModel.stores)
+        }
     }
 }
 

@@ -36,7 +36,7 @@ struct AddStoreView: View {
     @State private var showingAlert = false // 알림창 여부
     @State private var alert_msg = "" // 알림 메시지 내용
     
-    
+    @ObservedObject var storeModel = StoreModel.shared
     
    
     func InsertData() { // 파이어베이스 데이터 업로드 함수
@@ -232,6 +232,12 @@ struct AddStoreView: View {
                        
                         homePresenting = false // Home 화면으로 Back
                         annotationTitle = storeName
+                        
+                        storeModel.stores.append((
+                            strName: storeName,
+                            strAddress: storeAddress,
+                            strDescript: storeDescription,
+                            strType: storeTypeArray[storeType]))
                     }
 
                     print(coordinate)
