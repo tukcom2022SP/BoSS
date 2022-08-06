@@ -21,6 +21,7 @@ struct Home: View {
     @State private var homePresenting: Bool = false
     @State private var annotationTitle: String = ""
     @State private var firstAppear: Bool = true
+    
     var body: some View {
         NavigationView{
             ZStack{
@@ -30,22 +31,16 @@ struct Home: View {
                     .environmentObject(mapData)
                     .ignoresSafeArea(.all, edges: .all)
                     .onTapGesture {
-                        //mapData.updateMapType()
                         AddStoreClick = false
                     }
                     .onAppear{
-//                        if firstAppear{
-//                            firstAppear = false
-//
-//                        }else{
                         if !homePresenting && annotationTitle != ""{
                             let newLocation = MKPointAnnotation()
                             newLocation.coordinate = self.centerCoordinate
                             newLocation.title = annotationTitle
-                            //newLocation.subtitle = "꾹 눌러 정보 보기"
                             self.locations.append(newLocation)
                         }
-//                        }
+
                         
                         annotationTitle = ""
                         AddStoreClick = false
@@ -60,7 +55,7 @@ struct Home: View {
                 }
                 
                 NavigationLink(isActive: $showingPlaceDetails) {
-                    StoreInfoView(coordinate: self.selectedPlace?.coordinate ?? CLLocationCoordinate2D(latitude: 0, longitude: 0)) // title 또는 coordinate를 전달 후 StoreInfoView에서 데이터 처리
+                    StoreInfoView(coordinate: self.selectedPlace?.coordinate ?? CLLocationCoordinate2D(latitude: 0, longitude: 0))
                 } label: {
                     EmptyView()
                 }
@@ -107,7 +102,6 @@ struct Home: View {
                     VStack{
                         if AddStoreClick{
                             NavigationLink(
-//                                AddStoreView(coordinate: mapData.getCenterCoordinate())
                                 destination: AddStoreView(
                                     homePresenting: $homePresenting,
                                     annotationTitle: $annotationTitle,
@@ -227,8 +221,11 @@ struct Home: View {
 //
 //                })
 //            }
-
         }// NavigationView
+        .onAppear{
+            @ObservedObject var storeModel = StoreModel.shared
+            print(storeModel.stores)
+        }
     }
 }
 

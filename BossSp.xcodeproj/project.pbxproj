@@ -30,6 +30,7 @@
 		57FD2721289CEE4100D188C7 /* GoogleSignInButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FD2720289CEE4100D188C7 /* GoogleSignInButton.swift */; };
 		57FD2723289CEE5F00D188C7 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FD2722289CEE5F00D188C7 /* LoginView.swift */; };
 		57FD2725289CEE8F00D188C7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FD2724289CEE8F00D188C7 /* ContentView.swift */; };
+		57FD2727289D6CC900D188C7 /* StoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FD2726289D6CC900D188C7 /* StoreModel.swift */; };
 		A390B08A2897A4C3006769E0 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A390B0892897A4C2006769E0 /* LoadingView.swift */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +54,7 @@
 		57FD2720289CEE4100D188C7 /* GoogleSignInButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSignInButton.swift; sourceTree = "<group>"; };
 		57FD2722289CEE5F00D188C7 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		57FD2724289CEE8F00D188C7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		57FD2726289D6CC900D188C7 /* StoreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreModel.swift; sourceTree = "<group>"; };
 		A390B0892897A4C2006769E0 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -119,6 +121,7 @@
 				57FD2720289CEE4100D188C7 /* GoogleSignInButton.swift */,
 				57FD2722289CEE5F00D188C7 /* LoginView.swift */,
 				57FD2724289CEE8F00D188C7 /* ContentView.swift */,
+				57FD2726289D6CC900D188C7 /* StoreModel.swift */,
 			);
 			path = BossSp;
 			sourceTree = "<group>";
@@ -217,6 +220,7 @@
 				57FD271F289CE7ED00D188C7 /* AuthenticationViewModel.swift in Sources */,
 				49676BAF2893CF9C00C03B50 /* StoreInfoView.swift in Sources */,
 				57F97BE928938B7F0088A544 /* MapView.swift in Sources */,
+				57FD2727289D6CC900D188C7 /* StoreModel.swift in Sources */,
 				57E0C8272892B98E005D50A6 /* MypageView.swift in Sources */,
 				A390B08A2897A4C3006769E0 /* LoadingView.swift in Sources */,
 				57F1666B288FBC16000CEDCE /* MainView.swift in Sources */,
@@ -269,6 +273,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = YG345ZHUP7;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -329,6 +334,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = YG345ZHUP7;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -357,10 +363,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BossSp/Preview Content\"";
-				DEVELOPMENT_TEAM = YG345ZHUP7;
+				DEVELOPMENT_TEAM = 5DFZR8RCQR;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BossSp/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = jd;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "\"현재 위치 사용을 허가하시겠습니까?\"";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -373,7 +380,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = kr.ac.tukorea.ce.ios.BossSp;
+				PRODUCT_BUNDLE_IDENTIFIER = kr.ac.tukorea.sw.ios.BossSp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -389,10 +396,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BossSp/Preview Content\"";
-				DEVELOPMENT_TEAM = YG345ZHUP7;
+				DEVELOPMENT_TEAM = 5DFZR8RCQR;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BossSp/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = jd;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "\"현재 위치 사용을 허가하시겠습니까?\"";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -405,7 +413,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = kr.ac.tukorea.ce.ios.BossSp;
+				PRODUCT_BUNDLE_IDENTIFIER = kr.ac.tukorea.sw.ios.BossSp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

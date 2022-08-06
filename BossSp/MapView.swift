@@ -10,6 +10,8 @@ import MapKit
 import FirebaseFirestore
 
 struct MapView: UIViewRepresentable {
+    @ObservedObject var storeModel = StoreModel.shared
+    
     @Binding var centerCoordinate : CLLocationCoordinate2D
     @Binding var selectedPlace: MKPointAnnotation?
     @Binding var showingPlaceDetails: Bool
@@ -29,8 +31,8 @@ struct MapView: UIViewRepresentable {
 
                 //pinAnnotation.tintColor = .red
                 //pinAnnotation.animatesDrop = true
-                pinAnnotation.canShowCallout = true
-                pinAnnotation.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+                //pinAnnotation.canShowCallout = true
+                //pinAnnotation.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
                 
                 return pinAnnotation
             }
@@ -69,6 +71,7 @@ struct MapView: UIViewRepresentable {
         return MapView.Coordinator(self)
     }
     func makeUIView(context: Context) -> MKMapView {
+        print("---makeUIView---")
         let view = mapData.mapView
         
         view.showsUserLocation = true
@@ -79,12 +82,13 @@ struct MapView: UIViewRepresentable {
 //        annotaion.coordinate = CLLocationCoordinate2D(latitude: 37, longitude: 128)
 //        annotaion.title = "test"
 //        view.addAnnotation(annotaion)
-        
+
         let db = Firestore.firestore()
         db.collection("stores").getDocuments(){ (querySnapshot, err) in
             if let err = err {
                     print("Error getting documents: \(err)")
             } else {
+                storeModel.stores.removeAll()
                 for document in querySnapshot!.documents {
                     //print("\(document.documentID) => \(document.data())")
                     let lat = document.get("storeLatitude") as? String
@@ -95,10 +99,15 @@ struct MapView: UIViewRepresentable {
                     //mk.subtitle = "꾹 눌러 정보 보기"
                     view.addAnnotation(mk)
                     annotations.append(mk)
+                
+                    storeModel.stores.append((strName: document.get("storeName") as! String,
+                                               strAddress: document.get("storeAddress") as! String,
+                                               strDescript: document.get("storeDescription") as! String,
+                                               strType: document.get("storeType") as! String))
                 }
             }
         }
-        print("---makeUIView---")
+        
         
         return view
         
