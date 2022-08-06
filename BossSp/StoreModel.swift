@@ -1,9 +1,3 @@
-//
-//  StoreInfoList.swift
-//  BossSp
-//
-//  Created by 이정동 on 2022/08/06.
-//
 
 import Foundation
 
@@ -12,10 +6,10 @@ class StoreModel: ObservableObject {
     
     @Published var stores : [
         (
-            strName: String,
-            strAddress: String,
-            strDescript: String,
-            strType: String
+            strName: String,        // 음식점 이름
+            strAddress: String,     // 음식점 주소
+            strDescript: String,    // 음식점 설명
+            strType: String         // 음식점 종류 (한식, 일식, ...)
         )
     ] = []
     
