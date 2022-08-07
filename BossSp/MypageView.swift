@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct MypageView: View {
     @EnvironmentObject var viewModel: AuthenticationViewModel
@@ -18,6 +19,10 @@ struct MypageView: View {
     @State private var inputImage: UIImage? // 갤러리에서 선택된 이미지
     @State private var editState: Bool = false
     @State private var showingAlert = false
+    
+    @Binding var tabSelection: Int
+    
+    @ObservedObject var mapData = MapDataModel.shared.mapData
     
     func loadImage(num : Int) { // 갤러리에서 선택된 이미지를 현재 이미지에 적용하는 함수
         guard let inputImage = inputImage else { return }
@@ -134,6 +139,16 @@ struct MypageView: View {
                                 //some Action
                             }), secondaryButton: .cancel(Text("취소")))
                         }
+                        
+                        
+                        Button {
+                            tabSelection = 1
+                            mapData.setMapRegion(coordinate: CLLocationCoordinate2D(latitude: 37, longitude: 128))
+                        } label: {
+                            Image(systemName: "person")
+                        }
+
+
                     }.padding(.horizontal, 60)
 
                     

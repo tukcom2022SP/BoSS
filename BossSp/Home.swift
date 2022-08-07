@@ -10,17 +10,16 @@ import MapKit
 import CoreLocation
 
 struct Home: View {
-    @StateObject var mapData = MapViewModel()
+    //@StateObject var mapData = MapViewModel()
+    @StateObject var mapData = MapDataModel.shared.mapData
     @State var locationManager = CLLocationManager()
     @State private var centerCoordinate = CLLocationCoordinate2D()
     @State private var locations = [MKPointAnnotation]()
     @State private var selectedPlace : MKPointAnnotation?
     @State private var showingPlaceDetails = false
-    
     @State private var AddStoreClick = false
     @State private var homePresenting: Bool = false
     @State private var annotationTitle: String = ""
-    @State private var firstAppear: Bool = true
     
     var body: some View {
         NavigationView{
@@ -223,8 +222,7 @@ struct Home: View {
 //            }
         }// NavigationView
         .onAppear{
-            @ObservedObject var storeModel = StoreModel.shared
-            print(storeModel.stores)
+            
         }
     }
 }
