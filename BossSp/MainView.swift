@@ -11,8 +11,10 @@ import CoreLocation
 struct MainView: View {
     @StateObject var mapData = MapViewModel()
     @State var locationManager = CLLocationManager()
+    @State private var tabSelection = 1
+    
     var body: some View {
-        TabView{
+        TabView(selection: $tabSelection){
             Home()
                 .tabItem {
                     Image(systemName: "map")
@@ -21,12 +23,14 @@ struct MainView: View {
                 .environmentObject(mapData)
                 .ignoresSafeArea(.all, edges: .all)
                 .padding(.vertical,0.1)
+                .tag(1)
             
-            MypageView()
+            MypageView(tabSelection: $tabSelection)
                 .tabItem {
                     Image(systemName: "person")
                     Text("내정보")
                 }
+                .tag(2)
         }
         .accentColor(Color.yellow)
         .onAppear(){

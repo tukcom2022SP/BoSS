@@ -72,7 +72,7 @@ class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate{
 //        // 특정 위치에 핀 추가
 //        let annotaion = MKPointAnnotation()
 //        let center = mapView.centerCoordinate
-////        annotaion.coordinate = CLLocationCoordinate2D(latitude: 37, longitude: 128)
+//        annotaion.coordinate = CLLocationCoordinate2D(latitude: 37, longitude: 128)
 //        annotaion.coordinate = center
 //        annotaion.title = "test"
 //
@@ -85,6 +85,12 @@ class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate{
 //        mapView.setVisibleMapRect(mapView.visibleMapRect, animated: true)
 //
 //    }
+    
+    func setMapRegion(coordinate: CLLocationCoordinate2D){
+        let coordiateRegion = MKCoordinateRegion(center: coordinate, latitudinalMeters: 100, longitudinalMeters: 100)
+        mapView.setRegion(coordiateRegion, animated: true)
+        mapView.setVisibleMapRect(mapView.visibleMapRect, animated: true)
+    }
     
     // Pick Search Result
     func selectPlace(place: Place){
