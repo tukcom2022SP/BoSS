@@ -99,13 +99,6 @@ struct StoreInfoView: View {
                             .fontWeight(.regular)
                             .foregroundColor(Color.black)
                             .frame(width: 300, height: 300)
-                        HStack {
-                            Text("휴무 : ")
-                            Text("\(storeDayOff)")
-                                .font(.headline)
-                                .fontWeight(.regular)
-                                .foregroundColor(Color.gray)
-                        }
                     }
                 } //VStack
             } // ScrollView
