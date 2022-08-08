@@ -74,17 +74,14 @@ struct StoreInfoView: View {
                         Text("\(storeType)")
                             .font(.headline)
                             .fontWeight(.regular)
-                            .foregroundColor(Color.gray)
                         
                         Text("\(storeName)")
                             .font(.largeTitle)
                             .fontWeight(.heavy)
-                            .foregroundColor(Color.black)
 
                         Text("\(storeAddress)")
                             .font(.headline)
                             .fontWeight(.regular)
-                            .foregroundColor(Color.gray)
                         
                         TabView{
                             ForEach(0..<3){ num in
