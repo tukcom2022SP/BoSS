@@ -25,12 +25,19 @@ struct MainView: View {
                 .padding(.vertical,0.1)
                 .tag(1)
             
-            MypageView(tabSelection: $tabSelection)
+            StoreListView(tabSelection: $tabSelection)
+                .tabItem {
+                    Image(systemName: "list.bullet")
+                    Text("맛집 리스트")
+                }
+                .tag(2)
+            
+            MypageView()
                 .tabItem {
                     Image(systemName: "person")
                     Text("내정보")
                 }
-                .tag(2)
+                .tag(3)
         }
         .accentColor(Color.yellow)
         .onAppear(){

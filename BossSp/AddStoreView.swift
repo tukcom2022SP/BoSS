@@ -237,7 +237,9 @@ struct AddStoreView: View {
                             strName: storeName,
                             strAddress: storeAddress,
                             strDescript: storeDescription,
-                            strType: storeTypeArray[storeType]))
+                            strType: storeTypeArray[storeType],
+                            strLatitude: String(coordinate.latitude),
+                            strLongitude: String(coordinate.longitude)))
                     }
 
                     print(coordinate)
