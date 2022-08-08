@@ -11,6 +11,18 @@ import FirebaseFirestore
 import FirebaseStorage
 import FirebaseFirestoreSwift
 
+extension Color {
+  init(_ hex: UInt, alpha: Double = 1) {
+    self.init(
+      .sRGB,
+      red: Double((hex >> 16) & 0xFF) / 255,
+      green: Double((hex >> 8) & 0xFF) / 255,
+      blue: Double(hex & 0xFF) / 255,
+      opacity: alpha
+    )
+  }
+}
+
 struct StoreInfoView: View {
     
     @State private var storeAddress = "" // 맛집 주소
@@ -67,25 +79,42 @@ struct StoreInfoView: View {
     }
         
     var body: some View {
-        NavigationView {
-            GeometryReader{ proxy in
-                ScrollView{
+        
+        GeometryReader { geometry in
+            ScrollView {
+                ZStack {
+                    Ellipse()
+                        .fill(Color(0xffc857))
+                        .frame(width: geometry.size.width * 0.8, height: geometry.size.height * 0.4)
+                        .position(x: geometry.size.width / 2, y: geometry.size.height * 0.1)
+                    .edgesIgnoringSafeArea(.all)
+                    
                     VStack {
-                        Text("\(storeType)")
-                            .font(.headline)
-                            .fontWeight(.regular)
-                            .foregroundColor(Color.gray)
-                        
-                        Text("\(storeName)")
-                            .font(.largeTitle)
-                            .fontWeight(.heavy)
-                            .foregroundColor(Color.black)
+                        VStack(spacing : 0) {
+                            HStack {
+                                Image(systemName: "fork.knife")
+                                    .resizable()
+                                    .frame(width: 15, height: 15)
+                                
+                                Text("\(storeType)")
+                                    .font(.system(size: 15, weight: .regular, design: .rounded))
+                                    .foregroundColor(Color.black)
+                            }
 
-                        Text("\(storeAddress)")
-                            .font(.headline)
-                            .fontWeight(.regular)
-                            .foregroundColor(Color.gray)
-                        
+                            Text("\(storeName)").font(.system(size: 35, weight: .heavy, design: .rounded))
+                                .foregroundColor(Color.black)
+
+                            HStack{
+                                Image(systemName: "map.fill")
+                                    .resizable()
+                                    .frame(width: 15, height: 15)
+                                
+                                Text("\(storeAddress)")
+                                    .font(.system(size: 15, weight: .regular, design: .rounded))
+                                    .foregroundColor(Color.black)
+                            }
+                        }
+
                         TabView{
                             ForEach(0..<3){ num in
                                     images[num]
@@ -93,25 +122,29 @@ struct StoreInfoView: View {
                             }
                         }
                         .tabViewStyle(PageTabViewStyle())
-                        .frame(minWidth: 0, maxWidth: .infinity, minHeight:300, maxHeight: 300)
+                        .frame(width: .infinity)
+                        .aspectRatio(1.0 , contentMode: .fit)
+                        .clipShape(RoundedRectangle(cornerRadius: 20.0))
+                        .padding()
+                        
                         Text("\(storeDescription)")
-                            .font(.title3)
+                            .font(.body)
                             .fontWeight(.regular)
-                            .frame(width: 300, height: 300)
-                            
+                            .foregroundColor(Color.white)
+                            .padding()
+                            .background(Color(0x119da4))
+                            .clipShape(RoundedRectangle(cornerRadius: 20.0))
+                            .padding()
                     }
-                } //VStack
-            } // ScrollView
-            .navigationBarHidden(true)
-            .onAppear{
+                }.onAppear{
+                    FindData()
+                }
             }
-        } // NavigationView
-        .onAppear{
-            FindData()
         }
-    } // body
-} // StoreInfoView
-
+    }
+}
+    
+            
 struct StoreInfoView_Previews: PreviewProvider {
     static var previews: some View {
         StoreInfoView(coordinate: CLLocationCoordinate2D(latitude: 37.341957167356455, longitude: 126.73214338899461))
