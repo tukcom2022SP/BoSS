@@ -131,6 +131,3 @@ struct MapView: UIViewRepresentable {
     
 }
 
-
-// Store data 받기
-// locations에 각 Store data의 title, coordinate 정보 append
