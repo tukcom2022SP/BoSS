@@ -18,6 +18,7 @@
 		49C9CFFB289CE40F0042BC80 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 49C9CFFA289CE40F0042BC80 /* GoogleSignIn */; };
 		49C9CFFD289CE40F0042BC80 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 49C9CFFC289CE40F0042BC80 /* GoogleSignInSwift */; };
 		575D98072893AC7800DD3B18 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575D98062893AC7700DD3B18 /* Place.swift */; };
+		57938AB128A00F1100298D38 /* MapDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57938AB028A00F1100298D38 /* MapDataModel.swift */; };
 		57E0C8272892B98E005D50A6 /* MypageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E0C8262892B98E005D50A6 /* MypageView.swift */; };
 		57F16669288FBC16000CEDCE /* BossSpApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F16668288FBC16000CEDCE /* BossSpApp.swift */; };
 		57F1666B288FBC16000CEDCE /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F1666A288FBC16000CEDCE /* MainView.swift */; };
@@ -41,6 +42,7 @@
 		495A26C72890FD4C003B1A8D /* AddStoreView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddStoreView.swift; sourceTree = "<group>"; };
 		49676BAE2893CF9C00C03B50 /* StoreInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreInfoView.swift; sourceTree = "<group>"; };
 		575D98062893AC7700DD3B18 /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
+		57938AB028A00F1100298D38 /* MapDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDataModel.swift; sourceTree = "<group>"; };
 		57B8470E289109CB00BAA3EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		57E0C8262892B98E005D50A6 /* MypageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageView.swift; sourceTree = "<group>"; };
 		57F16665288FBC15000CEDCE /* BossSp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BossSp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -124,7 +126,11 @@
 				57FD2722289CEE5F00D188C7 /* LoginView.swift */,
 				57FD2724289CEE8F00D188C7 /* ContentView.swift */,
 				57FD2726289D6CC900D188C7 /* StoreModel.swift */,
+
 				A3842DD8289FEA8000EC18BB /* StoreListView.swift */,
+
+				57938AB028A00F1100298D38 /* MapDataModel.swift */,
+
 			);
 			path = BossSp;
 			sourceTree = "<group>";
@@ -233,6 +239,7 @@
 				57FD2723289CEE5F00D188C7 /* LoginView.swift in Sources */,
 				495A26C82890FD4C003B1A8D /* AddStoreView.swift in Sources */,
 				492086C32895BFF500F24336 /* ImagePicker.swift in Sources */,
+				57938AB128A00F1100298D38 /* MapDataModel.swift in Sources */,
 				57FD2725289CEE8F00D188C7 /* ContentView.swift in Sources */,
 				57FD2721289CEE4100D188C7 /* GoogleSignInButton.swift in Sources */,
 				57F97BEB28938C180088A544 /* MapViewModel.swift in Sources */,

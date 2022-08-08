@@ -22,7 +22,7 @@ struct AddStoreView: View {
     @State private var storeAddress = "" // 맛집 주소
     @State private var storeName = "" // 맛집 이름
     @State private var storeType = 0 // 맛집 종류
-    @State private var storeDayOff = 0 // 맛집 휴무일
+//    @State private var storeDayOff = 0 // 맛집 휴무일
     @State private var storeDescription = "" // 맛집 설명
     @State var placeholder: String = "맛집 설명을 입력해주세요." // 설명 TextEditor placeholder
     
@@ -56,7 +56,7 @@ struct AddStoreView: View {
                         "storeAddress" : storeAddress,
                         "storeName" : storeName,
                         "storeType" : "\(storeTypeArray[storeType])",
-                        "storeDayOff" : "\(storeDayOffArray[storeDayOff])",
+//                        "storeDayOff" : "\(storeDayOffArray[storeDayOff])",
                         "storeDescription" : storeDescription])
                     
                     
@@ -187,16 +187,16 @@ struct AddStoreView: View {
                         } // ScrollView
                 } // Section
                 
-                Section(header: Text("휴무일") // 휴무일 입력 섹션
-                    .font(.title2)
-                    .fontWeight(.bold)
-                    .foregroundColor(Color.black)) {
-                        Picker("요일", selection: $storeDayOff) {
-                            ForEach( 0  ..< storeDayOffArray.count ) {
-                                Text("\(storeDayOffArray[$0])")
-                            }
-                        }
-                    }
+//                Section(header: Text("휴무일") // 휴무일 입력 섹션
+//                    .font(.title2)
+//                    .fontWeight(.bold)
+//                    .foregroundColor(Color.black)) {
+//                        Picker("요일", selection: $storeDayOff) {
+//                            ForEach( 0  ..< storeDayOffArray.count ) {
+//                                Text("\(storeDayOffArray[$0])")
+//                            }
+//                        }
+//                    }
                 
                 Section(header: Text("설명") // 설명 입력 섹션
                     .font(.title2)
