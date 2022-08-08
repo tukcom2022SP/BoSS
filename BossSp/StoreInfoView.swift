@@ -80,7 +80,7 @@ struct StoreInfoView: View {
                             .fontWeight(.heavy)
 
                         Text("\(storeAddress)")
-                            .font(.title2)
+                            .font(.headline)
                             .fontWeight(.regular)
                         
                         TabView{
@@ -95,6 +95,7 @@ struct StoreInfoView: View {
                             .font(.title3)
                             .fontWeight(.regular)
                             .frame(width: 300, height: 300)
+                            
                     }
                 } //VStack
             } // ScrollView
@@ -108,12 +109,12 @@ struct StoreInfoView: View {
     } // body
 } // StoreInfoView
 
-//struct StoreInfoView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        StoreInfoView(coordinate: CLLocationCoordinate2D(latitude: 30, longitude: 30))
-//            .previewInterfaceOrientation(.portrait)
-//    }
-//}
+struct StoreInfoView_Previews: PreviewProvider {
+    static var previews: some View {
+        StoreInfoView(coordinate: CLLocationCoordinate2D(latitude: 37.341957167356455, longitude: 126.73214338899461))
+            .previewInterfaceOrientation(.portrait)
+    }
+}
 
 
 
