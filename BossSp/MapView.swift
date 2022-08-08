@@ -103,7 +103,9 @@ struct MapView: UIViewRepresentable {
                     storeModel.stores.append((strName: document.get("storeName") as! String,
                                                strAddress: document.get("storeAddress") as! String,
                                                strDescript: document.get("storeDescription") as! String,
-                                               strType: document.get("storeType") as! String))
+                                               strType: document.get("storeType") as! String,
+                                              strLatitude: document.get("storeLatitude") as! String,
+                                              strLongitude: document.get("storeLongitude") as! String))
                 }
             }
         }

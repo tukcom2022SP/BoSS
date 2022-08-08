@@ -20,7 +20,6 @@ struct MypageView: View {
     @State private var editState: Bool = false
     @State private var showingAlert = false
     
-    @Binding var tabSelection: Int
     
     @ObservedObject var mapData = MapDataModel.shared.mapData
     
@@ -139,22 +138,9 @@ struct MypageView: View {
                                 //some Action
                             }), secondaryButton: .cancel(Text("취소")))
                         }
-                        
-                        
-                        Button {
-                            tabSelection = 1
-                            mapData.setMapRegion(coordinate: CLLocationCoordinate2D(latitude: 37, longitude: 128))
-                        } label: {
-                            Image(systemName: "person")
-                        }
-
-
                     }.padding(.horizontal, 60)
-
-                    
                 }
                 .padding()
-                
             }
             .onAppear{
                 print(viewModel.getUserEmail())
