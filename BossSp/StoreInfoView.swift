@@ -74,17 +74,14 @@ struct StoreInfoView: View {
                         Text("\(storeType)")
                             .font(.headline)
                             .fontWeight(.regular)
-                            .foregroundColor(Color.gray)
                         
                         Text("\(storeName)")
                             .font(.largeTitle)
                             .fontWeight(.heavy)
-                            .foregroundColor(Color.black)
 
                         Text("\(storeAddress)")
                             .font(.title2)
                             .fontWeight(.regular)
-                            .foregroundColor(Color.gray)
                         
                         TabView{
                             ForEach(0..<3){ num in
@@ -97,7 +94,6 @@ struct StoreInfoView: View {
                         Text("\(storeDescription)")
                             .font(.title3)
                             .fontWeight(.regular)
-                            .foregroundColor(Color.black)
                             .frame(width: 300, height: 300)
                     }
                 } //VStack
