@@ -28,6 +28,7 @@ struct MypageView: View {
     
     func loadImage() { // 갤러리에서 선택된 이미지를 현재 이미지에 적용하는 함수
         guard let inputImage = inputImage else { return }
+
         imagePro = Image(uiImage: inputImage)
         uiImagePro = inputImage
         InsertImg()
@@ -92,8 +93,9 @@ struct MypageView: View {
                         imagePro
                         .resizable()
                         .frame(width: 150, height: 150)
+                        .background(.white)
                         .clipShape(Circle())
-                        .overlay(Circle().stroke(Color.white))
+                        .overlay(Circle().stroke(Color.black))
                         
                         Button (action:{
                             showingImagePicker = true
@@ -117,58 +119,70 @@ struct MypageView: View {
                         }
                         .frame(minWidth:300)
                         .font(.title2)
-                        .foregroundColor(Color.white)
-                        .tint(.black)
                         .buttonStyle(.borderedProminent)
                         .buttonBorderShape(.roundedRectangle)
+                        .foregroundColor(.black)
                     }else{
                         Button("프로필 편집"){
                             editState = true
                         }
                         .frame(minWidth:300)
                         .font(.title2)
-                        .foregroundColor(Color.white)
-                        .tint(.black)
                         .buttonStyle(.borderedProminent)
                         .buttonBorderShape(.roundedRectangle)
+                        .foregroundColor(.black)
                     }
-                    
+
                 }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .center)
                     .padding(20)
-                    .background(Color.gray)
+                    .background(Color("Color"))
                 
                 VStack(alignment: .leading){
+                    Text("계정") // 맛집 이름 입력 섹션
+                        .font(.title2)
+                        .fontWeight(.bold)
+                        .padding(EdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 0))
+                    
+                    Text("\(viewModel.getUserEmail())")
+                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 20, maxHeight: 20,alignment: .leading)
+                        .padding(10)
+                        .background(Color("Color-1")).cornerRadius(10)
+                        .overlay(RoundedRectangle(cornerRadius: 10.0).stroke(Color.gray))
+                            
+                
         
                     Text("닉네임")
                         .font(.title2)
                         .fontWeight(.bold)
-                        .foregroundColor(Color.black)
-                        .padding(EdgeInsets(top: 20, leading: 0, bottom: 0, trailing: 0))
+                        .padding(EdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 0))
                     if editState{
                         TextField(self.userName, text: $userName)
-                            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 20, maxHeight: 20)
+                            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 20, maxHeight: 20, alignment: .leading)
                             .padding(10)
                             .overlay(RoundedRectangle(cornerRadius: 10.0).stroke(.gray))
                     }else{
                         Text("\(userName)")
-                            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 20, maxHeight: 20)
+                            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 20, maxHeight: 20,alignment: .leading)
                             .padding(10)
+                            .background(Color("Color-1")).cornerRadius(10)
                             .overlay(RoundedRectangle(cornerRadius: 10.0).stroke(Color.gray))
+                            
                     }
                     
                     Text("자기 소개")
                         .font(.title2)
                         .fontWeight(.bold)
-                        .foregroundColor(Color.black)
+                        .padding(EdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 0))
                     if editState{
                         TextField(self.selfIntro, text: $selfIntro)
-                            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 200, maxHeight: 200)
+                            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 200, maxHeight: 200,alignment: .topLeading)
                             .padding(10)
                             .overlay(RoundedRectangle(cornerRadius: 20.0).stroke(.gray))
                     }else{
                         Text("\(selfIntro)")
-                            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 200, maxHeight: 200)
+                            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 200, maxHeight: 200,alignment: .topLeading)
                             .padding(10)
+                            .background(Color("Color-1")).cornerRadius(20)
                             .overlay(RoundedRectangle(cornerRadius: 20.0).stroke(Color.gray))
                     }
                     
@@ -198,6 +212,7 @@ struct MypageView: View {
                 print(viewModel.getUserEmail())
             }
         }
+        
         
     }
     
