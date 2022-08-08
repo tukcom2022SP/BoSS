@@ -126,11 +126,8 @@
 				57FD2722289CEE5F00D188C7 /* LoginView.swift */,
 				57FD2724289CEE8F00D188C7 /* ContentView.swift */,
 				57FD2726289D6CC900D188C7 /* StoreModel.swift */,
-
 				A3842DD8289FEA8000EC18BB /* StoreListView.swift */,
-
 				57938AB028A00F1100298D38 /* MapDataModel.swift */,
-
 			);
 			path = BossSp;
 			sourceTree = "<group>";
@@ -374,7 +371,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BossSp/Preview Content\"";
-				DEVELOPMENT_TEAM = 5DFZR8RCQR;
+				DEVELOPMENT_TEAM = DXD3RFKP76;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BossSp/Info.plist;
@@ -391,7 +388,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = kr.ac.tukorea.sw.ios.BossSp;
+				PRODUCT_BUNDLE_IDENTIFIER = kr.ac.tukorea.ce.ios.BossSp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -407,7 +404,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BossSp/Preview Content\"";
-				DEVELOPMENT_TEAM = 5DFZR8RCQR;
+				DEVELOPMENT_TEAM = DXD3RFKP76;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BossSp/Info.plist;
@@ -424,7 +421,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = kr.ac.tukorea.sw.ios.BossSp;
+				PRODUCT_BUNDLE_IDENTIFIER = kr.ac.tukorea.ce.ios.BossSp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

@@ -15,7 +15,7 @@ struct MypageView: View {
     @State private var presentAlert = false
     @State var userName = ""// 닉네임
     @State var selfIntro = ""//자기 소개
-    @State private var imagePro = Image(systemName: "person") //프로필 이미지
+    @State private var imagePro = Image("") //프로필 이미지
     @State private var uiImagePro = UIImage(systemName: "person")
     
     @State private var showingImagePicker = false // 이미지 피커 표시 여부
@@ -31,6 +31,7 @@ struct MypageView: View {
         guard let inputImage = inputImage else { return }
         imagePro = Image(uiImage: inputImage)
         uiImagePro = inputImage
+        InsertImg()
     }
     
     func InsertData() { // 파이어베이스 데이터 업로드 함수
@@ -41,6 +42,10 @@ struct MypageView: View {
                 "userName" : userName, // 사용자 이름 저장
                 "userIntroduce" : selfIntro]) // 사용자 소개 저장
         
+        
+    }
+    
+    func InsertImg() { // 파이어스토리지 이미지 업로드 함수
         let storage = Storage.storage() // 파이어스토리지 인스턴스 초기화
         let storageRef = storage.reference() // 참조
         
@@ -50,6 +55,7 @@ struct MypageView: View {
             imageRef.putData(data)
         }
     }
+    
     
     func FindData() { // 파이어베이스 데이터 조회 함수
         let db = Firestore.firestore() // 파이어베이스 인스턴스 초기화
