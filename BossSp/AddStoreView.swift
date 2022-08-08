@@ -76,8 +76,6 @@ struct AddStoreView: View {
         }
     }
     
-
-    
     func loadImage(num : Int) { // 갤러리에서 선택된 이미지를 현재 이미지에 적용하는 함수
         guard let inputImage = inputImage else { return }
         if (num == 1){

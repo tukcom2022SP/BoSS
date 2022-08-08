@@ -13,17 +13,17 @@ struct LoginView: View {
 
     var body: some View {
         VStack {
-
+            Spacer()
             // 2
-            Image(systemName: "person")
-                .resizable()
-                .frame(width: 300, height: 300, alignment: .center)
-                .background(Color.gray)
+//            Image("Icon")
+//                .resizable()
+//                .frame(width: 300, height: 300, alignment: .center)
+//                .background(Color.white)
 
-            Text("Welcome to BoSS")
+            Text("맛이 어때")
                 .fontWeight(.black)
-                .foregroundColor(Color(.systemIndigo))
-                .font(.largeTitle)
+                .foregroundColor(Color.black)
+                .font(.title)
                 .multilineTextAlignment(.center)
 
             Text("지도에 맛집 위치를 표시해서 맛집 정보를 공유하세요.")
@@ -39,6 +39,8 @@ struct LoginView: View {
                 .onTapGesture {
                   viewModel.signIn()
                 }
+            
+            Spacer()
         }
     }
 }

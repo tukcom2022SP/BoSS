@@ -18,12 +18,10 @@ struct LoadingView: View {
                 .environmentObject(viewModel)
         }else{
             ZStack {
-                Color.yellow
-                    .ignoresSafeArea()
                 VStack{
-                    Image(systemName: "pawprint.fill")
+                    Image("Icon")
                         .font(.system(size : 100))
-                    Text("Test loading")
+                    Text("Loading...")
                         .font(Font.custom("Baskerville-Bold", size: 26))
                         .foregroundColor(.black.opacity(0.80))
                 }
