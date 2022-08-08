@@ -32,6 +32,7 @@
 		57FD2723289CEE5F00D188C7 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FD2722289CEE5F00D188C7 /* LoginView.swift */; };
 		57FD2725289CEE8F00D188C7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FD2724289CEE8F00D188C7 /* ContentView.swift */; };
 		57FD2727289D6CC900D188C7 /* StoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FD2726289D6CC900D188C7 /* StoreModel.swift */; };
+		A3842DD9289FEA8000EC18BB /* StoreListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3842DD8289FEA8000EC18BB /* StoreListView.swift */; };
 		A390B08A2897A4C3006769E0 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A390B0892897A4C2006769E0 /* LoadingView.swift */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +58,7 @@
 		57FD2722289CEE5F00D188C7 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		57FD2724289CEE8F00D188C7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		57FD2726289D6CC900D188C7 /* StoreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreModel.swift; sourceTree = "<group>"; };
+		A3842DD8289FEA8000EC18BB /* StoreListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreListView.swift; sourceTree = "<group>"; };
 		A390B0892897A4C2006769E0 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -124,7 +126,11 @@
 				57FD2722289CEE5F00D188C7 /* LoginView.swift */,
 				57FD2724289CEE8F00D188C7 /* ContentView.swift */,
 				57FD2726289D6CC900D188C7 /* StoreModel.swift */,
+
+				A3842DD8289FEA8000EC18BB /* StoreListView.swift */,
+
 				57938AB028A00F1100298D38 /* MapDataModel.swift */,
+
 			);
 			path = BossSp;
 			sourceTree = "<group>";
@@ -223,6 +229,7 @@
 				57FD271F289CE7ED00D188C7 /* AuthenticationViewModel.swift in Sources */,
 				49676BAF2893CF9C00C03B50 /* StoreInfoView.swift in Sources */,
 				57F97BE928938B7F0088A544 /* MapView.swift in Sources */,
+				A3842DD9289FEA8000EC18BB /* StoreListView.swift in Sources */,
 				57FD2727289D6CC900D188C7 /* StoreModel.swift in Sources */,
 				57E0C8272892B98E005D50A6 /* MypageView.swift in Sources */,
 				A390B08A2897A4C3006769E0 /* LoadingView.swift in Sources */,
