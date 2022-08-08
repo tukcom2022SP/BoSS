@@ -7,14 +7,17 @@
 
 import SwiftUI
 import MapKit
+import FirebaseFirestore
+import FirebaseStorage
 
 struct MypageView: View {
     @EnvironmentObject var viewModel: AuthenticationViewModel
     @State private var presentAlert = false
     @State var userName = ""// 닉네임
     @State var selfIntro = ""//자기 소개
-    @State private var imagePro = Image("")//프로필 이미지
-    @State var num = 0
+    @State private var imagePro = Image(systemName: "person") //프로필 이미지
+    @State private var uiImagePro = UIImage(systemName: "person")
+    
     @State private var showingImagePicker = false // 이미지 피커 표시 여부
     @State private var inputImage: UIImage? // 갤러리에서 선택된 이미지
     @State private var editState: Bool = false
@@ -24,11 +27,58 @@ struct MypageView: View {
     
     @ObservedObject var mapData = MapDataModel.shared.mapData
     
-    func loadImage(num : Int) { // 갤러리에서 선택된 이미지를 현재 이미지에 적용하는 함수
+    func loadImage() { // 갤러리에서 선택된 이미지를 현재 이미지에 적용하는 함수
         guard let inputImage = inputImage else { return }
-        if (num == 1){
-            imagePro = Image(uiImage: inputImage)        }
+        imagePro = Image(uiImage: inputImage)
+        uiImagePro = inputImage
     }
+    
+    func InsertData() { // 파이어베이스 데이터 업로드 함수
+        let db = Firestore.firestore() // 파이어스토어 인스턴스 초기화
+        let ref = db.collection("user").document("\(viewModel.getUserEmail())") // 참조
+        
+        ref.setData([ // 데이터 저장
+                "userName" : userName, // 사용자 이름 저장
+                "userIntroduce" : selfIntro]) // 사용자 소개 저장
+        
+        let storage = Storage.storage() // 파이어스토리지 인스턴스 초기화
+        let storageRef = storage.reference() // 참조
+        
+        let imageRef = storageRef.child("users/\(viewModel.getUserEmail())/selfImg.jpg")
+        let data = uiImagePro!.jpegData(compressionQuality: 0.2)
+        if let data = data {
+            imageRef.putData(data)
+        }
+    }
+    
+    func FindData() { // 파이어베이스 데이터 조회 함수
+        let db = Firestore.firestore() // 파이어베이스 인스턴스 초기화
+        let ref = db.collection("user").document("\(viewModel.getUserEmail())") // 참조
+        let storage = Storage.storage() // 파이어스토리지 인스턴스 초기화
+        let storageRef = storage.reference() // 스토리지 참조
+        let imgRef = storageRef.child("users/\(viewModel.getUserEmail())/selfImg.jpg") // 이미지 참조
+
+        ref.getDocument { (document, error) in
+            if let document = document, document.exists {
+                if let name = document.get("userName") as? String {
+                    userName = name
+                }
+                if let intorduce = document.get("userIntroduce") as? String {
+                    selfIntro = intorduce
+                }
+            }
+        }
+        
+        imgRef.downloadURL { (url, error) in // url 다운로드
+            if let url = url{
+                let data = NSData(contentsOf: url) // url -> 데이터
+                let image = UIImage(data: data! as Data) // 데이터 -> UI이미지
+                imagePro = Image(uiImage: image!)
+            }
+        }
+    }
+            
+
     var body: some View {
         VStack {
             ScrollView {
@@ -41,7 +91,6 @@ struct MypageView: View {
                         .overlay(Circle().stroke(Color.white))
                         
                         Button (action:{
-                            self.num = 1
                             showingImagePicker = true
                     }){
                         Text("사진 추가")
@@ -52,13 +101,14 @@ struct MypageView: View {
                                             .buttonBorderShape(.capsule)
                                             .padding(EdgeInsets(top: 5, leading: 0, bottom: 20, trailing: 0))
                     }
-                    .onChange(of: inputImage) { _ in loadImage(num: self.num) }
+                    .onChange(of: inputImage) { _ in loadImage() }
                     .sheet(isPresented: $showingImagePicker) {
                         ImagePicker(image: $inputImage)}
 
                     if editState{
                         Button("변경사항 저장"){
                             editState = false
+                            InsertData()
                         }
                         .frame(minWidth:300)
                         .font(.title2)
@@ -78,16 +128,13 @@ struct MypageView: View {
                         .buttonBorderShape(.roundedRectangle)
                     }
                     
-                    
-                
-                    
                 }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .center)
                     .padding(20)
                     .background(Color.gray)
                 
                 VStack(alignment: .leading){
         
-                    Text("닉네임") // 맛집 이름 입력 섹션
+                    Text("닉네임")
                         .font(.title2)
                         .fontWeight(.bold)
                         .foregroundColor(Color.black)
@@ -104,9 +151,7 @@ struct MypageView: View {
                             .overlay(RoundedRectangle(cornerRadius: 10.0).stroke(Color.gray))
                     }
                     
-                    
-                    
-                    Text("자기 소개")// 맛집 이름 입력 섹션
+                    Text("자기 소개")
                         .font(.title2)
                         .fontWeight(.bold)
                         .foregroundColor(Color.black)
@@ -157,6 +202,7 @@ struct MypageView: View {
                 
             }
             .onAppear{
+                FindData()
                 print(viewModel.getUserEmail())
             }
         }
