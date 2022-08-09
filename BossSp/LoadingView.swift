@@ -18,11 +18,12 @@ struct LoadingView: View {
                 .environmentObject(viewModel)
         }else{
             ZStack {
+                
                 VStack{
                     Image("Icon")
                         .font(.system(size : 100))
                     Text("Loading...")
-                        .font(Font.custom("Baskerville-Bold", size: 26))
+                        .font(Font.custom("Rockwell-Bold", size: 26))
                         .foregroundColor(.black.opacity(0.80))
                 }
                 .scaleEffect(size)
