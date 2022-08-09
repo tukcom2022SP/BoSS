@@ -15,7 +15,7 @@ struct MypageView: View {
     @State private var presentAlert = false
     @State var userName = ""// 닉네임
     @State var selfIntro = ""//자기 소개
-    @State private var imagePro = Image("") //프로필 이미지
+    @State private var imagePro = Image("NoImage") //프로필 이미지
     @State private var uiImagePro = UIImage(systemName: "person")
     
     @State private var showingImagePicker = false // 이미지 피커 표시 여부
