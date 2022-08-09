@@ -1,9 +1,9 @@
-<h1>BoSS's 맛집 정보 공유 앱</h1>
+<h1>맛집 정보 공유 앱 - '맛이 어때'</h1>
 
-<h2>Description</h2>
+<h2>설명</h2>
 나만의 맛집을 지도에 표시하여 사용자들끼리 맛집 정보를 공유하세요.
 
-<h2>Branch</h2>
+<h2>Branch 전략</h2>
 
 ![title](https://media.vlpt.us/images/yejine2/post/e6833c35-f4ff-493a-b5a2-b4cd82f91f13/git-flow.png)   
 [이미지 출처: [How to Use GitFlow](https://www.campingcoder.com/2018/04/how-to-use-git-flow/)]
@@ -24,7 +24,7 @@
 - 새로운 기능을 추가하는 브랜치로 develop 브랜치로부터 파생.
 - 기능 추가 완료 후 develop 브랜치에 병합.
 
-<h2>Commit</h2>
+<h2>Commit 전략</h2>
 
 1. 커밋 메시지 제목에 타입을 표시
 
@@ -48,9 +48,7 @@
 
 <h2>Tools</h2>
 
-<img src="https://img.shields.io/badge/Swift-F05138?style=flat-square&logo=swift&logoColor=white"/>
-
-<img src="https://img.shields.io/badge/Firebase-FFCA28?style=flat-square&logo=firebase&logoColor=white"/>
+<img src="https://img.shields.io/badge/Swift-F05138?style=flat-square&logo=swift&logoColor=white"/> <img src="https://img.shields.io/badge/Firebase-FFCA28?style=flat-square&logo=firebase&logoColor=white"/>
 
 <h2>팀원</h2>
 
