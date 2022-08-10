@@ -3,7 +3,16 @@
 <h2>설명</h2>
 나만의 맛집을 지도에 표시하여 사용자들끼리 맛집 정보를 공유하세요.
 
+<h2>앱 동작 화면</h2>
+
+![loading](https://user-images.githubusercontent.com/87902884/183897113-41360642-3899-44cc-b15a-9ddf377e8c12.gif)
+![myLocation](https://user-images.githubusercontent.com/87902884/183896947-039870c0-0272-407d-acc1-0de96983cf3b.gif)
+![storeAdd](https://user-images.githubusercontent.com/87902884/183897272-45c48e23-5752-4968-8cb5-6037ef1ac647.gif)
+![storeList](https://user-images.githubusercontent.com/87902884/183897409-7703ea1b-b307-4745-be34-0ed661f8a9c6.gif)
+![ezgif com-gif-maker](https://user-images.githubusercontent.com/87902884/183897839-f44797d1-8879-478b-96cf-18bda1c1e25e.gif)
+
 <h2>Branch 전략</h2>
+
 
 ![title](https://media.vlpt.us/images/yejine2/post/e6833c35-f4ff-493a-b5a2-b4cd82f91f13/git-flow.png)   
 [이미지 출처: [How to Use GitFlow](https://www.campingcoder.com/2018/04/how-to-use-git-flow/)]
